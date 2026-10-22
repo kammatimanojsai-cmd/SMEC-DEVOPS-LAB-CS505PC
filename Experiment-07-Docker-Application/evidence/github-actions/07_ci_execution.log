@@ -1,13 +1,13 @@
 ### Experiment 7 - containerised Hello World
-### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:36 IST
+### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:39:21 IST
 
 $ python hello.py
 Hello, World!
 Hello from a Docker container - SMEC DevOps Lab (CS505PC)
 Python version : 3.12.15
-Container host : runnervmxehtw
-Started at     : 2026-10-22 13:31:36
+Container host : runnervm8k3b6
+Started at     : 2026-10-22 13:39:22
 
 $ docker build -t hello-app:1.0 .
 #0 building with "default" instance using docker driver
@@ -16,14 +16,11 @@ $ docker build -t hello-app:1.0 .
 #1 transferring dockerfile: 185B done
 #1 DONE 0.0s
 
-#2 [internal] load metadata for docker.io/library/python:3.12-slim
-#2 ...
+#2 [auth] library/python:pull token for registry-1.docker.io
+#2 DONE 0.0s
 
-#3 [auth] library/python:pull token for registry-1.docker.io
-#3 DONE 0.0s
-
-#2 [internal] load metadata for docker.io/library/python:3.12-slim
-#2 DONE 0.9s
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.6s
 
 #4 [internal] load .dockerignore
 #4 transferring context: 2B done
@@ -35,27 +32,27 @@ $ docker build -t hello-app:1.0 .
 
 #6 [1/3] FROM docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2
 #6 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 done
-#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 14.68MB / 29.84MB 0.1s
-#6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0B / 1.29MB 0.1s
 #6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 0B / 12.12MB 0.1s
 #6 sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 10.37kB / 10.37kB done
 #6 sha256:e8a38829209aea82774882e5157e1f7c3e8c8393ff53a697b3580896e57f345c 1.75kB / 1.75kB done
 #6 sha256:a33c10a97f11005523814c6eee013986119fe41f3122f444518117536675c8e1 5.66kB / 5.66kB done
+#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 0B / 29.84MB 0.1s
+#6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0B / 1.29MB 0.1s
+#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 8.39MB / 12.12MB 0.3s
 #6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.3s
-#6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 1.29MB / 1.29MB 0.1s done
-#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.3s
-#6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 249B / 249B 0.3s
-#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.4s done
-#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.4s done
-#6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 249B / 249B 0.4s done
-#6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 0.1s
+#6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 1.29MB / 1.29MB 0.2s done
+#6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 249B / 249B 0.3s done
+#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.4s
+#6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034
+#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.5s done
+#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.5s done
 #6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 0.6s done
 #6 extracting sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0.1s done
 #6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7
-#6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 0.4s done
+#6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 0.3s done
 #6 extracting sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645
 #6 extracting sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 done
-#6 DONE 2.4s
+#6 DONE 2.3s
 
 #7 [2/3] WORKDIR /app
 #7 DONE 0.0s
@@ -65,30 +62,30 @@ $ docker build -t hello-app:1.0 .
 
 #9 exporting to image
 #9 exporting layers
-#9 exporting layers 0.4s done
-#9 writing image sha256:a91432d24efd19c64b1a775912c2ccfd0098f2bd81e993067a6cca1fd2064128 done
+#9 exporting layers 0.3s done
+#9 writing image sha256:167251dfe0b4899e54b48991a767ddfbf18510b58c2390bfb879ed06298bc5ad done
 #9 naming to docker.io/library/hello-app:1.0 done
-#9 DONE 0.5s
+#9 DONE 0.3s
 
 $ docker images hello-app
 REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
-hello-app    1.0       a91432d24efd   1 second ago   119MB
+hello-app    1.0       167251dfe0b4   1 second ago   119MB
 
 $ docker run --name hello-container hello-app:1.0
 Hello, World!
 Hello from a Docker container - SMEC DevOps Lab (CS505PC)
 Python version : 3.12.15
-Container host : b6f77c22e782
-Started at     : 2026-10-22 08:01:41
+Container host : 9c4b2bfa46fb
+Started at     : 2026-10-22 08:09:26
 
 $ docker ps -a --filter name=hello-container
-CONTAINER ID   IMAGE           COMMAND             CREATED                  STATUS                  PORTS     NAMES
-b6f77c22e782   hello-app:1.0   "python hello.py"   Less than a second ago   Up Less than a second             hello-container
+CONTAINER ID   IMAGE           COMMAND             CREATED                  STATUS                              PORTS     NAMES
+9c4b2bfa46fb   hello-app:1.0   "python hello.py"   Less than a second ago   Exited (0) Less than a second ago             hello-container
 
 $ docker logs hello-container
 Hello, World!
 Hello from a Docker container - SMEC DevOps Lab (CS505PC)
 Python version : 3.12.15
-Container host : b6f77c22e782
-Started at     : 2026-10-22 08:01:41
+Container host : 9c4b2bfa46fb
+Started at     : 2026-10-22 08:09:26
 VERIFIED: 'Hello, World!' found in docker logs

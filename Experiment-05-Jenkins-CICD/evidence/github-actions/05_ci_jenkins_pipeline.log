@@ -1,6 +1,6 @@
 ### Experiment 5 - Continuous integration and delivery with Jenkins
-### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:50 IST
+### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:39:55 IST
 
 $ ./mvnw -B -q clean package
 
@@ -13,12 +13,8 @@ Jenkins CI/CD Demo application v1.0
 Deployment successful
 
 $ git push -f origin HEAD:refs/heads/jenkins-demo
-remote: 
-remote: Create a pull request for 'jenkins-demo' on GitHub by visiting:        
-remote:      https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/pull/new/jenkins-demo        
-remote: 
 To https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC
- * [new branch]      HEAD -> jenkins-demo
+ + 203a72f...b6e54f3 HEAD -> jenkins-demo (forced update)
 
 $ POST /createItem?name=SMEC-Exp5-CICD  (Pipeline from SCM: kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC, branch jenkins-demo, Script Path Experiment-05-Jenkins-CICD/Jenkinsfile)
 HTTP 200
@@ -30,23 +26,23 @@ Build #1 result: SUCCESS
 ----- build #1 console (key lines) -----
 Started by user admin
 [Pipeline] stage
-Checking out Revision 6a9fc8240cbdbe4ae1fd3b4fd3a348d494ab4f8a (refs/remotes/origin/jenkins-demo)
+Checking out Revision b6e54f3a99237111e41259b12a3bc45fb9a1ee8d (refs/remotes/origin/jenkins-demo)
 [Pipeline] stage
-[2026-10-22T08:02:13.537Z] Checking out Revision 6a9fc8240cbdbe4ae1fd3b4fd3a348d494ab4f8a (refs/remotes/origin/jenkins-demo)
+[2026-10-22T08:10:18.686Z] Checking out Revision b6e54f3a99237111e41259b12a3bc45fb9a1ee8d (refs/remotes/origin/jenkins-demo)
 [Pipeline] stage
-[2026-10-22T08:02:18.574Z] [INFO] BUILD SUCCESS
+[2026-10-22T08:10:23.706Z] [INFO] BUILD SUCCESS
 [Pipeline] stage
-[2026-10-22T08:02:22.822Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in in.smec.devops.CalculatorTest
-[2026-10-22T08:02:22.822Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
-[2026-10-22T08:02:22.822Z] [INFO] BUILD SUCCESS
+[2026-10-22T08:10:27.964Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.027 s -- in in.smec.devops.CalculatorTest
+[2026-10-22T08:10:27.964Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[2026-10-22T08:10:27.964Z] [INFO] BUILD SUCCESS
 [Pipeline] stage
-[2026-10-22T08:02:26.105Z] [INFO] Building jar: /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar
-[2026-10-22T08:02:26.105Z] [INFO] BUILD SUCCESS
+[2026-10-22T08:10:31.435Z] [INFO] Building jar: /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar
+[2026-10-22T08:10:31.435Z] [INFO] BUILD SUCCESS
 [Pipeline] stage
-[2026-10-22T08:02:26.456Z] + cp Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar deploy/
-[2026-10-22T08:02:26.716Z] + java -jar deploy/jenkins-cicd-demo.jar
-[2026-10-22T08:02:26.717Z] Jenkins CI/CD Demo application v1.0
-[2026-10-22T08:02:26.717Z] Deployment successful
+[2026-10-22T08:10:31.791Z] + cp Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar deploy/
+[2026-10-22T08:10:32.050Z] + java -jar deploy/jenkins-cicd-demo.jar
+[2026-10-22T08:10:32.050Z] Jenkins CI/CD Demo application v1.0
+[2026-10-22T08:10:32.050Z] Deployment successful
 [Pipeline] stage
 Finished: SUCCESS
 VERIFIED: Jenkins build #1 SUCCESS
@@ -59,11 +55,11 @@ Archived artifact: Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar
 $ git commit -q -am Exp 5: bump version to 1.1 (should trigger Jenkins automatically)
 
 $ git log --oneline -1
-203a72f Exp 5: bump version to 1.1 (should trigger Jenkins automatically)
+da696a4 Exp 5: bump version to 1.1 (should trigger Jenkins automatically)
 
 $ git push -f origin HEAD:refs/heads/jenkins-demo
 To https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC
-   6a9fc82..203a72f  HEAD -> jenkins-demo
+   b6e54f3..da696a4  HEAD -> jenkins-demo
 Waiting for Jenkins to poll GitHub and start build #2 by itself (up to 8 minutes)...
 .github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
 .github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
@@ -79,16 +75,21 @@ Build #2 result: SUCCESS
 
 ----- build #2 console (key lines) -----
 Started by an SCM change
-Checking out Revision 203a72ff7286b1a21cbd7fd74591a27a4971eac1 (refs/remotes/origin/jenkins-demo)
+Checking out Revision da696a44db96162b654120080cdc2e4fa7411847 (refs/remotes/origin/jenkins-demo)
 Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
-[2026-10-22T08:04:14.452Z] Checking out Revision 203a72ff7286b1a21cbd7fd74591a27a4971eac1 (refs/remotes/origin/jenkins-demo)
-[2026-10-22T08:04:14.470Z] Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
-[2026-10-22T08:04:17.979Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in in.smec.devops.CalculatorTest
-[2026-10-22T08:04:17.979Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
-[2026-10-22T08:04:20.176Z] Jenkins CI/CD Demo application v1.1
-[2026-10-22T08:04:20.176Z] Deployment successful
+[2026-10-22T08:12:14.337Z] Checking out Revision da696a44db96162b654120080cdc2e4fa7411847 (refs/remotes/origin/jenkins-demo)
+[2026-10-22T08:12:14.345Z] Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
+[2026-10-22T08:12:18.077Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in in.smec.devops.CalculatorTest
+[2026-10-22T08:12:18.077Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[2026-10-22T08:12:20.404Z] Jenkins CI/CD Demo application v1.1
+[2026-10-22T08:12:20.404Z] Deployment successful
 Finished: SUCCESS
 VERIFIED: Build #2 was started automatically by an SCM change
 VERIFIED: Jenkins build #2 SUCCESS and deployed v1.1
 
 $ GET /job/SMEC-Exp5-CICD/api/json - build history
+#2  SUCCESS
+#1  SUCCESS
+Screenshot saved: evidence/github-actions/ci_05_jenkins_stage_view.png
+Screenshot saved: evidence/github-actions/ci_05_jenkins_test_report.png
+Screenshot saved: evidence/github-actions/ci_05_build2_started_by_scm_change.png

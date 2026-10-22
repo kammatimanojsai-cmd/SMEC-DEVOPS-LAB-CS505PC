@@ -1,19 +1,22 @@
 ### Experiment 4 - Jenkins LTS installation and setup (Docker container on the CI runner)
-### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:13 IST
+### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:39:13 IST
 
 $ docker build -t smec-jenkins:lts .
 #0 building with "default" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 401B done
+#1 transferring dockerfile: 401B 0.0s done
 #1 DONE 0.0s
 
-#2 [auth] jenkins/jenkins:pull token for registry-1.docker.io
-#2 DONE 0.0s
+#2 [internal] load metadata for docker.io/jenkins/jenkins:lts-jdk21
+#2 ...
 
-#3 [internal] load metadata for docker.io/jenkins/jenkins:lts-jdk21
-#3 DONE 0.7s
+#3 [auth] jenkins/jenkins:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/jenkins/jenkins:lts-jdk21
+#2 DONE 0.7s
 
 #4 [internal] load .dockerignore
 #4 transferring context: 2B done
@@ -25,48 +28,47 @@ $ docker build -t smec-jenkins:lts .
 
 #6 [1/3] FROM docker.io/jenkins/jenkins:lts-jdk21@sha256:a660310e39ade10631f774bacd5219de767dfd08947ea5c32a739b5e5bb382c1
 #6 resolve docker.io/jenkins/jenkins:lts-jdk21@sha256:a660310e39ade10631f774bacd5219de767dfd08947ea5c32a739b5e5bb382c1 done
-#6 sha256:5e70c4e8c97025f7784858bb5c4380912fc17e5fa0f0afa1d4833700a08666eb 2.58kB / 2.58kB done
 #6 sha256:a660310e39ade10631f774bacd5219de767dfd08947ea5c32a739b5e5bb382c1 3.87kB / 3.87kB done
+#6 sha256:5e70c4e8c97025f7784858bb5c4380912fc17e5fa0f0afa1d4833700a08666eb 2.58kB / 2.58kB done
 #6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 0B / 58.61MB 0.1s
-#6 sha256:810008851f3a99a556a3add6aaf28655612e9b5700fc9f67652eb052aff22b1b 0B / 5.62MB 0.1s
 #6 sha256:82becee636459f5f9d5195b47b76c891b49cb8c6cf0913986b63e0b3e4b3328b 11.30kB / 11.30kB done
 #6 sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 0B / 49.38MB 0.1s
-#6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 15.73MB / 58.61MB 0.3s
-#6 sha256:810008851f3a99a556a3add6aaf28655612e9b5700fc9f67652eb052aff22b1b 5.62MB / 5.62MB 0.3s done
-#6 sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 45.09MB / 49.38MB 0.3s
+#6 sha256:810008851f3a99a556a3add6aaf28655612e9b5700fc9f67652eb052aff22b1b 0B / 5.62MB 0.1s
+#6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 34.60MB / 58.61MB 0.3s
+#6 sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 49.38MB / 49.38MB 0.3s
+#6 sha256:810008851f3a99a556a3add6aaf28655612e9b5700fc9f67652eb052aff22b1b 5.62MB / 5.62MB 0.2s done
 #6 sha256:d89089c8a5a353820d6c418420a4130b815236a3f2207c214f9bbadab6b2a626 0B / 1.23kB 0.3s
-#6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 54.53MB / 58.61MB 0.4s
-#6 sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 49.38MB / 49.38MB 0.4s
+#6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 39.85MB / 58.61MB 0.4s
 #6 sha256:d89089c8a5a353820d6c418420a4130b815236a3f2207c214f9bbadab6b2a626 1.23kB / 1.23kB 0.4s
-#6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 58.61MB / 58.61MB 0.6s
 #6 extracting sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2
+#6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 58.61MB / 58.61MB 0.6s
+#6 sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 49.38MB / 49.38MB 0.5s done
+#6 sha256:d89089c8a5a353820d6c418420a4130b815236a3f2207c214f9bbadab6b2a626 1.23kB / 1.23kB 0.5s done
+#6 sha256:701ded2f9b337f28c79dd3dd4573df3ecd2cf32b0fa132f24a1a1655ae219684 183B / 183B 0.6s
+#6 sha256:968c36a3b2c58b9de7da06a9457f73bd1ff5f8baf6584937f2013167a791617b 187B / 187B 0.6s
 #6 sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 58.61MB / 58.61MB 0.9s done
-#6 sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 49.38MB / 49.38MB 0.6s done
-#6 sha256:d89089c8a5a353820d6c418420a4130b815236a3f2207c214f9bbadab6b2a626 1.23kB / 1.23kB 0.8s done
-#6 sha256:701ded2f9b337f28c79dd3dd4573df3ecd2cf32b0fa132f24a1a1655ae219684 0B / 183B 0.9s
-#6 sha256:968c36a3b2c58b9de7da06a9457f73bd1ff5f8baf6584937f2013167a791617b 0B / 187B 0.9s
-#6 sha256:3dd4a99993ab093b6d8cf6bfa4d885f395bff3a02e291caefd852a0dc4a2b6a3 0B / 6.45MB 0.9s
 #6 sha256:701ded2f9b337f28c79dd3dd4573df3ecd2cf32b0fa132f24a1a1655ae219684 183B / 183B 0.9s done
 #6 sha256:968c36a3b2c58b9de7da06a9457f73bd1ff5f8baf6584937f2013167a791617b 187B / 187B 0.9s done
-#6 sha256:3dd4a99993ab093b6d8cf6bfa4d885f395bff3a02e291caefd852a0dc4a2b6a3 6.45MB / 6.45MB 1.0s
+#6 sha256:3dd4a99993ab093b6d8cf6bfa4d885f395bff3a02e291caefd852a0dc4a2b6a3 4.19MB / 6.45MB 1.0s
+#6 sha256:a20a14499a3ea28b383fd4f33455d726780b20905a0d717222a72abf9f34e585 25.17MB / 72.20MB 1.0s
 #6 sha256:463a574793f8bf3ab6f97a705e99e0e8a6565ef73d610f0358970f51de9fc8a1 0B / 53.88MB 1.0s
-#6 sha256:a20a14499a3ea28b383fd4f33455d726780b20905a0d717222a72abf9f34e585 6.29MB / 72.20MB 1.0s
-#6 sha256:3dd4a99993ab093b6d8cf6bfa4d885f395bff3a02e291caefd852a0dc4a2b6a3 6.45MB / 6.45MB 1.0s done
-#6 sha256:463a574793f8bf3ab6f97a705e99e0e8a6565ef73d610f0358970f51de9fc8a1 31.46MB / 53.88MB 1.2s
-#6 sha256:a20a14499a3ea28b383fd4f33455d726780b20905a0d717222a72abf9f34e585 70.25MB / 72.20MB 1.2s
+#6 sha256:3dd4a99993ab093b6d8cf6bfa4d885f395bff3a02e291caefd852a0dc4a2b6a3 6.45MB / 6.45MB 1.1s done
+#6 sha256:a20a14499a3ea28b383fd4f33455d726780b20905a0d717222a72abf9f34e585 55.57MB / 72.20MB 1.1s
+#6 sha256:463a574793f8bf3ab6f97a705e99e0e8a6565ef73d610f0358970f51de9fc8a1 9.44MB / 53.88MB 1.1s
+#6 sha256:f9e31fab50e854aad573dd832349945a2270c153a23abb72f3e2a947b16a8e51 0B / 2.65kB 1.1s
+#6 sha256:a20a14499a3ea28b383fd4f33455d726780b20905a0d717222a72abf9f34e585 72.20MB / 72.20MB 1.2s
+#6 sha256:463a574793f8bf3ab6f97a705e99e0e8a6565ef73d610f0358970f51de9fc8a1 51.38MB / 53.88MB 1.2s
 #6 sha256:f9e31fab50e854aad573dd832349945a2270c153a23abb72f3e2a947b16a8e51 2.65kB / 2.65kB 1.1s done
-#6 sha256:95bc7464aaea79c8148fadd51b963995cd9e67d50db71f4138953d43a4aa4ea7 1.29kB / 1.29kB 1.2s done
-#6 sha256:a91427fe0e3ff2cba4d0f29ec048684ac04f00320c1563a726d9a5d677bf24bc 0B / 391B 1.2s
-#6 sha256:463a574793f8bf3ab6f97a705e99e0e8a6565ef73d610f0358970f51de9fc8a1 53.88MB / 53.88MB 1.3s
-#6 sha256:a91427fe0e3ff2cba4d0f29ec048684ac04f00320c1563a726d9a5d677bf24bc 391B / 391B 1.3s
-#6 sha256:463a574793f8bf3ab6f97a705e99e0e8a6565ef73d610f0358970f51de9fc8a1 53.88MB / 53.88MB 1.9s done
+#6 sha256:95bc7464aaea79c8148fadd51b963995cd9e67d50db71f4138953d43a4aa4ea7 1.29kB / 1.29kB 1.2s
+#6 extracting sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 1.1s done
+#6 sha256:95bc7464aaea79c8148fadd51b963995cd9e67d50db71f4138953d43a4aa4ea7 1.29kB / 1.29kB 1.5s done
 #6 sha256:a20a14499a3ea28b383fd4f33455d726780b20905a0d717222a72abf9f34e585 72.20MB / 72.20MB 1.8s done
-#6 sha256:a91427fe0e3ff2cba4d0f29ec048684ac04f00320c1563a726d9a5d677bf24bc 391B / 391B 1.5s done
-#6 extracting sha256:6eefb2f5d3e91a6cfc577476bbec26bb63f0d0fc31f904493f400833783aa2c2 1.3s done
-#6 extracting sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d
-#6 extracting sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 1.2s done
+#6 sha256:463a574793f8bf3ab6f97a705e99e0e8a6565ef73d610f0358970f51de9fc8a1 53.88MB / 53.88MB 1.8s done
+#6 extracting sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 0.1s
+#6 sha256:a91427fe0e3ff2cba4d0f29ec048684ac04f00320c1563a726d9a5d677bf24bc 391B / 391B 1.9s done
+#6 extracting sha256:408777b27aa931e1b620b49cc2b18c0e1009edd4b79251e1a83457a51e7c526d 1.0s done
 #6 extracting sha256:810008851f3a99a556a3add6aaf28655612e9b5700fc9f67652eb052aff22b1b
-#6 extracting sha256:810008851f3a99a556a3add6aaf28655612e9b5700fc9f67652eb052aff22b1b 0.1s done
+#6 extracting sha256:810008851f3a99a556a3add6aaf28655612e9b5700fc9f67652eb052aff22b1b 0.0s done
 #6 extracting sha256:d89089c8a5a353820d6c418420a4130b815236a3f2207c214f9bbadab6b2a626
 #6 extracting sha256:d89089c8a5a353820d6c418420a4130b815236a3f2207c214f9bbadab6b2a626 done
 #6 extracting sha256:701ded2f9b337f28c79dd3dd4573df3ecd2cf32b0fa132f24a1a1655ae219684 done
@@ -80,29 +82,29 @@ $ docker build -t smec-jenkins:lts .
 #6 extracting sha256:f9e31fab50e854aad573dd832349945a2270c153a23abb72f3e2a947b16a8e51 done
 #6 extracting sha256:95bc7464aaea79c8148fadd51b963995cd9e67d50db71f4138953d43a4aa4ea7 done
 #6 extracting sha256:a91427fe0e3ff2cba4d0f29ec048684ac04f00320c1563a726d9a5d677bf24bc done
-#6 DONE 11.1s
+#6 DONE 11.7s
 
 #7 [2/3] RUN jenkins-plugin-cli --plugins workflow-aggregator git junit timestamper pipeline-stage-view
-#7 6.137 Done
-#7 DONE 6.7s
+#7 10.34 Done
+#7 DONE 10.8s
 
 #8 [3/3] COPY security.groovy /usr/share/jenkins/ref/init.groovy.d/security.groovy
 #8 DONE 0.0s
 
 #9 exporting to image
 #9 exporting layers
-#9 exporting layers 0.5s done
-#9 writing image sha256:fabc5908637622289e32d6eb2028d9bdd2a9cf89dfc17ca5c32e6a2c0cd61b86 done
+#9 exporting layers 0.9s done
+#9 writing image sha256:573348c18c9783c5c328fc9b879313eb2cd59992ed5cac8d6f2899372ab9e15b done
 #9 naming to docker.io/library/smec-jenkins:lts done
-#9 DONE 0.5s
+#9 DONE 0.9s
 
 $ docker run -d --name jenkins -p 8080:8080 -e JENKINS_ADMIN_PASSWORD=*** smec-jenkins:lts
-c1dccc1b1a2162dc38ea1c592863f0603a2eedeb969453b2ecc380881f7c8ac0
+da226238eb44d8b58b7d5a48ad1e10d593ec3d1a3d404061fdd9502f767c5064
 Waiting for Jenkins to start...
 
 $ docker ps --filter name=jenkins
 CONTAINER ID   IMAGE              COMMAND                  CREATED         STATUS         PORTS                                                    NAMES
-c1dccc1b1a21   smec-jenkins:lts   "/usr/bin/tini -- /u…"   7 seconds ago   Up 7 seconds   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 50000/tcp   jenkins
+da226238eb44   smec-jenkins:lts   "/usr/bin/tini -- /u…"   6 seconds ago   Up 6 seconds   0.0.0.0:8080->8080/tcp, [::]:8080->8080/tcp, 50000/tcp   jenkins
 
 $ curl -sI http://localhost:8080/login
 HTTP/1.1 200 OK

@@ -1,12 +1,12 @@
 ### Experiment 9 - Kubernetes automation of the Experiment 7 app (3 replicas, kind cluster)
-### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:33:12 IST
+### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:41:07 IST
 
 $ docker build -q -t hello-app:1.0 ../Experiment-07-Docker-Application
-sha256:6b1b98acaac709ced14178c06b0792d985f6aacb3ce475d1d9ebb21aed9d73b7
+sha256:2734a433d11d6c30cb7c86a8a405c5cf4520c0993f86aa871a35733469be9f84
 
 $ kind load docker-image --name lab hello-app:1.0
-Image: "hello-app:1.0" with ID "sha256:6b1b98acaac709ced14178c06b0792d985f6aacb3ce475d1d9ebb21aed9d73b7" not yet present on node "lab-control-plane", loading...
+Image: "hello-app:1.0" with ID "sha256:2734a433d11d6c30cb7c86a8a405c5cf4520c0993f86aa871a35733469be9f84" not yet present on node "lab-control-plane", loading...
 
 $ kubectl apply -f deployment.yaml -f service.yaml
 deployment.apps/hello-app created
@@ -24,48 +24,49 @@ hello-app   3/3     3            3           7s
 
 $ kubectl get pods -l app=hello-app -o wide
 NAME                         READY   STATUS    RESTARTS   AGE   IP            NODE                NOMINATED NODE   READINESS GATES
-hello-app-57d4965f64-6zbw5   1/1     Running   0          7s    10.244.0.17   lab-control-plane   <none>           <none>
-hello-app-57d4965f64-ck26h   1/1     Running   0          7s    10.244.0.18   lab-control-plane   <none>           <none>
-hello-app-57d4965f64-wc9z9   1/1     Running   0          7s    10.244.0.19   lab-control-plane   <none>           <none>
+hello-app-57d4965f64-7kk9v   1/1     Running   0          7s    10.244.0.17   lab-control-plane   <none>           <none>
+hello-app-57d4965f64-dbjjp   1/1     Running   0          7s    10.244.0.18   lab-control-plane   <none>           <none>
+hello-app-57d4965f64-qzwsc   1/1     Running   0          7s    10.244.0.19   lab-control-plane   <none>           <none>
 
 $ kubectl get service hello-app-svc
-NAME            TYPE       CLUSTER-IP    EXTERNAL-IP   PORT(S)        AGE
-hello-app-svc   NodePort   10.96.15.57   <none>        80:30080/TCP   7s
+NAME            TYPE       CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
+hello-app-svc   NodePort   10.96.70.140   <none>        80:30080/TCP   7s
 
-$ kubectl logs hello-app-57d4965f64-6zbw5 --tail=6
+$ kubectl logs hello-app-57d4965f64-7kk9v --tail=6
 Hello from a Docker container - SMEC DevOps Lab (CS505PC)
 Python version : 3.12.15
-Container host : hello-app-57d4965f64-6zbw5
-Started at     : 2026-10-22 08:03:19
+Container host : hello-app-57d4965f64-7kk9v
+Started at     : 2026-10-22 08:11:13
 HTTP mode enabled - listening on port 8080
-10.244.0.1 - - [22/Oct/2026 08:03:22] "GET / HTTP/1.1" 200 -
+10.244.0.1 - - [22/Oct/2026 08:11:17] "GET / HTTP/1.1" 200 -
 
-$ kubectl logs hello-app-57d4965f64-ck26h --tail=6
+$ kubectl logs hello-app-57d4965f64-dbjjp --tail=6
 Hello from a Docker container - SMEC DevOps Lab (CS505PC)
 Python version : 3.12.15
-Container host : hello-app-57d4965f64-ck26h
-Started at     : 2026-10-22 08:03:19
+Container host : hello-app-57d4965f64-dbjjp
+Started at     : 2026-10-22 08:11:13
 HTTP mode enabled - listening on port 8080
-10.244.0.1 - - [22/Oct/2026 08:03:22] "GET / HTTP/1.1" 200 -
+10.244.0.1 - - [22/Oct/2026 08:11:17] "GET / HTTP/1.1" 200 -
 
-$ kubectl logs hello-app-57d4965f64-wc9z9 --tail=6
+$ kubectl logs hello-app-57d4965f64-qzwsc --tail=6
 Hello from a Docker container - SMEC DevOps Lab (CS505PC)
 Python version : 3.12.15
-Container host : hello-app-57d4965f64-wc9z9
-Started at     : 2026-10-22 08:03:19
+Container host : hello-app-57d4965f64-qzwsc
+Started at     : 2026-10-22 08:11:13
 HTTP mode enabled - listening on port 8080
-10.244.0.1 - - [22/Oct/2026 08:03:22] "GET / HTTP/1.1" 200 -
+10.244.0.1 - - [22/Oct/2026 08:11:17] "GET / HTTP/1.1" 200 -
 
 $ kubectl run curl-test --rm -i --restart=Never --image=curlimages/curl -- (6 requests to the Service)
-Hello, World! Served by pod/container: hello-app-57d4965f64-wc9z9
-Hello, World! Served by pod/container: hello-app-57d4965f64-6zbw5
-Hello, World! Served by pod/container: hello-app-57d4965f64-ck26h
+Hello, World! Served by pod/container: hello-app-57d4965f64-dbjjp
+Hello, World! Served by pod/container: hello-app-57d4965f64-qzwsc
+Hello, World! Served by pod/container: hello-app-57d4965f64-qzwsc
+Hello, World! Served by pod/container: hello-app-57d4965f64-dbjjp
 pod "curl-test" deleted from default namespace
 
 $ kubectl describe deployment hello-app
 Name:                   hello-app
 Namespace:              default
-CreationTimestamp:      Thu, 22 Oct 2026 13:33:15 +0530
+CreationTimestamp:      Thu, 22 Oct 2026 13:41:10 +0530
 Labels:                 app=hello-app
 Annotations:            deployment.kubernetes.io/revision: 1
 Selector:               app=hello-app
@@ -115,11 +116,11 @@ deployment "hello-app" successfully rolled out
 
 $ kubectl get pods -l app=hello-app
 NAME                         READY   STATUS    RESTARTS   AGE
-hello-app-57d4965f64-6zbw5   1/1     Running   0          19s
-hello-app-57d4965f64-ck26h   1/1     Running   0          19s
-hello-app-57d4965f64-mnfht   1/1     Running   0          8s
-hello-app-57d4965f64-qkc5s   1/1     Running   0          8s
-hello-app-57d4965f64-wc9z9   1/1     Running   0          19s
+hello-app-57d4965f64-4jzww   1/1     Running   0          7s
+hello-app-57d4965f64-7kk9v   1/1     Running   0          18s
+hello-app-57d4965f64-dbjjp   1/1     Running   0          18s
+hello-app-57d4965f64-kn7vx   1/1     Running   0          7s
+hello-app-57d4965f64-qzwsc   1/1     Running   0          18s
 
 $ kubectl scale deployment hello-app --replicas=3
 deployment.apps/hello-app scaled
@@ -127,15 +128,15 @@ deployment.apps/hello-app scaled
 $ kubectl rollout status deployment/hello-app --timeout=180s
 deployment "hello-app" successfully rolled out
 
-$ kubectl delete pod hello-app-57d4965f64-6zbw5 --wait=true
-pod "hello-app-57d4965f64-6zbw5" deleted from default namespace
+$ kubectl delete pod hello-app-57d4965f64-4jzww --wait=true
+pod "hello-app-57d4965f64-4jzww" deleted from default namespace
 # Self-healing: the Deployment replaced the deleted pod
 
 $ kubectl get pods -l app=hello-app
 NAME                         READY   STATUS    RESTARTS   AGE
-hello-app-57d4965f64-ck26h   1/1     Running   0          55s
-hello-app-57d4965f64-qlpcm   1/1     Running   0          36s
-hello-app-57d4965f64-wc9z9   1/1     Running   0          55s
+hello-app-57d4965f64-7kk9v   1/1     Running   0          54s
+hello-app-57d4965f64-dbjjp   1/1     Running   0          54s
+hello-app-57d4965f64-qzwsc   1/1     Running   0          54s
 
 $ kubectl rollout restart deployment/hello-app
 deployment.apps/hello-app restarted
@@ -153,15 +154,15 @@ deployment "hello-app" successfully rolled out
 
 $ kubectl get deployment,pods,service -l app=hello-app
 NAME                        READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/hello-app   3/3     3            3           74s
+deployment.apps/hello-app   3/3     3            3           72s
 
 NAME                             READY   STATUS        RESTARTS   AGE
-pod/hello-app-57d4965f64-ck26h   1/1     Terminating   0          74s
-pod/hello-app-57d4965f64-qlpcm   1/1     Terminating   0          55s
-pod/hello-app-57d4965f64-wc9z9   1/1     Terminating   0          74s
-pod/hello-app-f7ff694f-7rvcw     1/1     Running       0          6s
-pod/hello-app-f7ff694f-hfbs5     1/1     Running       0          12s
-pod/hello-app-f7ff694f-vddnw     1/1     Running       0          19s
+pod/hello-app-57d4965f64-7kk9v   1/1     Terminating   0          72s
+pod/hello-app-57d4965f64-dbjjp   1/1     Terminating   0          72s
+pod/hello-app-57d4965f64-qzwsc   1/1     Terminating   0          72s
+pod/hello-app-74b8c6d4f5-g624k   1/1     Running       0          6s
+pod/hello-app-74b8c6d4f5-mg44s   1/1     Running       0          18s
+pod/hello-app-74b8c6d4f5-rfh6s   1/1     Running       0          12s
 VERIFIED: hello-app has 3/3 ready replicas
-Found 6 pods, using pod/hello-app-57d4965f64-ck26h
+Found 6 pods, using pod/hello-app-57d4965f64-7kk9v
 VERIFIED: pods print Hello, World!

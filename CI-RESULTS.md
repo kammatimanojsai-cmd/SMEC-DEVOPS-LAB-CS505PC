@@ -1,6 +1,6 @@
 # CI results - all 12 experiments
 
-Executed by GitHub Actions run [#2](https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293) on 22 Oct 2026, 13:34 IST (Ubuntu runners: Docker, kind Kubernetes, Jenkins LTS, Java 21, Chrome).
+Executed by GitHub Actions run [#3](https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921) on 22 Oct 2026, 13:42 IST (Ubuntu runners: Docker, kind Kubernetes, Jenkins LTS, Java 21, Chrome).
 
 | Experiment | Result | Evidence |
 |---|---|---|
@@ -8,11 +8,11 @@ Executed by GitHub Actions run [#2](https://github.com/kammatimanojsai-cmd/SMEC-
 | Experiment-02-Git-Commands | ✅ PASS | [evidence/github-actions](Experiment-02-Git-Commands/evidence/github-actions) |
 | Experiment-03-Source-Code-Management | ✅ PASS | [evidence/github-actions](Experiment-03-Source-Code-Management/evidence/github-actions) |
 | Experiment-04-Jenkins-Setup | ✅ PASS | [evidence/github-actions](Experiment-04-Jenkins-Setup/evidence/github-actions) |
-| Experiment-05-Jenkins-CICD | ❌ FAIL | [evidence/github-actions](Experiment-05-Jenkins-CICD/evidence/github-actions) |
+| Experiment-05-Jenkins-CICD | ✅ PASS | [evidence/github-actions](Experiment-05-Jenkins-CICD/evidence/github-actions) |
 | Experiment-06-Docker-Commands | ✅ PASS | [evidence/github-actions](Experiment-06-Docker-Commands/evidence/github-actions) |
 | Experiment-07-Docker-Application | ✅ PASS | [evidence/github-actions](Experiment-07-Docker-Application/evidence/github-actions) |
 | Experiment-08-Docker-Kubernetes | ✅ PASS | [evidence/github-actions](Experiment-08-Docker-Kubernetes/evidence/github-actions) |
 | Experiment-09-Kubernetes-Automation | ✅ PASS | [evidence/github-actions](Experiment-09-Kubernetes-Automation/evidence/github-actions) |
 | Experiment-10-Selenium-Setup | ✅ PASS | [evidence/github-actions](Experiment-10-Selenium-Setup/evidence/github-actions) |
 | Experiment-11-JavaScript-Selenium | ✅ PASS | [evidence/github-actions](Experiment-11-JavaScript-Selenium/evidence/github-actions) |
-| Experiment-12-Container-Selenium-Tests | ❌ FAIL | [evidence/github-actions](Experiment-12-Container-Selenium-Tests/evidence/github-actions) |
+| Experiment-12-Container-Selenium-Tests | ✅ PASS | [evidence/github-actions](Experiment-12-Container-Selenium-Tests/evidence/github-actions) |

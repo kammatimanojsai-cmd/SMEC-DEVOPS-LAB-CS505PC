@@ -18,11 +18,11 @@ Fetching upstream changes from https://github.com/kammatimanojsai-cmd/SMEC-DEVOP
  > git --version # 'git version 2.47.3'
  > git fetch --tags --force --progress -- https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git +refs/heads/*:refs/remotes/origin/* # timeout=10
  > git rev-parse refs/remotes/origin/jenkins-demo^{commit} # timeout=10
-Checking out Revision 203a72ff7286b1a21cbd7fd74591a27a4971eac1 (refs/remotes/origin/jenkins-demo)
+Checking out Revision da696a44db96162b654120080cdc2e4fa7411847 (refs/remotes/origin/jenkins-demo)
  > git config core.sparsecheckout # timeout=10
- > git checkout -f 203a72ff7286b1a21cbd7fd74591a27a4971eac1 # timeout=10
+ > git checkout -f da696a44db96162b654120080cdc2e4fa7411847 # timeout=10
 Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
- > git rev-list --no-walk 6a9fc8240cbdbe4ae1fd3b4fd3a348d494ab4f8a # timeout=10
+ > git rev-list --no-walk b6e54f3a99237111e41259b12a3bc45fb9a1ee8d # timeout=10
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] withEnv
@@ -34,56 +34,56 @@ Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automaticall
 [Pipeline] stage
 [Pipeline] { (Checkout)
 [Pipeline] checkout
-[2026-10-22T08:04:14.270Z] Selected Git installation does not exist. Using Default
-[2026-10-22T08:04:14.270Z] The recommended git tool is: NONE
-[2026-10-22T08:04:14.270Z] No credentials specified
-[2026-10-22T08:04:14.271Z]  > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/SMEC-Exp5-CICD/.git # timeout=10
-[2026-10-22T08:04:14.274Z] Fetching changes from the remote Git repository
-[2026-10-22T08:04:14.276Z]  > git config remote.origin.url https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git # timeout=10
-[2026-10-22T08:04:14.278Z] Fetching upstream changes from https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git
-[2026-10-22T08:04:14.278Z]  > git --version # timeout=10
-[2026-10-22T08:04:14.281Z]  > git --version # 'git version 2.47.3'
-[2026-10-22T08:04:14.281Z]  > git fetch --tags --force --progress -- https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git +refs/heads/*:refs/remotes/origin/* # timeout=10
-[2026-10-22T08:04:14.449Z]  > git rev-parse refs/remotes/origin/jenkins-demo^{commit} # timeout=10
-[2026-10-22T08:04:14.452Z] Checking out Revision 203a72ff7286b1a21cbd7fd74591a27a4971eac1 (refs/remotes/origin/jenkins-demo)
-[2026-10-22T08:04:14.452Z]  > git config core.sparsecheckout # timeout=10
-[2026-10-22T08:04:14.454Z]  > git checkout -f 203a72ff7286b1a21cbd7fd74591a27a4971eac1 # timeout=10
-[2026-10-22T08:04:14.470Z] Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
+[2026-10-22T08:12:14.149Z] Selected Git installation does not exist. Using Default
+[2026-10-22T08:12:14.149Z] The recommended git tool is: NONE
+[2026-10-22T08:12:14.149Z] No credentials specified
+[2026-10-22T08:12:14.149Z]  > git rev-parse --resolve-git-dir /var/jenkins_home/workspace/SMEC-Exp5-CICD/.git # timeout=10
+[2026-10-22T08:12:14.154Z] Fetching changes from the remote Git repository
+[2026-10-22T08:12:14.155Z]  > git config remote.origin.url https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git # timeout=10
+[2026-10-22T08:12:14.158Z] Fetching upstream changes from https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git
+[2026-10-22T08:12:14.158Z]  > git --version # timeout=10
+[2026-10-22T08:12:14.161Z]  > git --version # 'git version 2.47.3'
+[2026-10-22T08:12:14.161Z]  > git fetch --tags --force --progress -- https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git +refs/heads/*:refs/remotes/origin/* # timeout=10
+[2026-10-22T08:12:14.334Z]  > git rev-parse refs/remotes/origin/jenkins-demo^{commit} # timeout=10
+[2026-10-22T08:12:14.337Z] Checking out Revision da696a44db96162b654120080cdc2e4fa7411847 (refs/remotes/origin/jenkins-demo)
+[2026-10-22T08:12:14.337Z]  > git config core.sparsecheckout # timeout=10
+[2026-10-22T08:12:14.339Z]  > git checkout -f da696a44db96162b654120080cdc2e4fa7411847 # timeout=10
+[2026-10-22T08:12:14.345Z] Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
 [Pipeline] echo
-[2026-10-22T08:04:14.479Z] Building commit 203a72ff7286b1a21cbd7fd74591a27a4971eac1 on branch origin/jenkins-demo
+[2026-10-22T08:12:14.354Z] Building commit da696a44db96162b654120080cdc2e4fa7411847 on branch origin/jenkins-demo
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
 [Pipeline] { (Compile)
 [Pipeline] dir
-[2026-10-22T08:04:14.506Z] Running in /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD
+[2026-10-22T08:12:14.390Z] Running in /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-[2026-10-22T08:04:14.769Z] + chmod +x mvnw
-[2026-10-22T08:04:14.769Z] + ./mvnw -B clean compile
-[2026-10-22T08:04:15.320Z] [INFO] Scanning for projects...
-[2026-10-22T08:04:15.320Z] [INFO] 
-[2026-10-22T08:04:15.320Z] [INFO] ------------------< in.smec.devops:jenkins-cicd-demo >------------------
-[2026-10-22T08:04:15.320Z] [INFO] Building Experiment 5 - Jenkins CI/CD Demo 1.0
-[2026-10-22T08:04:15.320Z] [INFO]   from pom.xml
-[2026-10-22T08:04:15.320Z] [INFO] --------------------------------[ jar ]---------------------------------
-[2026-10-22T08:04:15.571Z] [INFO] 
-[2026-10-22T08:04:15.571Z] [INFO] --- clean:3.2.0:clean (default-clean) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:15.571Z] [INFO] Deleting /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/target
-[2026-10-22T08:04:15.571Z] [INFO] 
-[2026-10-22T08:04:15.571Z] [INFO] --- resources:3.3.1:resources (default-resources) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:15.571Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/main/resources
-[2026-10-22T08:04:15.571Z] [INFO] 
-[2026-10-22T08:04:15.571Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:15.822Z] [INFO] Recompiling the module because of changed source code.
-[2026-10-22T08:04:15.822Z] [INFO] Compiling 2 source files with javac [debug release 17] to target/classes
-[2026-10-22T08:04:16.073Z] [INFO] ------------------------------------------------------------------------
-[2026-10-22T08:04:16.073Z] [INFO] BUILD SUCCESS
-[2026-10-22T08:04:16.073Z] [INFO] ------------------------------------------------------------------------
-[2026-10-22T08:04:16.073Z] [INFO] Total time:  0.624 s
-[2026-10-22T08:04:16.073Z] [INFO] Finished at: 2026-10-22T08:04:15Z
-[2026-10-22T08:04:16.073Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:14.656Z] + chmod +x mvnw
+[2026-10-22T08:12:14.656Z] + ./mvnw -B clean compile
+[2026-10-22T08:12:15.207Z] [INFO] Scanning for projects...
+[2026-10-22T08:12:15.459Z] [INFO] 
+[2026-10-22T08:12:15.459Z] [INFO] ------------------< in.smec.devops:jenkins-cicd-demo >------------------
+[2026-10-22T08:12:15.459Z] [INFO] Building Experiment 5 - Jenkins CI/CD Demo 1.0
+[2026-10-22T08:12:15.459Z] [INFO]   from pom.xml
+[2026-10-22T08:12:15.459Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-10-22T08:12:15.459Z] [INFO] 
+[2026-10-22T08:12:15.459Z] [INFO] --- clean:3.2.0:clean (default-clean) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:15.459Z] [INFO] Deleting /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/target
+[2026-10-22T08:12:15.459Z] [INFO] 
+[2026-10-22T08:12:15.459Z] [INFO] --- resources:3.3.1:resources (default-resources) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:15.459Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/main/resources
+[2026-10-22T08:12:15.459Z] [INFO] 
+[2026-10-22T08:12:15.459Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:15.710Z] [INFO] Recompiling the module because of changed source code.
+[2026-10-22T08:12:15.710Z] [INFO] Compiling 2 source files with javac [debug release 17] to target/classes
+[2026-10-22T08:12:15.960Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:15.960Z] [INFO] BUILD SUCCESS
+[2026-10-22T08:12:15.960Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:15.960Z] [INFO] Total time:  0.620 s
+[2026-10-22T08:12:15.960Z] [INFO] Finished at: 2026-10-22T08:12:15Z
+[2026-10-22T08:12:15.960Z] [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 [Pipeline] // dir
 [Pipeline] }
@@ -91,103 +91,103 @@ Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automaticall
 [Pipeline] stage
 [Pipeline] { (Test)
 [Pipeline] dir
-[2026-10-22T08:04:16.111Z] Running in /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD
+[2026-10-22T08:12:16.010Z] Running in /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-[2026-10-22T08:04:16.374Z] + chmod +x mvnw
-[2026-10-22T08:04:16.374Z] + ./mvnw -B test
-[2026-10-22T08:04:16.927Z] [INFO] Scanning for projects...
-[2026-10-22T08:04:16.927Z] [INFO] 
-[2026-10-22T08:04:16.927Z] [INFO] ------------------< in.smec.devops:jenkins-cicd-demo >------------------
-[2026-10-22T08:04:16.927Z] [INFO] Building Experiment 5 - Jenkins CI/CD Demo 1.0
-[2026-10-22T08:04:16.927Z] [INFO]   from pom.xml
-[2026-10-22T08:04:16.927Z] [INFO] --------------------------------[ jar ]---------------------------------
-[2026-10-22T08:04:17.177Z] [INFO] 
-[2026-10-22T08:04:17.177Z] [INFO] --- resources:3.3.1:resources (default-resources) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:17.177Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/main/resources
-[2026-10-22T08:04:17.177Z] [INFO] 
-[2026-10-22T08:04:17.177Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:17.177Z] [INFO] Nothing to compile - all classes are up to date.
-[2026-10-22T08:04:17.177Z] [INFO] 
-[2026-10-22T08:04:17.177Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:17.177Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/test/resources
-[2026-10-22T08:04:17.177Z] [INFO] 
-[2026-10-22T08:04:17.177Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:17.177Z] [INFO] Recompiling the module because of changed source code.
-[2026-10-22T08:04:17.177Z] [INFO] Compiling 1 source file with javac [debug release 17] to target/test-classes
-[2026-10-22T08:04:17.728Z] [INFO] 
-[2026-10-22T08:04:17.728Z] [INFO] --- surefire:3.5.2:test (default-test) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:17.728Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
-[2026-10-22T08:04:17.728Z] [INFO] 
-[2026-10-22T08:04:17.728Z] [INFO] -------------------------------------------------------
-[2026-10-22T08:04:17.728Z] [INFO]  T E S T S
-[2026-10-22T08:04:17.728Z] [INFO] -------------------------------------------------------
-[2026-10-22T08:04:17.979Z] [INFO] Running in.smec.devops.CalculatorTest
-[2026-10-22T08:04:17.979Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in in.smec.devops.CalculatorTest
-[2026-10-22T08:04:17.979Z] [INFO] 
-[2026-10-22T08:04:17.979Z] [INFO] Results:
-[2026-10-22T08:04:17.979Z] [INFO] 
-[2026-10-22T08:04:17.979Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
-[2026-10-22T08:04:17.979Z] [INFO] 
-[2026-10-22T08:04:17.979Z] [INFO] ------------------------------------------------------------------------
-[2026-10-22T08:04:17.979Z] [INFO] BUILD SUCCESS
-[2026-10-22T08:04:17.979Z] [INFO] ------------------------------------------------------------------------
-[2026-10-22T08:04:17.979Z] [INFO] Total time:  1.107 s
-[2026-10-22T08:04:17.979Z] [INFO] Finished at: 2026-10-22T08:04:17Z
-[2026-10-22T08:04:17.979Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:16.273Z] + chmod +x mvnw
+[2026-10-22T08:12:16.273Z] + ./mvnw -B test
+[2026-10-22T08:12:16.824Z] [INFO] Scanning for projects...
+[2026-10-22T08:12:17.075Z] [INFO] 
+[2026-10-22T08:12:17.075Z] [INFO] ------------------< in.smec.devops:jenkins-cicd-demo >------------------
+[2026-10-22T08:12:17.075Z] [INFO] Building Experiment 5 - Jenkins CI/CD Demo 1.0
+[2026-10-22T08:12:17.075Z] [INFO]   from pom.xml
+[2026-10-22T08:12:17.075Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-10-22T08:12:17.075Z] [INFO] 
+[2026-10-22T08:12:17.075Z] [INFO] --- resources:3.3.1:resources (default-resources) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:17.325Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/main/resources
+[2026-10-22T08:12:17.325Z] [INFO] 
+[2026-10-22T08:12:17.325Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:17.325Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-10-22T08:12:17.325Z] [INFO] 
+[2026-10-22T08:12:17.325Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:17.325Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/test/resources
+[2026-10-22T08:12:17.325Z] [INFO] 
+[2026-10-22T08:12:17.325Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:17.325Z] [INFO] Recompiling the module because of changed source code.
+[2026-10-22T08:12:17.325Z] [INFO] Compiling 1 source file with javac [debug release 17] to target/test-classes
+[2026-10-22T08:12:17.576Z] [INFO] 
+[2026-10-22T08:12:17.576Z] [INFO] --- surefire:3.5.2:test (default-test) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:17.826Z] [INFO] Using auto detected provider org.apache.maven.surefire.junitplatform.JUnitPlatformProvider
+[2026-10-22T08:12:17.827Z] [INFO] 
+[2026-10-22T08:12:17.827Z] [INFO] -------------------------------------------------------
+[2026-10-22T08:12:17.827Z] [INFO]  T E S T S
+[2026-10-22T08:12:17.827Z] [INFO] -------------------------------------------------------
+[2026-10-22T08:12:18.077Z] [INFO] Running in.smec.devops.CalculatorTest
+[2026-10-22T08:12:18.077Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.034 s -- in in.smec.devops.CalculatorTest
+[2026-10-22T08:12:18.077Z] [INFO] 
+[2026-10-22T08:12:18.077Z] [INFO] Results:
+[2026-10-22T08:12:18.077Z] [INFO] 
+[2026-10-22T08:12:18.077Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[2026-10-22T08:12:18.077Z] [INFO] 
+[2026-10-22T08:12:18.077Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:18.077Z] [INFO] BUILD SUCCESS
+[2026-10-22T08:12:18.077Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:18.077Z] [INFO] Total time:  1.222 s
+[2026-10-22T08:12:18.077Z] [INFO] Finished at: 2026-10-22T08:12:18Z
+[2026-10-22T08:12:18.077Z] [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 [Pipeline] // dir
 Post stage
 [Pipeline] junit
-[2026-10-22T08:04:18.000Z] Recording test results
-[2026-10-22T08:04:18.004Z] [Checks API] No suitable checks publisher found.
+[2026-10-22T08:12:18.097Z] Recording test results
+[2026-10-22T08:12:18.101Z] [Checks API] No suitable checks publisher found.
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
 [Pipeline] { (Package)
 [Pipeline] dir
-[2026-10-22T08:04:18.041Z] Running in /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD
+[2026-10-22T08:12:18.131Z] Running in /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-[2026-10-22T08:04:18.305Z] + chmod +x mvnw
-[2026-10-22T08:04:18.305Z] + ./mvnw -B -DskipTests package
-[2026-10-22T08:04:18.857Z] [INFO] Scanning for projects...
-[2026-10-22T08:04:19.107Z] [INFO] 
-[2026-10-22T08:04:19.107Z] [INFO] ------------------< in.smec.devops:jenkins-cicd-demo >------------------
-[2026-10-22T08:04:19.107Z] [INFO] Building Experiment 5 - Jenkins CI/CD Demo 1.0
-[2026-10-22T08:04:19.107Z] [INFO]   from pom.xml
-[2026-10-22T08:04:19.107Z] [INFO] --------------------------------[ jar ]---------------------------------
-[2026-10-22T08:04:19.107Z] [INFO] 
-[2026-10-22T08:04:19.107Z] [INFO] --- resources:3.3.1:resources (default-resources) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:19.107Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/main/resources
-[2026-10-22T08:04:19.107Z] [INFO] 
-[2026-10-22T08:04:19.107Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:19.358Z] [INFO] Nothing to compile - all classes are up to date.
-[2026-10-22T08:04:19.358Z] [INFO] 
-[2026-10-22T08:04:19.358Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:19.358Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/test/resources
-[2026-10-22T08:04:19.358Z] [INFO] 
-[2026-10-22T08:04:19.358Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:19.358Z] [INFO] Nothing to compile - all classes are up to date.
-[2026-10-22T08:04:19.358Z] [INFO] 
-[2026-10-22T08:04:19.358Z] [INFO] --- surefire:3.5.2:test (default-test) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:19.358Z] [INFO] Tests are skipped.
-[2026-10-22T08:04:19.358Z] [INFO] 
-[2026-10-22T08:04:19.358Z] [INFO] --- jar:3.4.2:jar (default-jar) @ jenkins-cicd-demo ---
-[2026-10-22T08:04:19.358Z] [INFO] Building jar: /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar
-[2026-10-22T08:04:19.608Z] [INFO] ------------------------------------------------------------------------
-[2026-10-22T08:04:19.608Z] [INFO] BUILD SUCCESS
-[2026-10-22T08:04:19.608Z] [INFO] ------------------------------------------------------------------------
-[2026-10-22T08:04:19.608Z] [INFO] Total time:  0.573 s
-[2026-10-22T08:04:19.608Z] [INFO] Finished at: 2026-10-22T08:04:19Z
-[2026-10-22T08:04:19.608Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:18.396Z] + chmod +x mvnw
+[2026-10-22T08:12:18.396Z] + ./mvnw -B -DskipTests package
+[2026-10-22T08:12:19.308Z] [INFO] Scanning for projects...
+[2026-10-22T08:12:19.308Z] [INFO] 
+[2026-10-22T08:12:19.308Z] [INFO] ------------------< in.smec.devops:jenkins-cicd-demo >------------------
+[2026-10-22T08:12:19.308Z] [INFO] Building Experiment 5 - Jenkins CI/CD Demo 1.0
+[2026-10-22T08:12:19.308Z] [INFO]   from pom.xml
+[2026-10-22T08:12:19.308Z] [INFO] --------------------------------[ jar ]---------------------------------
+[2026-10-22T08:12:19.308Z] [INFO] 
+[2026-10-22T08:12:19.308Z] [INFO] --- resources:3.3.1:resources (default-resources) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:19.308Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/main/resources
+[2026-10-22T08:12:19.308Z] [INFO] 
+[2026-10-22T08:12:19.308Z] [INFO] --- compiler:3.13.0:compile (default-compile) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:19.308Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-10-22T08:12:19.308Z] [INFO] 
+[2026-10-22T08:12:19.308Z] [INFO] --- resources:3.3.1:testResources (default-testResources) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:19.308Z] [INFO] skip non existing resourceDirectory /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/src/test/resources
+[2026-10-22T08:12:19.308Z] [INFO] 
+[2026-10-22T08:12:19.308Z] [INFO] --- compiler:3.13.0:testCompile (default-testCompile) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:19.308Z] [INFO] Nothing to compile - all classes are up to date.
+[2026-10-22T08:12:19.308Z] [INFO] 
+[2026-10-22T08:12:19.308Z] [INFO] --- surefire:3.5.2:test (default-test) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:19.558Z] [INFO] Tests are skipped.
+[2026-10-22T08:12:19.558Z] [INFO] 
+[2026-10-22T08:12:19.558Z] [INFO] --- jar:3.4.2:jar (default-jar) @ jenkins-cicd-demo ---
+[2026-10-22T08:12:19.558Z] [INFO] Building jar: /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar
+[2026-10-22T08:12:19.558Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:19.558Z] [INFO] BUILD SUCCESS
+[2026-10-22T08:12:19.558Z] [INFO] ------------------------------------------------------------------------
+[2026-10-22T08:12:19.558Z] [INFO] Total time:  0.596 s
+[2026-10-22T08:12:19.558Z] [INFO] Finished at: 2026-10-22T08:12:19Z
+[2026-10-22T08:12:19.558Z] [INFO] ------------------------------------------------------------------------
 [Pipeline] }
 [Pipeline] // dir
 [Pipeline] archiveArtifacts
-[2026-10-22T08:04:19.627Z] Archiving artifacts
-[2026-10-22T08:04:19.628Z] Recording fingerprints
+[2026-10-22T08:12:19.829Z] Archiving artifacts
+[2026-10-22T08:12:19.830Z] Recording fingerprints
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] stage
@@ -196,16 +196,16 @@ Post stage
 [Pipeline] {
 [Pipeline] isUnix
 [Pipeline] sh
-[2026-10-22T08:04:19.918Z] + mkdir -p deploy
-[2026-10-22T08:04:19.918Z] + cp Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar deploy/
+[2026-10-22T08:12:20.145Z] + mkdir -p deploy
+[2026-10-22T08:12:20.145Z] + cp Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar deploy/
 [Pipeline] sh
-[2026-10-22T08:04:20.176Z] + java -jar deploy/jenkins-cicd-demo.jar
-[2026-10-22T08:04:20.176Z] Jenkins CI/CD Demo application v1.1
-[2026-10-22T08:04:20.176Z] 10 + 5 = 15
-[2026-10-22T08:04:20.176Z] 10 - 5 = 5
-[2026-10-22T08:04:20.176Z] 10 * 5 = 50
-[2026-10-22T08:04:20.176Z] 10 / 5 = 2.0
-[2026-10-22T08:04:20.176Z] Deployment successful
+[2026-10-22T08:12:20.404Z] + java -jar deploy/jenkins-cicd-demo.jar
+[2026-10-22T08:12:20.404Z] Jenkins CI/CD Demo application v1.1
+[2026-10-22T08:12:20.404Z] 10 + 5 = 15
+[2026-10-22T08:12:20.404Z] 10 - 5 = 5
+[2026-10-22T08:12:20.404Z] 10 * 5 = 50
+[2026-10-22T08:12:20.404Z] 10 / 5 = 2.0
+[2026-10-22T08:12:20.404Z] Deployment successful
 [Pipeline] }
 [Pipeline] // script
 [Pipeline] }
@@ -213,7 +213,7 @@ Post stage
 [Pipeline] stage
 [Pipeline] { (Declarative: Post Actions)
 [Pipeline] echo
-[2026-10-22T08:04:20.217Z] Pipeline completed successfully: compiled, tested, packaged and deployed.
+[2026-10-22T08:12:20.443Z] Pipeline completed successfully: compiled, tested, packaged and deployed.
 [Pipeline] }
 [Pipeline] // stage
 [Pipeline] }
