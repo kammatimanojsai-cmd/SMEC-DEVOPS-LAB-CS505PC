@@ -1,13 +1,13 @@
 ### Experiment 8 - Docker + Kubernetes (kind cluster on the CI runner)
-### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:27:15 IST
+### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:53 IST
 
 $ kind version
 kind v0.33.0 go1.26.7 linux/amd64
 
 $ kubectl cluster-info --context kind-lab
-Kubernetes control plane is running at https://127.0.0.1:46461
-CoreDNS is running at https://127.0.0.1:46461/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
+Kubernetes control plane is running at https://127.0.0.1:46205
+CoreDNS is running at https://127.0.0.1:46205/api/v1/namespaces/kube-system/services/kube-dns:dns/proxy
 
 To further debug and diagnose cluster problems, use 'kubectl cluster-info dump'.
 
@@ -16,14 +16,14 @@ Client Version: v1.37.1
 Kustomize Version: v5.8.1
 
 $ kubectl get nodes -o wide
-NAME                STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION             CONTAINER-RUNTIME
-lab-control-plane   Ready    control-plane   21s   v1.37.0   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   7.0.0-1017-azure (amd64)   containerd://2.3.4
+NAME                STATUS   ROLES           AGE   VERSION   INTERNAL-IP   EXTERNAL-IP   OS-IMAGE                       KERNEL-VERSION              CONTAINER-RUNTIME
+lab-control-plane   Ready    control-plane   21s   v1.37.0   172.18.0.2    <none>        Debian GNU/Linux 13 (trixie)   6.17.0-1022-azure (amd64)   containerd://2.3.4
 
 $ docker build -q -t event-registration:1.0 ../Experiment-01-Flask-Registration
-sha256:17d383b3194c3bf081171e9b212c3d9a2b7fce00c196d3ae6c99bfc00eff82d6
+sha256:32809743577723288eab49a6dc31929c3b12e49997e897df8b68e760d7008494
 
 $ kind load docker-image --name lab event-registration:1.0
-Image: "event-registration:1.0" with ID "sha256:17d383b3194c3bf081171e9b212c3d9a2b7fce00c196d3ae6c99bfc00eff82d6" not yet present on node "lab-control-plane", loading...
+Image: "event-registration:1.0" with ID "sha256:32809743577723288eab49a6dc31929c3b12e49997e897df8b68e760d7008494" not yet present on node "lab-control-plane", loading...
 
 $ kubectl apply -f k8s/deployment.yaml
 deployment.apps/event-registration created
@@ -38,15 +38,15 @@ deployment "event-registration" successfully rolled out
 
 $ kubectl get deployments,pods,services -o wide
 NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE   CONTAINERS           IMAGES                   SELECTOR
-deployment.apps/event-registration   2/2     2            2           6s    event-registration   event-registration:1.0   app=event-registration
+deployment.apps/event-registration   2/2     2            2           7s    event-registration   event-registration:1.0   app=event-registration
 
 NAME                                      READY   STATUS    RESTARTS   AGE   IP           NODE                NOMINATED NODE   READINESS GATES
-pod/event-registration-76c8f6dbcc-5pfnd   1/1     Running   0          6s    10.244.0.5   lab-control-plane   <none>           <none>
-pod/event-registration-76c8f6dbcc-p5ns8   1/1     Running   0          6s    10.244.0.6   lab-control-plane   <none>           <none>
+pod/event-registration-76c8f6dbcc-v2nmw   1/1     Running   0          7s    10.244.0.6   lab-control-plane   <none>           <none>
+pod/event-registration-76c8f6dbcc-zl5xs   1/1     Running   0          7s    10.244.0.5   lab-control-plane   <none>           <none>
 
-NAME                             TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE   SELECTOR
-service/event-registration-svc   NodePort    10.96.54.158   <none>        80:30050/TCP   6s    app=event-registration
-service/kubernetes               ClusterIP   10.96.0.1      <none>        443/TCP        37s   <none>
+NAME                             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE   SELECTOR
+service/event-registration-svc   NodePort    10.96.107.171   <none>        80:30050/TCP   7s    app=event-registration
+service/kubernetes               ClusterIP   10.96.0.1       <none>        443/TCP        37s   <none>
 
 $ curl http://localhost:8085/register   (through the Service)
 HTTP 200
@@ -65,15 +65,15 @@ deployment "event-registration" successfully rolled out
 
 $ kubectl get pods -l app=event-registration -o wide
 NAME                                  READY   STATUS    RESTARTS   AGE   IP           NODE                NOMINATED NODE   READINESS GATES
-event-registration-76c8f6dbcc-5pfnd   1/1     Running   0          17s   10.244.0.5   lab-control-plane   <none>           <none>
-event-registration-76c8f6dbcc-p5ns8   1/1     Running   0          17s   10.244.0.6   lab-control-plane   <none>           <none>
-event-registration-76c8f6dbcc-sl9tk   1/1     Running   0          6s    10.244.0.7   lab-control-plane   <none>           <none>
-event-registration-76c8f6dbcc-wtwfx   1/1     Running   0          6s    10.244.0.8   lab-control-plane   <none>           <none>
+event-registration-76c8f6dbcc-cj8xx   1/1     Running   0          7s    10.244.0.8   lab-control-plane   <none>           <none>
+event-registration-76c8f6dbcc-dctrc   1/1     Running   0          7s    10.244.0.7   lab-control-plane   <none>           <none>
+event-registration-76c8f6dbcc-v2nmw   1/1     Running   0          19s   10.244.0.6   lab-control-plane   <none>           <none>
+event-registration-76c8f6dbcc-zl5xs   1/1     Running   0          19s   10.244.0.5   lab-control-plane   <none>           <none>
 
 $ docker tag event-registration:1.0 event-registration:1.1
 
 $ kind load docker-image --name lab event-registration:1.1
-Image with ID: sha256:17d383b3194c3bf081171e9b212c3d9a2b7fce00c196d3ae6c99bfc00eff82d6 already present on the node lab-control-plane but is missing the tag docker.io/library/event-registration:1.1. re-tagging...
+Image with ID: sha256:32809743577723288eab49a6dc31929c3b12e49997e897df8b68e760d7008494 already present on the node lab-control-plane but is missing the tag docker.io/library/event-registration:1.1. re-tagging...
 
 $ kubectl set image deployment/event-registration event-registration=event-registration:1.1
 deployment.apps/event-registration image updated
@@ -114,6 +114,7 @@ Waiting for deployment "event-registration" rollout to finish: 1 out of 4 new re
 Waiting for deployment "event-registration" rollout to finish: 2 out of 4 new replicas have been updated...
 Waiting for deployment "event-registration" rollout to finish: 2 out of 4 new replicas have been updated...
 Waiting for deployment "event-registration" rollout to finish: 2 out of 4 new replicas have been updated...
+Waiting for deployment "event-registration" rollout to finish: 2 out of 4 new replicas have been updated...
 Waiting for deployment "event-registration" rollout to finish: 3 out of 4 new replicas have been updated...
 Waiting for deployment "event-registration" rollout to finish: 3 out of 4 new replicas have been updated...
 Waiting for deployment "event-registration" rollout to finish: 3 out of 4 new replicas have been updated...
@@ -125,21 +126,20 @@ deployment "event-registration" successfully rolled out
 
 $ kubectl get deployments,pods,services
 NAME                                 READY   UP-TO-DATE   AVAILABLE   AGE
-deployment.apps/event-registration   4/4     4            4           65s
+deployment.apps/event-registration   4/4     4            4           68s
 
 NAME                                      READY   STATUS        RESTARTS   AGE
-pod/event-registration-668dd6c766-4qql8   1/1     Terminating   0          30s
-pod/event-registration-668dd6c766-k4pqn   1/1     Terminating   0          42s
-pod/event-registration-668dd6c766-lvxbd   1/1     Terminating   0          48s
-pod/event-registration-668dd6c766-vzl6q   1/1     Terminating   0          36s
-pod/event-registration-76c8f6dbcc-5pfnd   0/1     Error         0          65s
-pod/event-registration-76c8f6dbcc-f65dz   1/1     Running       0          6s
-pod/event-registration-76c8f6dbcc-gksfx   1/1     Running       0          12s
-pod/event-registration-76c8f6dbcc-jfgqq   1/1     Running       0          24s
-pod/event-registration-76c8f6dbcc-p5ns8   1/1     Terminating   0          65s
-pod/event-registration-76c8f6dbcc-z5zht   1/1     Running       0          18s
+pod/event-registration-668dd6c766-7754q   1/1     Terminating   0          31s
+pod/event-registration-668dd6c766-bcg4z   1/1     Terminating   0          37s
+pod/event-registration-668dd6c766-h72fm   1/1     Terminating   0          49s
+pod/event-registration-668dd6c766-tcszr   1/1     Terminating   0          43s
+pod/event-registration-76c8f6dbcc-bh6m5   1/1     Running       0          18s
+pod/event-registration-76c8f6dbcc-jfv4q   1/1     Running       0          6s
+pod/event-registration-76c8f6dbcc-q2z27   1/1     Running       0          25s
+pod/event-registration-76c8f6dbcc-v2nmw   1/1     Terminating   0          68s
+pod/event-registration-76c8f6dbcc-z5jmw   1/1     Running       0          12s
 
-NAME                             TYPE        CLUSTER-IP     EXTERNAL-IP   PORT(S)        AGE
-service/event-registration-svc   NodePort    10.96.54.158   <none>        80:30050/TCP   65s
-service/kubernetes               ClusterIP   10.96.0.1      <none>        443/TCP        96s
+NAME                             TYPE        CLUSTER-IP      EXTERNAL-IP   PORT(S)        AGE
+service/event-registration-svc   NodePort    10.96.107.171   <none>        80:30050/TCP   68s
+service/kubernetes               ClusterIP   10.96.0.1       <none>        443/TCP        98s
 VERIFIED: event-registration deployment available (2 ready replicas after rollback)

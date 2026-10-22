@@ -1,6 +1,16 @@
 ### Experiment 11 - JavaScript counter tested with Selenium
-### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:26:33 IST
+### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:39 IST
 
-$ bash mvnw -B -q compile exec:java
-mvnw: line 114: mvnw/.mvn/wrapper/maven-wrapper.properties: Not a directory
+$ ./mvnw -B -q compile exec:java
+Oct 22, 2026 1:31:43 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 155, returning the closest version; found: 152; Please update to a Selenium version that supports CDP version 155
+Opened: file:///home/runner/work/SMEC-DEVOPS-LAB-CS505PC/SMEC-DEVOPS-LAB-CS505PC/Experiment-11-JavaScript-Selenium/app/index.html
+[PASS] Page title is 'Increment Counter App'         expected=Increment Counter App actual=Increment Counter App
+[PASS] Initial counter value is 0                    expected=0 actual=0
+[PASS] Counter is 1 after one click                  expected=1 actual=1
+[PASS] Counter is 3 after three clicks               expected=3 actual=3
+[PASS] Counter resets to 0                           expected=0 actual=0
+
+Tests run: 5, Passed: 5, Failed: 0
+BUILD SUCCESS - all Selenium tests passed

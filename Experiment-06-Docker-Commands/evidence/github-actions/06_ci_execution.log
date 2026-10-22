@@ -1,6 +1,6 @@
 ### Experiment 6 - Docker commands (pull from Docker Hub, push to GitHub Container Registry)
-### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:26:31 IST
+### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:19 IST
 
 $ echo $GITHUB_TOKEN | docker login ghcr.io -u <github-user> --password-stdin
 
@@ -23,15 +23,16 @@ e125989d16f0: Pulling fs layer
 81b64ae234ef: Pulling fs layer
 bb658a254196: Pulling fs layer
 5b8cb54cfa40: Pulling fs layer
+81b64ae234ef: Waiting
+bb658a254196: Waiting
+5b8cb54cfa40: Waiting
 885725a63a7c: Waiting
 e125989d16f0: Waiting
-5b8cb54cfa40: Waiting
-f19a2d3b6951: Verifying Checksum
-f19a2d3b6951: Download complete
 9f0afb44f10e: Verifying Checksum
 9f0afb44f10e: Download complete
-7b229517ed22: Verifying Checksum
 7b229517ed22: Download complete
+f19a2d3b6951: Verifying Checksum
+f19a2d3b6951: Download complete
 7b229517ed22: Pull complete
 885725a63a7c: Verifying Checksum
 885725a63a7c: Download complete
@@ -39,6 +40,7 @@ e125989d16f0: Verifying Checksum
 e125989d16f0: Download complete
 81b64ae234ef: Verifying Checksum
 81b64ae234ef: Download complete
+bb658a254196: Verifying Checksum
 bb658a254196: Download complete
 5b8cb54cfa40: Verifying Checksum
 5b8cb54cfa40: Download complete
@@ -64,11 +66,11 @@ ghcr.io/github/github-mcp-server             latest          9875fef5aa1f   13 d
 ghcr.io/github/gh-aw-firewall/squid          latest          dc17fe424471   2 weeks ago   57.1MB
 
 $ docker run -d --name demo-web -p 8081:80 nginx:stable-alpine
-fc6096ac2e5bd5fd272e4c62f5c9589d0d06e779b9fa7c93bac2cb82d22d9a8f
+8f1d8701feff59ee53b869197b61dda45deac2517c1bca1243e7d418d4d63316
 
 $ docker ps
 CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS                                     NAMES
-fc6096ac2e5b   nginx:stable-alpine   "/docker-entrypoint.…"   3 seconds ago   Up 3 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
+8f1d8701feff   nginx:stable-alpine   "/docker-entrypoint.…"   3 seconds ago   Up 3 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
 
 $ docker logs demo-web
 /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
@@ -80,22 +82,22 @@ $ docker logs demo-web
 /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
 /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
 /docker-entrypoint.sh: Configuration complete; ready for start up
-2026/10/22 07:56:39 [notice] 1#1: using the "epoll" event method
-2026/10/22 07:56:39 [notice] 1#1: nginx/1.30.6
-2026/10/22 07:56:39 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
-2026/10/22 07:56:39 [notice] 1#1: OS: Linux 7.0.0-1017-azure
-2026/10/22 07:56:39 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 65536:65536
-2026/10/22 07:56:39 [notice] 1#1: start worker processes
-2026/10/22 07:56:39 [notice] 1#1: start worker process 31
-2026/10/22 07:56:39 [notice] 1#1: start worker process 32
-2026/10/22 07:56:39 [notice] 1#1: start worker process 33
-2026/10/22 07:56:39 [notice] 1#1: start worker process 34
+2026/10/22 08:01:28 [notice] 1#1: using the "epoll" event method
+2026/10/22 08:01:28 [notice] 1#1: nginx/1.30.6
+2026/10/22 08:01:28 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/10/22 08:01:28 [notice] 1#1: OS: Linux 7.0.0-1017-azure
+2026/10/22 08:01:28 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 65536:65536
+2026/10/22 08:01:28 [notice] 1#1: start worker processes
+2026/10/22 08:01:28 [notice] 1#1: start worker process 30
+2026/10/22 08:01:28 [notice] 1#1: start worker process 31
+2026/10/22 08:01:28 [notice] 1#1: start worker process 32
+2026/10/22 08:01:28 [notice] 1#1: start worker process 33
 
 $ docker exec demo-web cat /etc/hostname
-fc6096ac2e5b
+8f1d8701feff
 
 $ docker inspect --format Name={{.Name}} Image={{.Config.Image}} Status={{.State.Status}} Started={{.State.StartedAt}} demo-web
-Name=/demo-web Image=nginx:stable-alpine Status=running Started=2026-10-22T07:56:39.118925123Z
+Name=/demo-web Image=nginx:stable-alpine Status=running Started=2026-10-22T08:01:28.182857308Z
 
 $ curl -s -o /dev/null -w HTTP %{http_code} from http://localhost:8081\n http://localhost:8081/
 HTTP 200 from http://localhost:8081
@@ -105,14 +107,14 @@ demo-web
 
 $ docker ps -a --filter name=demo-web
 CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS                              PORTS     NAMES
-fc6096ac2e5b   nginx:stable-alpine   "/docker-entrypoint.…"   3 seconds ago   Exited (0) Less than a second ago             demo-web
+8f1d8701feff   nginx:stable-alpine   "/docker-entrypoint.…"   3 seconds ago   Exited (0) Less than a second ago             demo-web
 
 $ docker start demo-web
 demo-web
 
 $ docker ps --filter name=demo-web
 CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS                  PORTS                                     NAMES
-fc6096ac2e5b   nginx:stable-alpine   "/docker-entrypoint.…"   3 seconds ago   Up Less than a second   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
+8f1d8701feff   nginx:stable-alpine   "/docker-entrypoint.…"   3 seconds ago   Up Less than a second   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
 
 $ docker stop demo-web
 demo-web
@@ -144,17 +146,17 @@ d87f6628aa86: Preparing
 a8a09d37d441: Preparing
 5b91dba2fc11: Preparing
 75c137aedfb2: Preparing
+a8a09d37d441: Waiting
 5b91dba2fc11: Waiting
 75c137aedfb2: Waiting
-a8a09d37d441: Waiting
-313dac429378: Pushed
-2ba21653acee: Pushed
-3212502c73d1: Pushed
-d87f6628aa86: Pushed
-a8a09d37d441: Pushed
-8ff2a17964b4: Pushed
-5b91dba2fc11: Pushed
-75c137aedfb2: Pushed
+313dac429378: Layer already exists
+3212502c73d1: Layer already exists
+8ff2a17964b4: Layer already exists
+2ba21653acee: Layer already exists
+d87f6628aa86: Layer already exists
+75c137aedfb2: Layer already exists
+a8a09d37d441: Layer already exists
+5b91dba2fc11: Layer already exists
 1.0: digest: sha256:9268a57076031b3a0bc63e98b191be8bd5393b3ee892d14094cb9938cf0ebd43 size: 1989
 VERIFIED: nginx:stable-alpine pulled from Docker Hub
 
@@ -195,8 +197,8 @@ For more examples and ideas, visit:
 
 $ docker images
 REPOSITORY                                   TAG             IMAGE ID       CREATED        SIZE
-nginx                                        stable-alpine   88f52f3d58a5   9 hours ago    62.3MB
 ghcr.io/kammatimanojsai-cmd/smec-demo        1.0             88f52f3d58a5   9 hours ago    62.3MB
+nginx                                        stable-alpine   88f52f3d58a5   9 hours ago    62.3MB
 ghcr.io/github/gh-aw-firewall/agent          latest          49663c2c4af3   3 days ago     812MB
 ghcr.io/github/gh-aw-mcpg                    latest          b33d4932fd93   5 days ago     183MB
 ghcr.io/github/gh-aw-firewall/api-proxy      latest          375ede42c656   5 days ago     225MB

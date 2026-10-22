@@ -1,6 +1,94 @@
 ### Experiment 5 - Continuous integration and delivery with Jenkins
-### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:27:05 IST
+### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:50 IST
 
-$ bash mvnw -B -q clean package
-mvnw: line 114: mvnw/.mvn/wrapper/maven-wrapper.properties: Not a directory
+$ ./mvnw -B -q clean package
+
+$ java -jar target/jenkins-cicd-demo.jar
+Jenkins CI/CD Demo application v1.0
+10 + 5 = 15
+10 - 5 = 5
+10 * 5 = 50
+10 / 5 = 2.0
+Deployment successful
+
+$ git push -f origin HEAD:refs/heads/jenkins-demo
+remote: 
+remote: Create a pull request for 'jenkins-demo' on GitHub by visiting:        
+remote:      https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/pull/new/jenkins-demo        
+remote: 
+To https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC
+ * [new branch]      HEAD -> jenkins-demo
+
+$ POST /createItem?name=SMEC-Exp5-CICD  (Pipeline from SCM: kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC, branch jenkins-demo, Script Path Experiment-05-Jenkins-CICD/Jenkinsfile)
+HTTP 200
+
+$ POST /job/SMEC-Exp5-CICD/build   (build #1, started manually)
+HTTP 201
+Build #1 result: SUCCESS
+
+----- build #1 console (key lines) -----
+Started by user admin
+[Pipeline] stage
+Checking out Revision 6a9fc8240cbdbe4ae1fd3b4fd3a348d494ab4f8a (refs/remotes/origin/jenkins-demo)
+[Pipeline] stage
+[2026-10-22T08:02:13.537Z] Checking out Revision 6a9fc8240cbdbe4ae1fd3b4fd3a348d494ab4f8a (refs/remotes/origin/jenkins-demo)
+[Pipeline] stage
+[2026-10-22T08:02:18.574Z] [INFO] BUILD SUCCESS
+[Pipeline] stage
+[2026-10-22T08:02:22.822Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in in.smec.devops.CalculatorTest
+[2026-10-22T08:02:22.822Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[2026-10-22T08:02:22.822Z] [INFO] BUILD SUCCESS
+[Pipeline] stage
+[2026-10-22T08:02:26.105Z] [INFO] Building jar: /var/jenkins_home/workspace/SMEC-Exp5-CICD/Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar
+[2026-10-22T08:02:26.105Z] [INFO] BUILD SUCCESS
+[Pipeline] stage
+[2026-10-22T08:02:26.456Z] + cp Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar deploy/
+[2026-10-22T08:02:26.716Z] + java -jar deploy/jenkins-cicd-demo.jar
+[2026-10-22T08:02:26.717Z] Jenkins CI/CD Demo application v1.0
+[2026-10-22T08:02:26.717Z] Deployment successful
+[Pipeline] stage
+Finished: SUCCESS
+VERIFIED: Jenkins build #1 SUCCESS
+VERIFIED: JUnit tests ran in Jenkins (5 tests, 0 failures)
+Jenkins test report: passed=5 failed=0 skipped=0
+Archived artifact: Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar
+
+########## Pushing a new commit to trigger the next build automatically ##########
+
+$ git commit -q -am Exp 5: bump version to 1.1 (should trigger Jenkins automatically)
+
+$ git log --oneline -1
+203a72f Exp 5: bump version to 1.1 (should trigger Jenkins automatically)
+
+$ git push -f origin HEAD:refs/heads/jenkins-demo
+To https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC
+   6a9fc82..203a72f  HEAD -> jenkins-demo
+Waiting for Jenkins to poll GitHub and start build #2 by itself (up to 8 minutes)...
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+.github/lab-ci/exp05.sh: line 22: echo: write error: Broken pipe
+Build #2 result: SUCCESS
+
+----- build #2 console (key lines) -----
+Started by an SCM change
+Checking out Revision 203a72ff7286b1a21cbd7fd74591a27a4971eac1 (refs/remotes/origin/jenkins-demo)
+Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
+[2026-10-22T08:04:14.452Z] Checking out Revision 203a72ff7286b1a21cbd7fd74591a27a4971eac1 (refs/remotes/origin/jenkins-demo)
+[2026-10-22T08:04:14.470Z] Commit message: "Exp 5: bump version to 1.1 (should trigger Jenkins automatically)"
+[2026-10-22T08:04:17.979Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.030 s -- in in.smec.devops.CalculatorTest
+[2026-10-22T08:04:17.979Z] [INFO] Tests run: 5, Failures: 0, Errors: 0, Skipped: 0
+[2026-10-22T08:04:20.176Z] Jenkins CI/CD Demo application v1.1
+[2026-10-22T08:04:20.176Z] Deployment successful
+Finished: SUCCESS
+VERIFIED: Build #2 was started automatically by an SCM change
+VERIFIED: Jenkins build #2 SUCCESS and deployed v1.1
+
+$ GET /job/SMEC-Exp5-CICD/api/json - build history

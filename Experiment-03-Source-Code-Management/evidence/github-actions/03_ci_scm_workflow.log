@@ -1,6 +1,6 @@
 ### Experiment 3 - SCM workflow on the Experiment 1 code
-### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:26:49 IST
+### Executed by GitHub Actions run #2: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744625293
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:31:11 IST
 # Central repository (local bare repo): central.git
 
 ########## Developer A: import the Experiment 1 project ##########
@@ -21,7 +21,7 @@ A  templates/success.html
 A  test_app.py
 
 $ git commit -m Import Flask event registration app (Experiment 1)
-[main (root-commit) d9ae394] Import Flask event registration app (Experiment 1)
+[main (root-commit) 7269b6e] Import Flask event registration app (Experiment 1)
  8 files changed, 178 insertions(+)
  create mode 100755 .dockerignore
  create mode 100644 .gitignore
@@ -70,7 +70,7 @@ index e67b0cb..434b9d2 100755
  registrations = []                                # in-memory store (lab demo)
 
 $ git commit -am Add Kubernetes Workshop to the event list
-[feature/add-workshop-event be5cd1f] Add Kubernetes Workshop to the event list
+[feature/add-workshop-event bbb1ba4] Add Kubernetes Workshop to the event list
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 $ git push -u origin feature/add-workshop-event
@@ -97,7 +97,7 @@ $ git branch -r
   origin/main
 
 $ git log --oneline main..origin/feature/add-workshop-event
-be5cd1f Add Kubernetes Workshop to the event list
+bbb1ba4 Add Kubernetes Workshop to the event list
 
 $ git merge --no-ff origin/feature/add-workshop-event -m Merge feature/add-workshop-event
 Merge made by the 'ort' strategy.
@@ -106,25 +106,26 @@ Merge made by the 'ort' strategy.
 
 $ git push origin main
 To <workspace>/central.git
-   d9ae394..c43dfcb  main -> main
+   7269b6e..cf2ec84  main -> main
 
 $ git push origin --delete feature/add-workshop-event
 To <workspace>/central.git
  - [deleted]         feature/add-workshop-event
 
 $ git log --oneline --graph --decorate -6
-*   c43dfcb (HEAD -> main, origin/main, origin/HEAD) Merge feature/add-workshop-event
+*   cf2ec84 (HEAD -> main, origin/main, origin/HEAD) Merge feature/add-workshop-event
 |\  
-| * be5cd1f Add Kubernetes Workshop to the event list
+| * bbb1ba4 Add Kubernetes Workshop to the event list
 |/  
-* d9ae394 (tag: v1.0) Import Flask event registration app (Experiment 1)
+* 7269b6e (tag: v1.0) Import Flask event registration app (Experiment 1)
 
 $ git ls-remote --heads --tags origin
-c43dfcbaf85d815c525f729e5edc32b46bf2311c	refs/heads/main
-f4db80ea04a64641caba20924d250ef841efa0f4	refs/tags/v1.0
-d9ae394a8ce4ebcc0473e4928deb68e5eb7dd60c	refs/tags/v1.0^{}
+cf2ec84624a2319f2e8830d045294c9fd0975cda	refs/heads/main
+584c2a24b9dd81938c3b7304f20749226533c64b	refs/tags/v1.0
+7269b6e88388924303632b48ac4d4a2092f00a1e	refs/tags/v1.0^{}
 
 ### The same code on GitHub: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/tree/main/Experiment-01-Flask-Registration
 
 $ git log --oneline -5 -- Experiment-01-Flask-Registration
+604c0a4 CI evidence from run #1
 32d31e3 SMEC DevOps Lab CS505PC - all 12 experiments with code, docs and evidence
