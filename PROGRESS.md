@@ -1,6 +1,6 @@
 # PROGRESS – SMEC DevOps Lab (CS505PC)
 
-_Last updated: 22 Oct 2026, 10:50 IST_
+_Last updated: 22 Oct 2026, 13:50 IST_
 
 **Where the work was done:** a cloud Linux workspace (Docker 29.9.1, Java 21, Python 3.13, Selenium 4.48.0 + Chromium 141).
 The Windows laptop could not be controlled from that session: folder access was declined and desktop control was unavailable.
@@ -11,20 +11,24 @@ Legend: ✅ done and verified · 🟡 partly verified · ⏳ pending (laptop) ·
 
 ## Dashboard
 
+All 12 experiments were **executed and verified on GitHub Actions** (run [#3](https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921), 22 Oct 2026). Evidence is in each `evidence/github-actions` folder; the summary is in [`CI-RESULTS.md`](CI-RESULTS.md).
+
 | Exp | Title | Implementation | Execution | Verification | GitHub | Evidence | Status |
 |---|---|---|---|---|---|---|---|
-| 01 | Flask registration + Docker | ✅ | ✅ docker build/run | ✅ HTTP 200, success + 400 validation, 5 unit tests | ✅ pushed | logs + 3 screenshots | **Completed** (cloud) |
-| 02 | Git & GitHub commands | ✅ | ✅ local remote | ✅ log/branch/merge/push/clone | ✅ pushed (PR pending) | log | **Partial** – PR pending |
-| 03 | SCM with Exp 1 code | ✅ | ✅ local central repo | ✅ branch/merge/tag | ✅ pushed | log | **Completed** (cloud; code on GitHub) |
-| 04 | Jenkins setup | ✅ check script | ⏳ | ⏳ | ✅ pushed | – | **Pending (laptop)** |
-| 05 | Jenkins CI/CD | ✅ Maven + Jenkinsfile | 🟡 javac/jar/run only | ⏳ mvn test + Jenkins builds #1/#2 | ✅ pushed | partial log | **Partial** |
-| 06 | Docker commands | ✅ .sh + .ps1 | 🟡 all except pull/push | 🟡 | ✅ pushed | log | **Partial** – pull/push pending |
-| 07 | Docker hello app | ✅ | ✅ | ✅ `Hello, World!` in docker logs | ✅ pushed | log | **Completed** (cloud) |
-| 08 | Kubernetes + Docker | ✅ YAML + script | ⏳ | YAML structure checked only | ✅ pushed | – | **Pending (laptop)** |
-| 09 | Kubernetes automation | ✅ YAML (3 replicas) + script | ⏳ (Docker pre-check ✅) | ⏳ | ✅ pushed | pre-check log | **Pending (laptop)** |
-| 10 | Selenium setup | ✅ | ✅ | ✅ title read, exit 0 | ✅ pushed | log | **Completed** (cloud) |
-| 11 | JavaScript + Selenium | ✅ | ✅ | ✅ 5/5 tests, 0 → 1 | ✅ pushed | log + 2 screenshots | **Completed** (cloud) |
-| 12 | Selenium on container | ✅ | ✅ | ✅ 7/7 tests vs Docker container | ✅ pushed | log + 2 screenshots | **Completed** (cloud) |
+| 01 | Flask registration + Docker | ✅ | ✅ docker build/run (python:3.12-slim) | ✅ HTTP 200, success page, HTTP 400 + 4 errors, 5 unit tests | ✅ pushed | logs + screenshots | **Completed** (GitHub Actions) |
+| 02 | Git & GitHub commands | ✅ | ✅ all commands + real PR #1 | ✅ branch/merge/push/clone, PR merged | ✅ pushed | logs | **Completed** (GitHub Actions) |
+| 03 | SCM with Exp 1 code | ✅ | ✅ | ✅ branch/merge/tag, code on GitHub | ✅ pushed | logs | **Completed** (GitHub Actions) |
+| 04 | Jenkins setup | ✅ | ✅ Jenkins LTS (Docker) on CI | ✅ dashboard HTTP 200, plugins, executors | ✅ pushed | log + 2 screenshots | **Completed** (GitHub Actions) |
+| 05 | Jenkins CI/CD | ✅ | ✅ pipeline job from Jenkinsfile | ✅ build #1 SUCCESS (5 JUnit tests, JAR, deploy); build #2 auto-started by SCM change, deployed v1.1 | ✅ pushed | log + consoles + 3 screenshots | **Completed** (GitHub Actions) |
+| 06 | Docker commands | ✅ | ✅ pull/images/run/ps/stop/start/rm/push | ✅ pulled from Docker Hub, pushed to ghcr.io | ✅ pushed | logs | **Completed** (GitHub Actions) |
+| 07 | Docker hello app | ✅ | ✅ | ✅ `Hello, World!` in docker logs | ✅ pushed | logs | **Completed** (GitHub Actions) |
+| 08 | Kubernetes + Docker | ✅ | ✅ kind cluster | ✅ deploy, service, scale 4, rolling update + undo | ✅ pushed | log | **Completed** (GitHub Actions) |
+| 09 | Kubernetes automation | ✅ | ✅ kind cluster | ✅ 3/3 replicas ready, load-balanced Service, self-healing | ✅ pushed | log | **Completed** (GitHub Actions) |
+| 10 | Selenium setup | ✅ | ✅ | ✅ Chrome opened selenium.dev, title read | ✅ pushed | log + screenshot | **Completed** (GitHub Actions) |
+| 11 | JavaScript + Selenium | ✅ | ✅ | ✅ 5/5 tests, 0 → 1 | ✅ pushed | log + 2 screenshots | **Completed** (GitHub Actions) |
+| 12 | Selenium on container | ✅ | ✅ | ✅ 7/7 tests vs Docker container | ✅ pushed | log + 2 screenshots | **Completed** (GitHub Actions) |
+
+Optional: re-run on your own laptop (your Jenkins at localhost:8080, Docker Desktop, minikube) with `START-HERE.bat` to add laptop screenshots.
 
 ## Remaining Work – in Order (on the Windows laptop)
 

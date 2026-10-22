@@ -2,24 +2,24 @@
 
 St. Martin's Engineering College · DevOps Lab (CS505PC) · all 12 experiments with source code, configuration, documentation and execution evidence.
 
-> **Live status:** see [`PROGRESS.md`](PROGRESS.md). Experiments 1, 7, 10, 11 and 12 were executed and verified. Experiments 2, 3, 5 and 6 are partially verified. Experiments 4, 8 and 9 are ready to run on the Windows laptop.
+> **Status:** ✅ all 12 experiments executed and verified on GitHub Actions ([run #3](https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921)); see [`CI-RESULTS.md`](CI-RESULTS.md) and [`PROGRESS.md`](PROGRESS.md).
 
 ## Experiments
 
 | # | Folder | Topic | Tools | Status |
 |---|---|---|---|---|
-| 1 | [Experiment-01-Flask-Registration](Experiment-01-Flask-Registration) | Event registration form with Flask + Docker | Python, Flask, Docker | ✅ |
-| 2 | [Experiment-02-Git-Commands](Experiment-02-Git-Commands) | Git & GitHub commands | Git, GitHub | 🟡 PR on laptop |
-| 3 | [Experiment-03-Source-Code-Management](Experiment-03-Source-Code-Management) | SCM using the Experiment 1 code | Git, GitHub | 🟡 GitHub on laptop |
-| 4 | [Experiment-04-Jenkins-Setup](Experiment-04-Jenkins-Setup) | Jenkins installation & setup | Jenkins, Java | ⏳ laptop |
-| 5 | [Experiment-05-Jenkins-CICD](Experiment-05-Jenkins-CICD) | CI/CD pipeline: compile, test, JAR, deploy | Jenkins, Maven, JUnit 5 | 🟡 Jenkins on laptop |
-| 6 | [Experiment-06-Docker-Commands](Experiment-06-Docker-Commands) | Docker commands | Docker | 🟡 pull/push on laptop |
-| 7 | [Experiment-07-Docker-Application](Experiment-07-Docker-Application) | Containerised Hello World app | Docker, Python | ✅ |
-| 8 | [Experiment-08-Docker-Kubernetes](Experiment-08-Docker-Kubernetes) | Docker + Kubernetes: deploy, service, scale, rolling update | minikube, kubectl | ⏳ laptop |
-| 9 | [Experiment-09-Kubernetes-Automation](Experiment-09-Kubernetes-Automation) | Kubernetes manifests for Exp 7, 3 replicas | minikube, kubectl | ⏳ laptop |
-| 10 | [Experiment-10-Selenium-Setup](Experiment-10-Selenium-Setup) | Selenium WebDriver setup | Java, Selenium, Chrome | ✅ |
-| 11 | [Experiment-11-JavaScript-Selenium](Experiment-11-JavaScript-Selenium) | JavaScript counter tested by Selenium | JS, Java, Selenium | ✅ 5/5 |
-| 12 | [Experiment-12-Container-Selenium-Tests](Experiment-12-Container-Selenium-Tests) | Selenium tests for the containerised app | Docker, Selenium | ✅ 7/7 |
+| 1 | [Experiment-01-Flask-Registration](Experiment-01-Flask-Registration) | Event registration form with Flask + Docker | Python, Flask, Docker | ✅ verified |
+| 2 | [Experiment-02-Git-Commands](Experiment-02-Git-Commands) | Git & GitHub commands | Git, GitHub | ✅ verified |
+| 3 | [Experiment-03-Source-Code-Management](Experiment-03-Source-Code-Management) | SCM using the Experiment 1 code | Git, GitHub | ✅ verified |
+| 4 | [Experiment-04-Jenkins-Setup](Experiment-04-Jenkins-Setup) | Jenkins installation & setup | Jenkins, Java | ✅ verified |
+| 5 | [Experiment-05-Jenkins-CICD](Experiment-05-Jenkins-CICD) | CI/CD pipeline: compile, test, JAR, deploy | Jenkins, Maven, JUnit 5 | ✅ verified |
+| 6 | [Experiment-06-Docker-Commands](Experiment-06-Docker-Commands) | Docker commands | Docker | ✅ verified |
+| 7 | [Experiment-07-Docker-Application](Experiment-07-Docker-Application) | Containerised Hello World app | Docker, Python | ✅ verified |
+| 8 | [Experiment-08-Docker-Kubernetes](Experiment-08-Docker-Kubernetes) | Docker + Kubernetes: deploy, service, scale, rolling update | minikube, kubectl | ✅ verified |
+| 9 | [Experiment-09-Kubernetes-Automation](Experiment-09-Kubernetes-Automation) | Kubernetes manifests for Exp 7, 3 replicas | minikube, kubectl | ✅ verified |
+| 10 | [Experiment-10-Selenium-Setup](Experiment-10-Selenium-Setup) | Selenium WebDriver setup | Java, Selenium, Chrome | ✅ verified |
+| 11 | [Experiment-11-JavaScript-Selenium](Experiment-11-JavaScript-Selenium) | JavaScript counter tested by Selenium | JS, Java, Selenium | ✅ verified |
+| 12 | [Experiment-12-Container-Selenium-Tests](Experiment-12-Container-Selenium-Tests) | Selenium tests for the containerised app | Docker, Selenium | ✅ verified |
 
 Each experiment folder contains its source code and configuration, plus a `README.md` with the **Aim, Software Requirements, Procedure, Execution Commands, Verified Output, Result, 5 Viva Questions, GitHub link and demo steps**. The `evidence/` folder holds the real logs and screenshots from the runs.
 
