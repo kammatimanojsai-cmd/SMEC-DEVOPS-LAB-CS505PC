@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+  <title>Event Registration</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f2f5fa; margin:0; padding:0 16px; }
+    .note { max-width:420px; margin:18px auto 0; font-size:13px; color:#5b6475; text-align:center }
+    .card { max-width:420px; margin:16px auto 40px; background:#fff; padding:24px 28px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+    h2 { margin-top:0; color:#1d3c78; }
+    h2.ok { color:#1e8449; }
+    label { display:block; margin-top:12px; font-weight:bold; }
+    input, select { width:100%; padding:8px; margin-top:4px; box-sizing:border-box; }
+    .error { color:#c0392b; font-size:13px; }
+    button { margin-top:18px; width:100%; padding:10px; background:#1d3c78; color:#fff; border:0; border-radius:4px; font-size:15px; cursor:pointer; }
+    a { color:#1d3c78 }
+  </style>
+</head>
+<body>
+  <p class="note">Experiment 1 &ndash; live browser demo. The lab version is the Flask app in Docker
+    (<a href="https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/tree/main/Experiment-01-Flask-Registration">source</a>).
+    &middot; <a href="index.html">All experiments</a></p>
+
+  <div class="card" id="formCard">
+    <h2>Event Registration Form</h2>
+    <form id="registrationForm" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name">
+      <div class="error" id="error-name"></div>
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email">
+      <div class="error" id="error-email"></div>
+
+      <label for="phone">Mobile Number</label>
+      <input type="text" id="phone" name="phone">
+      <div class="error" id="error-phone"></div>
+
+      <label for="event">Event</label>
+      <select id="event" name="event">
+        <option value="">-- Select an event --</option>
+        <option>DevOps Workshop</option>
+        <option>Cloud Bootcamp</option>
+        <option>Hackathon 2026</option>
+        <option>Kubernetes Workshop</option>
+      </select>
+      <div class="error" id="error-event"></div>
+
+      <button type="submit" id="submitBtn">Register</button>
+    </form>
+  </div>
+
+  <div class="card" id="successCard" hidden>
+    <h2 class="ok" id="successMessage">Registration Successful!</h2>
+    <p>Thank you, <strong id="regName"></strong>.</p>
+    <p>You are registered for <strong id="regEvent"></strong>.</p>
+    <p>A confirmation will be sent to <strong id="regEmail"></strong>.</p>
+    <p>Total registrations: <span id="count"></span></p>
+    <a href="#" id="again">Register another participant</a>
+  </div>
+
+  <script>
+    // Same rules as validate() in Experiment-01-Flask-Registration/app.py
+    const EVENTS = ["DevOps Workshop", "Cloud Bootcamp", "Hackathon 2026", "Kubernetes Workshop"];
+    const EMAIL_RE = /^[^@\s]+@[^@\s]+\.[^@\s]+$/;
+    const PHONE_RE = /^[6-9]\d{9}$/;
+    let count = 0;
+    const $ = id => document.getElementById(id);
+
+    function validate(f) {
+      const e = {};
+      if (f.name.length < 3) e.name = "Name must contain at least 3 characters.";
+      if (!EMAIL_RE.test(f.email)) e.email = "Enter a valid email address.";
+      if (!PHONE_RE.test(f.phone)) e.phone = "Enter a valid 10-digit mobile number.";
+      if (!EVENTS.includes(f.event)) e.event = "Please select an event.";
+      return e;
+    }
+
+    $("registrationForm").addEventListener("submit", ev => {
+      ev.preventDefault();
+      const f = { name: $("name").value.trim(), email: $("email").value.trim(),
+                  phone: $("phone").value.trim(), event: $("event").value };
+      const errors = validate(f);
+      ["name", "email", "phone", "event"].forEach(k => $("error-" + k).textContent = errors[k] || "");
+      if (Object.keys(errors).length) return;
+      count++;
+      $("regName").textContent = f.name; $("regEvent").textContent = f.event;
+      $("regEmail").textContent = f.email; $("count").textContent = count;
+      $("formCard").hidden = true; $("successCard").hidden = false;
+    });
+
+    $("again").addEventListener("click", ev => {
+      ev.preventDefault();
+      $("registrationForm").reset();
+      $("successCard").hidden = true; $("formCard").hidden = false;
+    });
+  </script>
+</body>
+</html>
