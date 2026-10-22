@@ -23,6 +23,12 @@ St. Martin's Engineering College · DevOps Lab (CS505PC) · all 12 experiments w
 
 Each experiment folder contains its source code and configuration, plus a `README.md` with the **Aim, Software Requirements, Procedure, Execution Commands, Verified Output, Result, 5 Viva Questions, GitHub link and demo steps**. The `evidence/` folder holds the real logs and screenshots from the runs.
 
+## ☁ Automated Run on GitHub Actions
+[![DevOps Lab](https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/workflows/devops-lab.yml/badge.svg)](https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/workflows/devops-lab.yml)
+
+The workflow `.github/workflows/devops-lab.yml` runs all 12 experiments on GitHub's Ubuntu machines: Docker, a kind Kubernetes cluster, Jenkins LTS, Java 21 and Chrome. It commits the logs and screenshots into each `Experiment-XX/evidence/github-actions` folder, and the overall results go into [`CI-RESULTS.md`](CI-RESULTS.md).
+To run it again: **Actions** tab → *DevOps Lab - run all 12 experiments* → **Run workflow**.
+
 ## ▶ Run Everything on the Laptop (one click)
 1. Double-click **`START-HERE.bat`** and click **Yes** on the Administrator prompt.
 2. It checks and installs what is missing (winget), publishes this folder to your GitHub, then runs all 12 experiments in order.

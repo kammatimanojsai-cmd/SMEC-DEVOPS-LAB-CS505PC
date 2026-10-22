@@ -1,0 +1,50 @@
+### Experiment 2 - real GitHub pull request (2026-10-22 12:40 IST)
+### Repository: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC
+
+$ git switch -c exp2-pull-request-demo
+Switched to a new branch 'exp2-pull-request-demo'
+
+$ git commit -am Exp 2: add pull request demonstration note
+[exp2-pull-request-demo 9a31133] Exp 2: add pull request demonstration note
+ 1 file changed, 3 insertions(+)
+
+$ git push -u origin exp2-pull-request-demo
+remote: 
+remote: Create a pull request for 'exp2-pull-request-demo' on GitHub by visiting:        
+remote:      https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/pull/new/exp2-pull-request-demo        
+remote: 
+To https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git
+ * [new branch]      exp2-pull-request-demo -> exp2-pull-request-demo
+Branch 'exp2-pull-request-demo' set up to track remote branch 'exp2-pull-request-demo' from 'origin'.
+
+$ gh pr create --title Exp 2: Pull request demo --body Experiment 2 - demonstrating a GitHub pull request: feature branch -> review -> merge into main. --base main --head exp2-pull-request-demo
+https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/pull/1
+
+$ gh pr list --state open
+1	Exp 2: Pull request demo	exp2-pull-request-demo	OPEN	2026-10-22T07:10:43Z
+
+$ gh pr merge exp2-pull-request-demo --merge --delete-branch
+From https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC
+ * branch            main       -> FETCH_HEAD
+   32d31e3..25af55b  main       -> origin/main
+Updating 32d31e3..25af55b
+Fast-forward
+ Experiment-02-Git-Commands/README.md | 3 +++
+ 1 file changed, 3 insertions(+)
+
+$ git switch main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+
+$ git pull
+Already up to date.
+
+$ gh pr list --state merged
+1	Exp 2: Pull request demo	exp2-pull-request-demo	MERGED	2026-10-22T07:10:43Z
+
+$ git log --oneline --graph -4
+*   25af55b Merge pull request #1 from kammatimanojsai-cmd/exp2-pull-request-demo
+|\  
+| * 9a31133 Exp 2: add pull request demonstration note
+|/  
+* 32d31e3 SMEC DevOps Lab CS505PC - all 12 experiments with code, docs and evidence

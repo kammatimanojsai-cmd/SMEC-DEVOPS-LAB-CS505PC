@@ -1,0 +1,17 @@
+<?xml version='1.1' encoding='UTF-8'?>
+<flow-definition plugin="workflow-job">
+  <description>SMEC DevOps Lab - Experiment 5 CI/CD pipeline (Jenkinsfile from GitHub)</description>
+  <keepDependencies>false</keepDependencies>
+  <definition class="org.jenkinsci.plugins.workflow.cps.CpsScmFlowDefinition" plugin="workflow-cps">
+    <scm class="hudson.plugins.git.GitSCM" plugin="git">
+      <configVersion>2</configVersion>
+      <userRemoteConfigs>
+        <hudson.plugins.git.UserRemoteConfig><url>__REPO_URL__</url></hudson.plugins.git.UserRemoteConfig>
+      </userRemoteConfigs>
+      <branches><hudson.plugins.git.BranchSpec><name>*/jenkins-demo</name></hudson.plugins.git.BranchSpec></branches>
+    </scm>
+    <scriptPath>Experiment-05-Jenkins-CICD/Jenkinsfile</scriptPath>
+    <lightweight>true</lightweight>
+  </definition>
+  <disabled>false</disabled>
+</flow-definition>

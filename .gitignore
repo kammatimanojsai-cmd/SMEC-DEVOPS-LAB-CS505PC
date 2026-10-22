@@ -26,3 +26,4 @@ deploy/
 *.key
 *token*
 secrets/
+ci-out/

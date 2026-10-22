@@ -1,0 +1,160 @@
+name: DevOps Lab - run all 12 experiments
+
+# Runs every experiment on GitHub-hosted Ubuntu runners and commits the logs and
+# screenshots into each Experiment-XX/evidence/github-actions folder.
+on:
+  workflow_dispatch:
+
+permissions:
+  contents: write
+  packages: write
+
+concurrency:
+  group: devops-lab
+  cancel-in-progress: false
+
+env:
+  TZ: Asia/Kolkata
+
+jobs:
+  exp01-flask-docker:
+    name: "Exp 01 - Flask + Docker"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: "3.12" }
+      - run: bash .github/lab-ci/runexp.sh 01
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with: { name: ci-exp01, path: ci-out/ }
+      - name: Fail job if the experiment failed
+        run: "! grep -l FAIL ci-out/results/*"
+
+  exp02-03-git:
+    name: "Exp 02-03 - Git and SCM"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with: { fetch-depth: 0 }
+      - run: bash .github/lab-ci/runexp.sh 02
+      - run: bash .github/lab-ci/runexp.sh 03
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with: { name: ci-exp02-03, path: ci-out/ }
+      - name: Fail job if an experiment failed
+        run: "! grep -l FAIL ci-out/results/*"
+
+  exp04-05-jenkins:
+    name: "Exp 04-05 - Jenkins setup + CI/CD"
+    runs-on: ubuntu-latest
+    timeout-minutes: 60
+    steps:
+      - uses: actions/checkout@v7
+        with: { fetch-depth: 0 }
+      - uses: actions/setup-java@v6
+        with: { distribution: temurin, java-version: "21" }
+      - run: bash .github/lab-ci/runexp.sh 04
+      - run: bash .github/lab-ci/runexp.sh 05
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with: { name: ci-exp04-05, path: ci-out/ }
+      - name: Fail job if an experiment failed
+        run: "! grep -l FAIL ci-out/results/*"
+
+  exp06-07-docker:
+    name: "Exp 06-07 - Docker commands + app"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with: { python-version: "3.12" }
+      - run: bash .github/lab-ci/runexp.sh 06
+        env: { GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}" }
+      - run: bash .github/lab-ci/runexp.sh 07
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with: { name: ci-exp06-07, path: ci-out/ }
+      - name: Fail job if an experiment failed
+        run: "! grep -l FAIL ci-out/results/*"
+
+  exp08-09-kubernetes:
+    name: "Exp 08-09 - Kubernetes (kind)"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - name: Install kind if missing
+        run: |
+          if ! command -v kind >/dev/null; then
+            curl -sSLo kind https://kind.sigs.k8s.io/dl/v0.30.0/kind-linux-amd64
+            sudo install kind /usr/local/bin/kind
+          fi
+          kind version; kubectl version --client
+      - name: Create Kubernetes cluster
+        run: kind create cluster --name lab --wait 180s
+      - run: bash .github/lab-ci/runexp.sh 08
+      - run: bash .github/lab-ci/runexp.sh 09
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with: { name: ci-exp08-09, path: ci-out/ }
+      - name: Fail job if an experiment failed
+        run: "! grep -l FAIL ci-out/results/*"
+
+  exp10-12-selenium:
+    name: "Exp 10-12 - Selenium"
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-java@v6
+        with: { distribution: temurin, java-version: "21" }
+      - run: bash .github/lab-ci/runexp.sh 10
+      - run: bash .github/lab-ci/runexp.sh 11
+      - run: bash .github/lab-ci/runexp.sh 12
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with: { name: ci-exp10-12, path: ci-out/ }
+      - name: Fail job if an experiment failed
+        run: "! grep -l FAIL ci-out/results/*"
+
+  collect-evidence:
+    name: "Commit evidence to the repository"
+    needs: [exp01-flask-docker, exp02-03-git, exp04-05-jenkins, exp06-07-docker, exp08-09-kubernetes, exp10-12-selenium]
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with: { ref: main }
+      - uses: actions/download-artifact@v8
+        with: { path: ci-out, pattern: "ci-*", merge-multiple: true }
+      - name: Copy evidence into experiment folders and write CI-RESULTS.md
+        run: |
+          set -e
+          for d in ci-out/Experiment-*; do
+            [ -d "$d" ] || continue
+            mkdir -p "$(basename "$d")"
+            cp -r "$d"/. "$(basename "$d")"/
+          done
+          RUN_URL="${GITHUB_SERVER_URL}/${GITHUB_REPOSITORY}/actions/runs/${GITHUB_RUN_ID}"
+          {
+            echo "# CI results - all 12 experiments"
+            echo
+            echo "Executed by GitHub Actions run [#${GITHUB_RUN_NUMBER}]($RUN_URL) on $(TZ=Asia/Kolkata date '+%d %b %Y, %H:%M IST') (Ubuntu runners: Docker, kind Kubernetes, Jenkins LTS, Java 21, Chrome)."
+            echo
+            echo "| Experiment | Result | Evidence |"
+            echo "|---|---|---|"
+            for n in 01 02 03 04 05 06 07 08 09 10 11 12; do
+              dir=$(ls -d Experiment-$n-* | head -1)
+              r=$(cat ci-out/results/exp$n 2>/dev/null || echo "NOT RUN")
+              icon="❌"; [ "$r" = PASS ] && icon="✅"
+              echo "| $dir | $icon $r | [evidence/github-actions]($dir/evidence/github-actions) |"
+            done
+          } > CI-RESULTS.md
+          cat CI-RESULTS.md
+      - name: Commit and push
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git add CI-RESULTS.md Experiment-*/evidence/github-actions
+          git commit -m "CI evidence from run #${GITHUB_RUN_NUMBER}" || { echo "nothing to commit"; exit 0; }
+          git pull --rebase origin main
+          git push origin HEAD:main
