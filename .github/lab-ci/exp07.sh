@@ -8,4 +8,4 @@ run docker images hello-app
 run docker run --name hello-container hello-app:1.0
 run docker ps -a --filter name=hello-container
 run docker logs hello-container
-check "'Hello, World!' found in docker logs" 'docker logs hello-container 2>&1 | grep -q "Hello, World!"'
+check "'Hello, World!' found in docker logs" '[[ "$(docker logs hello-container 2>&1)" == *"Hello, World!"* ]]'
