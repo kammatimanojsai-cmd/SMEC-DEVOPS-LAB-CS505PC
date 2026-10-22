@@ -1,6 +1,6 @@
 ﻿### Prerequisite check
 ### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
-### Date/time   : 2026-10-22 13:55:51 IST
+### Date/time   : 2026-10-22 15:02:01 IST
 
 
 PS> git --version
@@ -22,9 +22,8 @@ PS> kubectl version --client
 Client Version: v1.36.1
 Kustomize Version: v5.8.1
 
-PS> minikube version
-minikube version: v1.39.0
-commit: 7a9f6a841470a207de8cf4bafcccee0969d8ba10
+PS> kind version
+kind v0.33.0 go1.26.7 windows/amd64
 
 PS> py -3 --version
 Python 3.14.6
