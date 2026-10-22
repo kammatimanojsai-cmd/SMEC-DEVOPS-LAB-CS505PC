@@ -61,6 +61,13 @@ public class RegistrationAppTest {
         Files.copy(src, dir.resolve(name), StandardCopyOption.REPLACE_EXISTING);
     }
 
+    /** Clicks Submit and waits until the browser has loaded the server's response page. */
+    static void submitAndWait(WebDriver driver) {
+        WebElement oldForm = driver.findElement(By.id("registrationForm"));
+        driver.findElement(By.id("submitBtn")).click();
+        new WebDriverWait(driver, Duration.ofSeconds(10)).until(ExpectedConditions.stalenessOf(oldForm));
+    }
+
     static void fillForm(WebDriver driver, String name, String email, String phone, String event) {
         driver.findElement(By.id("name")).sendKeys(name);
         driver.findElement(By.id("email")).sendKeys(email);
@@ -68,7 +75,7 @@ public class RegistrationAppTest {
         if (!event.isEmpty()) {
             new Select(driver.findElement(By.id("event"))).selectByVisibleText(event);
         }
-        driver.findElement(By.id("submitBtn")).click();
+        submitAndWait(driver);
     }
 
     public static void main(String[] args) throws Exception {
@@ -111,7 +118,7 @@ public class RegistrationAppTest {
 
             // Test 4: empty form is rejected with an error on every field
             driver.get(BASE_URL + "/register");
-            driver.findElement(By.id("submitBtn")).click();
+            submitAndWait(driver);
             int errors = driver.findElements(By.className("error")).size();
             check("TC7 Empty form shows 4 validation errors", errors == 4, "errors shown=" + errors);
             screenshot(driver, "12_empty_form_validation.png");

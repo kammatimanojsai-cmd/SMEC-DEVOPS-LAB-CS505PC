@@ -53,7 +53,7 @@ grep -E "Started by|Checking out Revision|Commit message|Tests run:|Jenkins CI/C
 check "Build #2 was started automatically by an SCM change" 'grep -q "Started by an SCM change" "$OUT/05_ci_build2_console.txt"'
 check "Jenkins build #2 SUCCESS and deployed v1.1" '[ "$R2" = SUCCESS ] && grep -q "application v1.1" "$OUT/05_ci_build2_console.txt"'
 echo; echo '$ GET /job/'$JOB'/api/json - build history'
-curl -s -u "admin:$PW" "$J/job/$JOB/api/json?tree=builds[number,result,timestamp]" | jq -r '.builds[] | "#\(.number)  \(.result)"'
+curl -g -s -u "admin:$PW" "$J/job/$JOB/api/json?tree=builds[number,result,timestamp]" | jq -r '.builds[] | "#\(.number)  \(.result)"'
 shot "$J/job/$JOB/" ci_05_jenkins_stage_view.png 1400,900
 shot "$J/job/$JOB/1/testReport/" ci_05_jenkins_test_report.png 1200,850
 shot "$J/job/$JOB/2/console" ci_05_build2_started_by_scm_change.png 1300,900
