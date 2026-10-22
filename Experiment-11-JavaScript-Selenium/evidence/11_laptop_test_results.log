@@ -1,0 +1,17 @@
+﻿### Experiment 11 - laptop Selenium run (Chrome, visible window)
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:32:19 IST
+
+
+PS> mvnw.cmd -q compile exec:java 
+Oct 22, 2026 2:32:28 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 155, returning the closest version; found: 152; Please update to a Selenium version that supports CDP version 155
+Opened: file:///C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-11-JavaScript-Selenium/app/index.html
+[PASS] Page title is 'Increment Counter App'         expected=Increment Counter App actual=Increment Counter App
+[PASS] Initial counter value is 0                    expected=0 actual=0
+[PASS] Counter is 1 after one click                  expected=1 actual=1
+[PASS] Counter is 3 after three clicks               expected=3 actual=3
+[PASS] Counter resets to 0                           expected=0 actual=0
+
+Tests run: 5, Passed: 5, Failed: 0
+BUILD SUCCESS - all Selenium tests passed

@@ -1,0 +1,14 @@
+﻿### Experiment 10 - laptop Selenium run (Chrome, visible window)
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:30:58 IST
+
+
+PS> mvnw.cmd -q compile exec:java 
+Oct 22, 2026 2:32:01 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 155, returning the closest version; found: 152; Please update to a Selenium version that supports CDP version 155
+Chrome launched successfully using Selenium WebDriver
+Opened URL   : https://www.selenium.dev/
+Page title   : Selenium
+Screenshot   : C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-10-Selenium-Setup\evidence\10_page_opened_by_selenium.png
+RESULT: PASS - page opened and title read successfully
+Browser closed

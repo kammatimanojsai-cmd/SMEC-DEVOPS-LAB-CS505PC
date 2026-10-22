@@ -1,0 +1,1304 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261022142354
+Username: MANOJ\kamma
+RunAs User: MANOJ\kamma
+Configuration Name: 
+Machine: MANOJ (Microsoft Windows NT 10.0.26300.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-08-Docker-Kubernetes\run-k8s.ps1
+Process ID: 56044
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+PS> minikube version
+
+
+PS> kubectl version --client
+
+
+PS> minikube start --driver=docker
+    > gcr.io/k8s-minikube/kicbase:  127.88 MiB / 507.61 MiB  25.19% 71 B p/s ET! The image 'registry.k8s.io/kube-proxy:v
+1.37.0' was not found; unable to add it to cache.
+    > gcr.io/k8s-minikube/kicbase:  127.88 MiB / 507.61 MiB  25.19% 71 B p/s ET! The image 'registry.k8s.io/kube-schedul
+er:v1.37.0' was not found; unable to add it to cache.
+    > gcr.io/k8s-minikube/kicbase:  127.88 MiB / 507.61 MiB  25.19% 67 B p/s ET! The image 'registry.k8s.io/coredns/core
+dns:v1.14.6' was not found; unable to add it to cache.
+! The image 'registry.k8s.io/kube-apiserver:v1.37.0' was not found; unable to add it to cache.
+    > gcr.io/k8s-minikube/kicbase:  127.88 MiB / 507.61 MiB  25.19% 67 B p/s ET! The image 'registry.k8s.io/kube-control
+ler-manager:v1.37.0' was not found; unable to add it to cache.
+    > gcr.io/k8s-minikube/kicbase:  127.88 MiB / 507.61 MiB  25.19% 67 B p/s ET! The image 'registry.k8s.io/etcd:3.7.0-0
+' was not found; unable to add it to cache.
+    > gcr.io/k8s-minikube/kicbase:  127.88 MiB / 507.61 MiB  25.19% 62 B p/s ET! The image 'registry.k8s.io/pause:3.10.2
+' was not found; unable to add it to cache.
+    > gcr.io/k8s-minikube/kicbase:  127.88 MiB / 507.61 MiB  25.19% 566.47 KiB
+! The image 'gcr.io/k8s-minikube/storage-provisioner:v5' was not found; unable to add it to cache.
+! minikube cannot pull kicbase image from any docker registry, and is trying to download kicbase tarball from github rel
+ease page via HTTP.
+! It's very likely that you have an internet issue. Please ensure that you can access the internet at least via HTTP, di
+rectly or with proxy. Currently your proxy configuration is:
+E1022 14:27:52.769795   57256 cache.go:238] Error downloading kic artifacts:  failed to download kic base image or any f
+allback image
+! StartHost failed, but will try again: creating host: create: creating: setting up container node: preparing volume for
+ minikube container: docker run --rm --name minikube-preload-sidecar --label created_by.minikube.sigs.k8s.io=true --labe
+l name.minikube.sigs.k8s.io=minikube --entrypoint /usr/bin/test -v minikube:/var gcr.io/k8s-minikube/kicbase:v0.0.51@sha
+256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c4b38a0b24 -d /var/lib: exit status 125
+stdout:
+
+stderr:
+Unable to find image 'gcr.io/k8s-minikube/kicbase:v0.0.51@sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c
+4b38a0b24' locally
+docker: Error response from daemon: failed to resolve reference "gcr.io/k8s-minikube/kicbase@sha256:4a1c825b61479e6c8988
+51ea66f13c620aaeab6002746e95067fc2c4b38a0b24": failed to do request: Head "https://gcr.io/v2/k8s-minikube/kicbase/manife
+sts/sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c4b38a0b24": dialing gcr.io:443 container via direct co
+nnection because Docker Desktop has no HTTPS proxy: connecting to gcr.io:443: dial tcp: lookup gcr.io: no such host
+
+Run 'docker run --help' for more information
+
+* Failed to start docker container. Running "minikube delete" may fix it: recreate: creating host: create: creating: set
+ting up container node: preparing volume for minikube container: docker run --rm --name minikube-preload-sidecar --label
+ created_by.minikube.sigs.k8s.io=true --label name.minikube.sigs.k8s.io=minikube --entrypoint /usr/bin/test -v minikube:
+/var gcr.io/k8s-minikube/kicbase:v0.0.51@sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c4b38a0b24 -d /var
+/lib: exit status 125
+stdout:
+
+stderr:
+Unable to find image 'gcr.io/k8s-minikube/kicbase:v0.0.51@sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c
+4b38a0b24' locally
+docker: Error response from daemon: failed to resolve reference "gcr.io/k8s-minikube/kicbase@sha256:4a1c825b61479e6c8988
+51ea66f13c620aaeab6002746e95067fc2c4b38a0b24": failed to do request: Head "https://gcr.io/v2/k8s-minikube/kicbase/manife
+sts/sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c4b38a0b24": dialing gcr.io:443 container via direct co
+nnection because Docker Desktop has no HTTPS proxy: connecting to gcr.io:443: dial tcp: lookup gcr.io: no such host
+
+Run 'docker run --help' for more information
+
+X Exiting due to INET_LOOKUP_HOST: Failed to start host: recreate: creating host: create: creating: setting up container
+ node: preparing volume for minikube container: docker run --rm --name minikube-preload-sidecar --label created_by.minik
+ube.sigs.k8s.io=true --label name.minikube.sigs.k8s.io=minikube --entrypoint /usr/bin/test -v minikube:/var gcr.io/k8s-m
+inikube/kicbase:v0.0.51@sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c4b38a0b24 -d /var/lib: exit status
+ 125
+stdout:
+
+stderr:
+Unable to find image 'gcr.io/k8s-minikube/kicbase:v0.0.51@sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c
+4b38a0b24' locally
+docker: Error response from daemon: failed to resolve reference "gcr.io/k8s-minikube/kicbase@sha256:4a1c825b61479e6c8988
+51ea66f13c620aaeab6002746e95067fc2c4b38a0b24": failed to do request: Head "https://gcr.io/v2/k8s-minikube/kicbase/manife
+sts/sha256:4a1c825b61479e6c898851ea66f13c620aaeab6002746e95067fc2c4b38a0b24": dialing gcr.io:443 container via direct co
+nnection because Docker Desktop has no HTTPS proxy: connecting to gcr.io:443: dial tcp: lookup gcr.io: no such host
+
+Run 'docker run --help' for more information
+
+* Suggestion: Verify that your HTTP_PROXY and HTTPS_PROXY environment variables are set correctly.
+* Documentation: https://minikube.sigs.k8s.io/docs/handbook/vpn_and_proxy/
+
+PS> kubectl get nodes -o wide
+E1022 14:28:34.126787   56600 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:34.149279   56600 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:34.167780   56600 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:34.181419   56600 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:34.192778   56600 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> docker build -t event-registration:1.0 "C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-08-Docker-Kubernetes\..\Experiment-01-Flask-Registration"
+Dockerfile:5
+--------------------
+   3 |     #   docker build --build-arg BASE_IMAGE=<image> .
+   4 |     ARG BASE_IMAGE=python:3.12-slim
+   5 | >>> FROM ${BASE_IMAGE}
+   6 |
+   7 |     WORKDIR /app
+--------------------
+ERROR: failed to build: failed to solve: failed to fetch oauth token: Post "https://auth.docker.io/token": dial tcp: loo
+kup auth.docker.io: no such host
+
+PS> minikube image load event-registration:1.0
+
+
+PS> minikube image ls | Select-String event-registration
+
+PS> kubectl apply -f "C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-08-Docker-Kubernetes\k8s\deployment.yaml"
+error: error validating "C:\\Users\\kamma\\Documents\\SMEC-DEVOPS-LAB-CS505PC\\Experiment-08-Docker-Kubernetes\\k8s\\dep
+loyment.yaml": error validating data: failed to download openapi: <html><head><meta http-equiv='refresh' content='1;url=
+/login?from=%2Fopenapi%2Fv2%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fopenapi%2Fv2%3Ftim
+eout%3D32s' src='/static/ca570cf2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;
+'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>; if you choose to ignore these errors, turn validation off with --validate=false
+
+PS> kubectl apply -f "C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-08-Docker-Kubernetes\k8s\service.yaml"
+error: error validating "C:\\Users\\kamma\\Documents\\SMEC-DEVOPS-LAB-CS505PC\\Experiment-08-Docker-Kubernetes\\k8s\\ser
+vice.yaml": error validating data: failed to download openapi: <html><head><meta http-equiv='refresh' content='1;url=/lo
+gin?from=%2Fopenapi%2Fv2%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fopenapi%2Fv2%3Ftimeou
+t%3D32s' src='/static/ca570cf2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>; if you choose to ignore these errors, turn validation off with --validate=false
+
+PS> kubectl rollout status deployment/event-registration --timeout=120s
+E1022 14:28:43.761479   58508 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:43.776042   58508 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:43.788650   58508 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:43.798790   58508 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl get deployments,pods,services -o wide
+E1022 14:28:44.060040   58452 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:44.070934   58452 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:44.083543   58452 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:44.097547   58452 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:44.108184   58452 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:44.117105   58452 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:44.130600   58452 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+Service URL (port-forward): http://localhost:8085
+
+PS> (Invoke-WebRequest -UseBasicParsing "http://localhost:8085/register").StatusCode
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8085/register") ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], 
+WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8085/register") ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+
+PS> (Invoke-WebRequest -UseBasicParsing "http://localhost:8085/health").Content
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8085/health").C ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], 
+WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8085/health").C ...
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+
+PS> kubectl scale deployment event-registration --replicas=4
+E1022 14:28:59.495620   41744 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:59.510360   41744 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:59.522387   41744 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:59.536956   41744 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:59.548480   41744 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl rollout status deployment/event-registration --timeout=120s
+E1022 14:28:59.754531   59836 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:59.770002   59836 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:59.782425   59836 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:28:59.793501   59836 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl get pods -l app=event-registration -o wide
+E1022 14:29:00.013864   58436 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:00.052763   58436 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:00.071082   58436 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:00.093936   58436 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:00.106908   58436 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> docker tag event-registration:1.0 event-registration:1.1
+
+
+PS> minikube image load event-registration:1.1
+
+
+PS> kubectl set image deployment/event-registration event-registration=event-registration:1.1
+E1022 14:29:05.932250   60068 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:05.946249   60068 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:05.967259   60068 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:05.983788   60068 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl rollout status deployment/event-registration --timeout=120s
+E1022 14:29:06.177226   45396 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.191351   45396 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.203415   45396 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.216948   45396 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl rollout history deployment/event-registration
+E1022 14:29:06.431011   52840 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.441290   52840 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.450904   52840 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.460580   52840 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl describe deployment event-registration | Select-String 'Image:|Replicas:'
+
+PS> kubectl rollout undo deployment/event-registration
+E1022 14:29:06.953525   56736 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.967870   56736 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.979467   56736 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:06.989993   56736 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl rollout status deployment/event-registration --timeout=120s
+E1022 14:29:07.180165   58536 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.192675   58536 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.205796   58536 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.219212   58536 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl get deployments,pods,services
+E1022 14:29:07.475695   53048 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.490137   53048 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.502315   53048 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.513246   53048 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.526090   53048 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.536263   53048 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:29:07.546097   53048 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+**********************
+Windows PowerShell transcript end
+End time: 20261022142907
+**********************

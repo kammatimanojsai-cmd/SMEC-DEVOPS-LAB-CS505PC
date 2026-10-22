@@ -1,0 +1,49 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261022142158
+Username: MANOJ\kamma
+RunAs User: MANOJ\kamma
+Configuration Name: 
+Machine: MANOJ (Microsoft Windows NT 10.0.26300.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-04-Jenkins-Setup\check-jenkins.ps1
+Process ID: 54816
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+=== 1. Java ===
+openjdk version "21.0.12.1" 2026-08-18 LTS
+OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
+OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)
+
+=== 2. Jenkins Windows service ===
+
+Name    DisplayName  Status StartType
+----    -----------  ------ ---------
+Jenkins Jenkins     Running Automatic
+
+=== 3. Port 8080 listener ===
+
+LocalAddress LocalPort  State OwningProcess
+------------ ---------  ----- -------------
+::                8080 Listen         36308
+
+=== 4. HTTP check http://localhost:8080/login ===
+HTTP status     : 200
+Jenkins version : 2.568.3
+
+=== 5. Plugins and jobs (REST API) ===
+Skipped - set JENKINS_USER and JENKINS_TOKEN to list plugins and jobs.
+
+=== 6. Global tool locations ===
+git  : C:\Program Files\Git\cmd\git.exe
+mvn  : INFO: Could not find files for the given pattern(s).
+**********************
+Windows PowerShell transcript end
+End time: 20261022142201
+**********************

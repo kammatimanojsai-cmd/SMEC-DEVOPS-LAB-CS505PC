@@ -1,0 +1,101 @@
+﻿### Experiment 1 - laptop execution
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:20:14 IST
+
+
+PS> py -3 -m pip install -q -r requirements.txt pytest
+ERROR: Could not find a version that satisfies the requirement pytest (from versions: none)
+
+[notice] A new release of pip is available: 26.1.2 -> 26.2.2
+[notice] To update, run: C:\Users\kamma\AppData\Local\Programs\Python\Python314\python.exe -m pip install --upgrade pip
+ERROR: No matching distribution found for pytest
+
+PS> py -3 -m pytest -v test_app.py
+C:\Users\kamma\AppData\Local\Programs\Python\Python314\python.exe: No module named pytest
+
+PS> docker build -t event-registration:1.0 .
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile:
+#1 transferring dockerfile: 421B 0.1s done
+#1 DONE 0.3s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 ...
+
+#3 [auth] library/python:pull token for registry-1.docker.io
+#3 DONE 0.0s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 8.3s
+
+#4 [internal] load .dockerignore
+#4 transferring context: 59B 0.0s done
+#4 DONE 0.1s
+
+#5 [1/6] FROM docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2
+#5 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 0.1s done
+#5 DONE 0.1s
+
+#6 [internal] load build context
+#6 transferring context: 5.08kB 0.0s done
+#6 DONE 0.1s
+
+#7 [3/6] COPY requirements.txt .
+#7 CACHED
+
+#8 [2/6] WORKDIR /app
+#8 CACHED
+
+#9 [4/6] RUN pip install --no-cache-dir -r requirements.txt
+#9 CACHED
+
+#10 [5/6] COPY app.py .
+#10 DONE 0.1s
+
+#11 [6/6] COPY templates/ templates/
+#11 DONE 0.1s
+
+#12 exporting to image
+#12 exporting layers
+#12 exporting layers 0.2s done
+#12 exporting manifest sha256:6c8a0f03b6dd7afc8f3b324ff248ac026241eff1022693585822e086adb2b631 0.0s done
+#12 exporting config sha256:b51e5ca09cc267f0dd4902bbeafe65d44685d9af9a41c8f47443e8584ea1b9ac 0.0s done
+#12 exporting attestation manifest sha256:90c436402d3fbe608726fd2cdc0dd470cbf1f9366b9469fafdf0f4e7ed9f976e 0.0s done
+#12 exporting manifest list sha256:e026185ce999e34734dc3981b7ee8ad0fb0337af34b01101fc8afc45a32b9239
+#12 exporting manifest list sha256:e026185ce999e34734dc3981b7ee8ad0fb0337af34b01101fc8afc45a32b9239 0.0s done
+#12 naming to docker.io/library/event-registration:1.0 0.0s done
+#12 unpacking to docker.io/library/event-registration:1.0
+#12 unpacking to docker.io/library/event-registration:1.0 0.2s done
+#12 DONE 0.6s
+
+PS> docker images event-registration
+IMAGE                    ID             DISK USAGE   CONTENT SIZE   EXTRA
+event-registration:1.0   e026185ce999        198MB         48.3MB        
+
+PS> docker rm -f event-app
+
+PS> docker run -d --name event-app -p 5000:5000 event-registration:1.0
+1a124abd52052b2e3aeb93975383a61b892ac4995ea42d294bd26844448ac832
+
+PS> docker ps --filter name=event-app
+CONTAINER ID   IMAGE                    COMMAND           CREATED         STATUS         PORTS                                         NAMES
+1a124abd5205   event-registration:1.0   "python app.py"   7 seconds ago   Up 6 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   event-app
+HTTP 200  GET http://localhost:5000/register
+HTTP 200  POST http://localhost:5000/register
+Response contains: Registration Successful! (Ravi Kumar / DevOps Workshop)
+HTTP 400  POST http://localhost:5000/register  (The remote server returned an error: (400) Bad Request.)
+Invalid input correctly rejected with HTTP 400
+
+PS> docker logs event-app
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.3:5000
+[33mPress CTRL+C to quit[0m
+172.17.0.1 - - [22/Oct/2026 08:51:15] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 08:51:15] "POST /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 08:51:15] "[31m[1mPOST /register HTTP/1.1[0m" 400 -

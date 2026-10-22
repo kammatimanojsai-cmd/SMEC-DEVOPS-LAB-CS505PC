@@ -1,0 +1,56 @@
+﻿### Experiment 2 - pull request on GitHub
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:21:27 IST
+
+
+PS> git switch -c exp2-pull-request-demo
+Switched to a new branch 'exp2-pull-request-demo'
+
+PS> git commit -am "Exp 2: pull request demo"
+warning: in the working copy of 'Experiment-02-Git-Commands/README.md', LF will be replaced by CRLF the next time Git touches it
+[exp2-pull-request-demo 8661a49] Exp 2: pull request demo
+ 1 file changed, 2 insertions(+)
+
+PS> git push -u origin exp2-pull-request-demo
+remote: 
+remote: Create a pull request for 'exp2-pull-request-demo' on GitHub by visiting:        
+remote:      https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/pull/new/exp2-pull-request-demo        
+remote: 
+To https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC.git
+ * [new branch]      exp2-pull-request-demo -> exp2-pull-request-demo
+branch 'exp2-pull-request-demo' set up to track 'origin/exp2-pull-request-demo'.
+
+PS> gh pr create --title "Exp 2: Pull request demo" --body "Experiment 2 - demonstrating a GitHub pull request" --base main --head exp2-pull-request-demo
+https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/pull/2
+
+PS> gh pr list --state open
+2	Exp 2: Pull request demo	exp2-pull-request-demo	OPEN	2026-10-22T08:51:33Z
+
+PS> gh pr merge exp2-pull-request-demo --merge --delete-branch
+From https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC
+ * branch            main       -> FETCH_HEAD
+   5db280c..8430be2  main       -> origin/main
+Updating 5db280c..8430be2
+Fast-forward
+ Experiment-02-Git-Commands/README.md | 2 ++
+ 1 file changed, 2 insertions(+)
+
+PS> git switch main
+Already on 'main'
+Your branch is up to date with 'origin/main'.
+
+PS> git pull
+Already up to date.
+
+PS> gh pr list --state merged --limit 3
+2	Exp 2: Pull request demo	exp2-pull-request-demo	MERGED	2026-10-22T08:51:33Z
+1	Exp 2: Pull request demo	exp2-pull-request-demo	MERGED	2026-10-22T07:10:43Z
+
+PS> git log --oneline --graph -5
+*   8430be2 Merge pull request #2 from kammatimanojsai-cmd/exp2-pull-request-demo
+|\  
+| * 8661a49 Exp 2: pull request demo
+|/  
+* 5db280c SMEC DevOps Lab CS505PC - all 12 experiments (code, docs, evidence)
+* 9e0247e Ignore setup helper files
+* b00019b Mark all 12 experiments verified (GitHub Actions run #3)

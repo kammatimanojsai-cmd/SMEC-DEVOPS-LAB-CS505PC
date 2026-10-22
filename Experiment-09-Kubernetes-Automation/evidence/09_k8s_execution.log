@@ -1,0 +1,564 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261022143013
+Username: MANOJ\kamma
+RunAs User: MANOJ\kamma
+Configuration Name: 
+Machine: MANOJ (Microsoft Windows NT 10.0.26300.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\run-k8s.ps1
+Process ID: 57748
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+PS> minikube status
+E1022 14:30:14.069108   57324 status.go:178] status error: host: state: unknown state "minikube": docker container inspe
+ct minikube --format={{.State.Status}}: exit status 1
+stdout:
+
+
+stderr:
+Error response from daemon: No such container: minikube
+E1022 14:30:14.069670   57324 status.go:127] status error: host: state: unknown state "minikube": docker container inspe
+ct minikube --format={{.State.Status}}: exit status 1
+stdout:
+
+
+stderr:
+Error response from daemon: No such container: minikube
+
+PS> docker build -t hello-app:1.0 "C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\..\Experiment-07-Docker-Application"
+Dockerfile:3
+--------------------
+   1 |     # Experiment 7 - Hello World container
+   2 |     ARG BASE_IMAGE=python:3.12-slim
+   3 | >>> FROM ${BASE_IMAGE}
+   4 |     WORKDIR /app
+   5 |     COPY hello.py .
+--------------------
+ERROR: failed to build: failed to solve: failed to fetch oauth token: Post "https://auth.docker.io/token": dial tcp: loo
+kup auth.docker.io: no such host
+
+PS> minikube image load hello-app:1.0
+
+
+PS> kubectl apply -f "C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\deployment.yaml"
+error: error validating "C:\\Users\\kamma\\Documents\\SMEC-DEVOPS-LAB-CS505PC\\Experiment-09-Kubernetes-Automation\\depl
+oyment.yaml": error validating data: failed to download openapi: <html><head><meta http-equiv='refresh' content='1;url=/
+login?from=%2Fopenapi%2Fv2%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fopenapi%2Fv2%3Ftime
+out%3D32s' src='/static/ca570cf2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'
+>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>; if you choose to ignore these errors, turn validation off with --validate=false
+
+PS> kubectl apply -f "C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\service.yaml"
+error: error validating "C:\\Users\\kamma\\Documents\\SMEC-DEVOPS-LAB-CS505PC\\Experiment-09-Kubernetes-Automation\\serv
+ice.yaml": error validating data: failed to download openapi: <html><head><meta http-equiv='refresh' content='1;url=/log
+in?from=%2Fopenapi%2Fv2%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fopenapi%2Fv2%3Ftimeout
+%3D32s' src='/static/ca570cf2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>; if you choose to ignore these errors, turn validation off with --validate=false
+
+PS> kubectl rollout status deployment/hello-app --timeout=120s
+E1022 14:30:21.276138   57700 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.307289   57700 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.318660   57700 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.329681   57700 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl get deployment hello-app
+E1022 14:30:21.529929   51084 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.545712   51084 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.556503   51084 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.567711   51084 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.578045   51084 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl get pods -l app=hello-app -o wide
+E1022 14:30:21.778879   60268 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.790720   60268 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.800867   60268 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.812430   60268 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:21.822369   60268 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+
+PS> kubectl get service hello-app-svc
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:22.081133   53568 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+E1022 14:30:22.098985   53568 memcache.go:265] "Unhandled Error" err=<
+        couldn't get current server API group list: <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2
+Fapi%3Ftimeout%3D32s'/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf
+2/scripts/redirect.js'></script></head><body style='background-color:white; color:white;'>
+        Authentication required
+        <!--
+        You are authenticated as: anonymous
+        Groups that you are in:
+          anonymous
+        Permission you need to have (but didn't): hudson.model.Hudson.Read
+         ... which is implied by: hudson.security.Permission.GenericRead
+         ... which is implied by: hudson.model.Hudson.Administer
+        -->
+
+        </body></html>
+ >
+Error from server (Forbidden): <html><head><meta http-equiv='refresh' content='1;url=/login?from=%2Fapi%3Ftimeout%3D32s'
+/><script id='redirect' data-redirect-url='/login?from=%2Fapi%3Ftimeout%3D32s' src='/static/ca570cf2/scripts/redirect.js
+'></script></head><body style='background-color:white; color:white;'>
+Authentication required
+<!--
+You are authenticated as: anonymous
+Groups that you are in:
+  anonymous
+Permission you need to have (but didn't): hudson.model.Hudson.Read
+ ... which is implied by: hudson.security.Permission.GenericRead
+ ... which is implied by: hudson.model.Hudson.Administer
+-->
+
+</body></html>
+You cannot call a method on a null-valued expression.
+At C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\run-k8s.ps1:24 char:16
++ foreach ($p in $pods.Split(" ")) { Run "kubectl logs $p --tail=6" }
++                ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\run-k8s.ps1:24 char:16
++ foreach ($p in $pods.Split(" ")) { Run "kubectl logs $p --tail=6" }
++                ~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+
+PS> (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], 
+WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+
+PS> (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], 
+WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+
+PS> (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], 
+WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+
+PS> (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], 
+WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+
+PS> (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
+PS>TerminatingError(Invoke-WebRequest): "Unable to connect to the remote server"
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], 
+WebException
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+Invoke-WebRequest : Unable to connect to the remote server
+At line:1 char:2
++ (Invoke-WebRequest -UseBasicParsing "http://localhost:8086").Content
++  ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (System.Net.HttpWebRequest:HttpWebRequest) [Invoke-WebRequest], WebExc
+   eption
+    + FullyQualifiedErrorId : WebCmdletWebResponseException,Microsoft.PowerShell.Commands.InvokeWebRequestCommand
+
+
+PS> kubectl describe deployment hello-app | Select-String 'Replicas:|Image:|StrategyType'
+
+PS> kubectl scale deployment hello-app --replicas=5
+
+
+PS> kubectl rollout status deployment/hello-app --timeout=120s
+
+
+PS> kubectl get pods -l app=hello-app
+
+
+PS> kubectl scale deployment hello-app --replicas=3
+
+You cannot call a method on a null-valued expression.
+At C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\run-k8s.ps1:40 char:1
++ $first = $pods.Split(" ")[0]
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+You cannot call a method on a null-valued expression.
+At C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-09-Kubernetes-Automation\run-k8s.ps1:40 char:1
++ $first = $pods.Split(" ")[0]
++ ~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+    + CategoryInfo          : InvalidOperation: (:) [], RuntimeException
+    + FullyQualifiedErrorId : InvokeMethodOnNull
+
+
+PS> kubectl delete pod
+
+
+PS> kubectl get pods -l app=hello-app
+
+
+PS> kubectl rollout restart deployment/hello-app
+
+
+PS> kubectl rollout status deployment/hello-app --timeout=120s
+
+
+PS> kubectl get deployment,pods,service -l app=hello-app
+
+**********************
+Windows PowerShell transcript end
+End time: 20261022143058
+**********************

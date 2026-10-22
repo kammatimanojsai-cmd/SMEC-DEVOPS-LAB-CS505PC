@@ -1,0 +1,95 @@
+﻿**********************
+Windows PowerShell transcript start
+Start time: 20261022142305
+Username: MANOJ\kamma
+RunAs User: MANOJ\kamma
+Configuration Name: 
+Machine: MANOJ (Microsoft Windows NT 10.0.26300.0)
+Host Application: C:\Windows\System32\WindowsPowerShell\v1.0\powershell.exe -NoProfile -ExecutionPolicy Bypass -File C:\Users\kamma\Documents\SMEC-DEVOPS-LAB-CS505PC\Experiment-06-Docker-Commands\docker-commands.ps1
+Process ID: 56552
+PSVersion: 5.1.26100.9711
+PSEdition: Desktop
+PSCompatibleVersions: 1.0, 2.0, 3.0, 4.0, 5.0, 5.1.26100.9711
+BuildVersion: 10.0.26100.9711
+CLRVersion: 4.0.30319.42000
+WSManStackVersion: 3.0
+PSRemotingProtocolVersion: 2.3
+SerializationVersion: 1.1.0.1
+**********************
+
+PS> docker --version
+
+
+PS> docker pull nginx:stable-alpine
+
+
+PS> docker pull hello-world
+
+
+PS> docker run --rm hello-world
+
+
+PS> docker images
+
+
+PS> docker run -d --name demo-web -p 8081:80 nginx:stable-alpine
+
+
+PS> docker ps
+
+
+PS> (Invoke-WebRequest -UseBasicParsing http://localhost:8081).StatusCode
+200
+
+PS> docker logs demo-web
+2026/10/22 08:53:40 [notice] 1#1: using the "epoll" event method
+2026/10/22 08:53:40 [notice] 1#1: nginx/1.30.6
+2026/10/22 08:53:40 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0)
+2026/10/22 08:53:40 [notice] 1#1: OS: Linux 6.18.54.1-microsoft-standard-WSL2
+2026/10/22 08:53:40 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1048576:1048576
+2026/10/22 08:53:40 [notice] 1#1: start worker processes
+2026/10/22 08:53:40 [notice] 1#1: start worker process 30
+2026/10/22 08:53:40 [notice] 1#1: start worker process 31
+2026/10/22 08:53:40 [notice] 1#1: start worker process 32
+2026/10/22 08:53:40 [notice] 1#1: start worker process 33
+2026/10/22 08:53:40 [notice] 1#1: start worker process 34
+2026/10/22 08:53:40 [notice] 1#1: start worker process 35
+2026/10/22 08:53:40 [notice] 1#1: start worker process 36
+2026/10/22 08:53:40 [notice] 1#1: start worker process 37
+2026/10/22 08:53:40 [notice] 1#1: start worker process 38
+2026/10/22 08:53:40 [notice] 1#1: start worker process 39
+2026/10/22 08:53:40 [notice] 1#1: start worker process 40
+2026/10/22 08:53:40 [notice] 1#1: start worker process 41
+
+PS> docker exec demo-web cat /etc/hostname
+
+
+PS> docker inspect --format '{{.Name}} {{.Config.Image}} {{.State.Status}}' demo-web
+
+
+PS> docker stop demo-web
+
+
+PS> docker ps -a --filter name=demo-web
+
+
+PS> docker start demo-web
+
+
+PS> docker ps --filter name=demo-web
+
+
+PS> docker stop demo-web
+
+
+PS> docker rm demo-web
+
+
+PS> docker ps -a --filter name=demo-web
+
+
+docker push skipped - run 'docker login' and set $env:DOCKERHUB_USER to demonstrate it.
+**********************
+Windows PowerShell transcript end
+End time: 20261022142347
+**********************

@@ -1,0 +1,114 @@
+﻿### Experiment 2 - laptop execution (Git Bash)
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:21:22 IST
+
+# Using local bare repo as remote: remote-repo.git
+
+$ git --version
+git version 2.55.0.windows.3
+
+$ git init -b main
+Initialized empty Git repository in C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-02-Git-Commands/git-demo-workspace/git-lab-demo/.git/
+
+$ git config user.name Manoj
+
+$ git config user.email kammatimanojsai@gmail.com
+
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add README.md
+warning: in the working copy of 'README.md', LF will be replaced by CRLF the next time Git touches it
+
+$ git status --short
+A  README.md
+
+$ git commit -m Initial commit: add README
+[main (root-commit) 79a4225] Initial commit: add README
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+$ git add greet.py
+warning: in the working copy of 'greet.py', LF will be replaced by CRLF the next time Git touches it
+
+$ git commit -m Add greet function
+[main 1f3c4c2] Add greet function
+ 1 file changed, 2 insertions(+)
+ create mode 100644 greet.py
+
+$ git log --oneline
+1f3c4c2 Add greet function
+79a4225 Initial commit: add README
+
+$ git branch feature-login
+
+$ git branch
+  feature-login
+* main
+
+$ git switch feature-login
+Switched to branch 'feature-login'
+
+$ git add login.py
+warning: in the working copy of 'login.py', LF will be replaced by CRLF the next time Git touches it
+
+$ git commit -m Add login feature
+[feature-login e2ec7de] Add login feature
+ 1 file changed, 2 insertions(+)
+ create mode 100644 login.py
+
+$ git checkout main
+Switched to branch 'main'
+
+$ git merge --no-ff feature-login -m Merge branch 'feature-login'
+Merge made by the 'ort' strategy.
+ login.py | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 login.py
+
+$ git log --oneline --graph --all
+*   f282b90 Merge branch 'feature-login'
+|\  
+| * e2ec7de Add login feature
+|/  
+* 1f3c4c2 Add greet function
+* 79a4225 Initial commit: add README
+
+$ git remote add origin /c/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-02-Git-Commands/git-demo-workspace/remote-repo.git
+
+$ git remote -v
+origin	C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-02-Git-Commands/git-demo-workspace/remote-repo.git (fetch)
+origin	C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-02-Git-Commands/git-demo-workspace/remote-repo.git (push)
+
+$ git push -u origin main
+To C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-02-Git-Commands/git-demo-workspace/remote-repo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+$ git push origin feature-login
+To C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-02-Git-Commands/git-demo-workspace/remote-repo.git
+ * [new branch]      feature-login -> feature-login
+
+$ git clone /c/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-02-Git-Commands/git-demo-workspace/remote-repo.git cloned-copy
+Cloning into 'cloned-copy'...
+done.
+
+$ git -C cloned-copy log --oneline -3
+f282b90 Merge branch 'feature-login'
+e2ec7de Add login feature
+1f3c4c2 Add greet function
+
+$ ls cloned-copy
+README.md
+greet.py
+login.py
+
+$ git branch -d feature-login

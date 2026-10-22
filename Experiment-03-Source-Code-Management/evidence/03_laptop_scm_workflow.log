@@ -1,0 +1,148 @@
+﻿### Experiment 3 - laptop execution (Git Bash)
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:21:50 IST
+
+# Central repository (local bare repo): central.git
+
+########## Developer A: import the Experiment 1 project ##########
+
+$ git init -b main
+Initialized empty Git repository in C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/dev-a/.git/
+
+$ git add .
+warning: in the working copy of '.dockerignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of '.gitignore', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'Dockerfile', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'app.py', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'requirements.txt', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'templates/register.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'templates/success.html', LF will be replaced by CRLF the next time Git touches it
+warning: in the working copy of 'test_app.py', LF will be replaced by CRLF the next time Git touches it
+
+$ git status --short
+A  .dockerignore
+A  .gitignore
+A  Dockerfile
+A  app.py
+A  requirements.txt
+A  templates/register.html
+A  templates/success.html
+A  test_app.py
+
+$ git commit -m Import Flask event registration app (Experiment 1)
+[main (root-commit) bce2196] Import Flask event registration app (Experiment 1)
+ 8 files changed, 178 insertions(+)
+ create mode 100644 .dockerignore
+ create mode 100644 .gitignore
+ create mode 100644 Dockerfile
+ create mode 100644 app.py
+ create mode 100644 requirements.txt
+ create mode 100644 templates/register.html
+ create mode 100644 templates/success.html
+ create mode 100644 test_app.py
+
+$ git remote add origin /c/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central.git
+
+$ git push -u origin main
+To C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+$ git tag -a v1.0 -m Release 1.0 - registration form
+
+$ git push origin v1.0
+To C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central.git
+ * [new tag]         v1.0 -> v1.0
+
+########## Developer B: clone, branch, change, push ##########
+
+$ git clone /c/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central.git dev-b
+Cloning into 'dev-b'...
+done.
+
+$ git switch -c feature/add-workshop-event
+Switched to a new branch 'feature/add-workshop-event'
+
+$ git diff
+warning: in the working copy of 'app.py', LF will be replaced by CRLF the next time Git touches it
+diff --git a/app.py b/app.py
+index e67b0cb..434b9d2 100644
+--- a/app.py
++++ b/app.py
+@@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
+ 
+ app = Flask(__name__)
+ 
+-EVENTS = ["DevOps Workshop", "Cloud Bootcamp", "Hackathon 2026"]
++EVENTS = ["DevOps Workshop", "Cloud Bootcamp", "Hackathon 2026", "Kubernetes Workshop"]
+ EMAIL_RE = re.compile(r"^[^@\s]+@[^@\s]+\.[^@\s]+$")
+ PHONE_RE = re.compile(r"^[6-9]\d{9}$")          # 10-digit Indian mobile number
+ registrations = []                                # in-memory store (lab demo)
+
+$ git commit -am Add Kubernetes Workshop to the event list
+warning: in the working copy of 'app.py', LF will be replaced by CRLF the next time Git touches it
+[feature/add-workshop-event b2d3ea9] Add Kubernetes Workshop to the event list
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ git push -u origin feature/add-workshop-event
+To C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central.git
+ * [new branch]      feature/add-workshop-event -> feature/add-workshop-event
+branch 'feature/add-workshop-event' set up to track 'origin/feature/add-workshop-event'.
+
+$ git branch -a
+* feature/add-workshop-event
+  main
+  remotes/origin/HEAD -> origin/main
+  remotes/origin/feature/add-workshop-event
+  remotes/origin/main
+
+########## Developer A: review and merge the feature branch ##########
+
+$ git fetch origin
+From C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central
+ * [new branch]      feature/add-workshop-event -> origin/feature/add-workshop-event
+
+$ git branch -r
+  origin/HEAD -> origin/main
+  origin/feature/add-workshop-event
+  origin/main
+
+$ git log --oneline main..origin/feature/add-workshop-event
+b2d3ea9 Add Kubernetes Workshop to the event list
+
+$ git merge --no-ff origin/feature/add-workshop-event -m Merge feature/add-workshop-event
+Merge made by the 'ort' strategy.
+ app.py | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+$ git push origin main
+To C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central.git
+   bce2196..398338d  main -> main
+
+$ git push origin --delete feature/add-workshop-event
+To C:/Users/kamma/Documents/SMEC-DEVOPS-LAB-CS505PC/Experiment-03-Source-Code-Management/scm-workspace/central.git
+ - [deleted]         feature/add-workshop-event
+
+$ git log --oneline --graph --decorate -6
+*   398338d (HEAD -> main, origin/main, origin/HEAD) Merge feature/add-workshop-event
+|\  
+| * b2d3ea9 Add Kubernetes Workshop to the event list
+|/  
+* bce2196 (tag: v1.0) Import Flask event registration app (Experiment 1)
+
+$ git ls-remote --heads --tags origin
+398338d032eca79ee8f6b00303593966f155a73e	refs/heads/main
+8efc9a8e7c059fc022b044d0819490d8457ffee8	refs/tags/v1.0
+bce219648bded28c18176e5b2c11351e73cbd92e	refs/tags/v1.0^{}
+
+PS> git ls-remote --heads origin
+da696a44db96162b654120080cdc2e4fa7411847	refs/heads/jenkins-demo
+8430be276e1921bb07dffcbaf6df1521dd5c87c9	refs/heads/main
+
+PS> git log --oneline -5 -- :/Experiment-01-Flask-Registration
+5db280c SMEC DevOps Lab CS505PC - all 12 experiments (code, docs, evidence)
+6ba1707 CI evidence from run #3
+1d12763 CI evidence from run #2
+604c0a4 CI evidence from run #1
+32d31e3 SMEC DevOps Lab CS505PC - all 12 experiments with code, docs and evidence
+Code on GitHub: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/tree/main/Experiment-01-Flask-Registration

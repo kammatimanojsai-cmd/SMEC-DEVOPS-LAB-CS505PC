@@ -1,0 +1,68 @@
+﻿### Experiment 7 - laptop execution
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:23:47 IST
+
+
+PS> docker build -t hello-app:1.0 .
+#0 building with "desktop-linux" instance using docker driver
+
+#1 [internal] load build definition from Dockerfile
+#1 transferring dockerfile: 185B 0.0s done
+#1 DONE 0.1s
+
+#2 [internal] load metadata for docker.io/library/python:3.12-slim
+#2 DONE 1.2s
+
+#3 [internal] load .dockerignore
+#3 transferring context: 2B done
+#3 DONE 0.0s
+
+#4 [internal] load build context
+#4 transferring context: 1.28kB 0.0s done
+#4 DONE 0.1s
+
+#5 [1/3] FROM docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2
+#5 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 0.0s done
+#5 DONE 0.1s
+
+#6 [2/3] WORKDIR /app
+#6 CACHED
+
+#7 [3/3] COPY hello.py .
+#7 DONE 0.0s
+
+#8 exporting to image
+#8 exporting layers 0.1s done
+#8 exporting manifest sha256:c11fff30fada2973f348ab56e5cefdaa761e5618d5e26b138d739ec1405ca959 0.0s done
+#8 exporting config sha256:cd8e42c7d2598ccdcbd89c94cc6b699633f0b102c5944832f20d25679621abcb 0.0s done
+#8 exporting attestation manifest sha256:09c5ff3d9e91a0fcea18a2a8231f9dda65ba185ad9203094303e8c281b5cf24f 0.0s done
+#8 exporting manifest list sha256:96e86f7624e556c51f45e732a9e3c3fb34de243b31f0662296f04f72681774f1
+#8 exporting manifest list sha256:96e86f7624e556c51f45e732a9e3c3fb34de243b31f0662296f04f72681774f1 0.0s done
+#8 naming to docker.io/library/hello-app:1.0 done
+#8 unpacking to docker.io/library/hello-app:1.0 0.0s done
+#8 DONE 0.3s
+
+PS> docker images hello-app
+IMAGE           ID             DISK USAGE   CONTENT SIZE   EXTRA
+hello-app:1.0   96e86f7624e5        177MB         43.3MB        
+
+PS> docker rm -f hello-container
+
+PS> docker run --name hello-container hello-app:1.0
+Hello, World!
+Hello from a Docker container - SMEC DevOps Lab (CS505PC)
+Python version : 3.12.15
+Container host : 13b70a35e735
+Started at     : 2026-10-22 08:53:52
+
+PS> docker ps -a --filter name=hello-container
+CONTAINER ID   IMAGE           COMMAND             CREATED         STATUS                              PORTS     NAMES
+13b70a35e735   hello-app:1.0   "python hello.py"   2 seconds ago   Exited (0) Less than a second ago             hello-container
+
+PS> docker logs hello-container
+Hello, World!
+Hello from a Docker container - SMEC DevOps Lab (CS505PC)
+Python version : 3.12.15
+Container host : 13b70a35e735
+Started at     : 2026-10-22 08:53:52
+VERIFIED: 'Hello, World!' found in docker logs

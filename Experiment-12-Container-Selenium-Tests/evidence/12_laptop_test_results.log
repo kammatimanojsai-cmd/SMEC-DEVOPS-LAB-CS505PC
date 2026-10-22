@@ -1,0 +1,35 @@
+﻿### Experiment 12 - laptop Selenium run (Chrome, visible window)
+### Executed on : MANOJ (Windows 10.0.26300.0) by kamma
+### Date/time   : 2026-10-22 14:32:39 IST
+
+
+PS> mvnw.cmd -q compile exec:java 
+Oct 22, 2026 2:32:48 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+WARNING: Unable to find an exact match for CDP version 155, returning the closest version; found: 152; Please update to a Selenium version that supports CDP version 155
+Application under test: http://localhost:5000
+[PASS] TC1 Registration page loads                      title=Event Registration
+[PASS] TC2 Form heading is displayed                    h2=Event Registration Form
+[PASS] TC3 All form fields are present                  name, email, phone, event
+[PASS] TC4 Valid submission shows success               message=Registration Successful!
+[PASS] TC5 Success page shows submitted data            name=Ravi Kumar, event=DevOps Workshop
+[PASS] TC6 Invalid email shows validation error         error=Enter a valid email address.
+[PASS] TC7 Empty form shows 4 validation errors         errors shown=4
+
+Tests run: 7, Passed: 7, Failed: 0
+BUILD SUCCESS - all Selenium tests passed
+
+PS> docker logs event-app
+ * Serving Flask app 'app'
+ * Debug mode: off
+[31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.3:5000
+[33mPress CTRL+C to quit[0m
+172.17.0.1 - - [22/Oct/2026 09:02:48] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:02:48] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+172.17.0.1 - - [22/Oct/2026 09:02:49] "POST /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:02:50] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:02:50] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
+172.17.0.1 - - [22/Oct/2026 09:02:50] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:02:50] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
