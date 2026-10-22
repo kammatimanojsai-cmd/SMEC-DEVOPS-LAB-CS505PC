@@ -27,3 +27,8 @@ deploy/
 *token*
 secrets/
 ci-out/
+
+# helper files left by Claude during setup
+.ci.bundle
+.RegistrationAppTest.java.check
+SMEC-DEVOPS-LAB-CS505PC.zip
