@@ -3,7 +3,7 @@ package in.smec.devops;
 /** Entry point packaged into jenkins-cicd-demo.jar and executed in the Deploy stage. */
 public class App {
 
-    public static final String VERSION = "1.0";
+    public static final String VERSION = "1.1";
 
     public static void main(String[] args) {
         Calculator calc = new Calculator();
