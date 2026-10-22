@@ -19,7 +19,7 @@
   Nothing you type is saved to any file.
 #>
 param(
-    [int[]]$Only = @(),
+    [string]$Only = "",          # e.g. -Only 1,6,8,9  (comma or space separated)
     [switch]$SkipInstall,
     [switch]$SkipGitHub
 )
@@ -32,7 +32,9 @@ $Results = [ordered]@{}
 $Started = Get-Date
 
 # ---------------------------------------------------------------- helpers
-function Want([int]$n) { return ($Only.Count -eq 0) -or ($Only -contains $n) }
+$OnlyList = @("$Only" -split '[,;\s]+' | Where-Object { $_ -match '^\d+$' } | ForEach-Object { [int]$_ })
+if ($OnlyList.Count -gt 0) { Write-Host "Running only experiments: $($OnlyList -join ', ')" -ForegroundColor Cyan }
+function Want([int]$n) { return ($OnlyList.Count -eq 0) -or ($OnlyList -contains $n) }
 
 function Section([string]$t) {
     Write-Host ""
