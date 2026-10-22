@@ -88,3 +88,6 @@ The Git commands for creating a repository, committing, branching, merging, push
 
 ## Demonstration
 Run `./git-commands-demo.sh` in Git Bash and walk through the output, then show the merged pull request on GitHub.
+
+## Pull Request Demonstration (done)
+This section was added on branch `exp2-pull-request-demo` and merged into `main` through a GitHub pull request.
