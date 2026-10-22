@@ -1,6 +1,6 @@
 ### Experiment 1 - Flask event registration form + Docker
-### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:39:25 IST
+### Executed by GitHub Actions run #4: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39754373195
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 14:48:24 IST
 
 $ python --version
 Python 3.12.15
@@ -23,23 +23,20 @@ test_app.py::test_invalid_email_rejected PASSED                          [ 60%]
 test_app.py::test_invalid_phone_rejected PASSED                          [ 80%]
 test_app.py::test_missing_event_rejected PASSED                          [100%]
 
-============================== 5 passed in 0.60s ===============================
+============================== 5 passed in 0.12s ===============================
 
 $ docker build -t event-registration:1.0 .
 #0 building with "default" instance using docker driver
 
 #1 [internal] load build definition from Dockerfile
-#1 transferring dockerfile: 421B 0.0s done
-#1 DONE 0.1s
+#1 transferring dockerfile: 421B done
+#1 DONE 0.0s
 
-#2 [internal] load metadata for docker.io/library/python:3.12-slim
-#2 ...
+#2 [auth] library/python:pull token for registry-1.docker.io
+#2 DONE 0.0s
 
-#3 [auth] library/python:pull token for registry-1.docker.io
-#3 DONE 0.0s
-
-#2 [internal] load metadata for docker.io/library/python:3.12-slim
-#2 DONE 0.9s
+#3 [internal] load metadata for docker.io/library/python:3.12-slim
+#3 DONE 0.6s
 
 #4 [internal] load .dockerignore
 #4 transferring context: 59B done
@@ -50,92 +47,90 @@ $ docker build -t event-registration:1.0 .
 #5 DONE 0.0s
 
 #6 [1/6] FROM docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2
-#6 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 0.0s done
+#6 resolve docker.io/library/python:3.12-slim@sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 done
 #6 sha256:cb33f7f771ecec2ef1225cf39b159591a040391bd73e4c01f00fdfc4c47611d2 10.37kB / 10.37kB done
 #6 sha256:e8a38829209aea82774882e5157e1f7c3e8c8393ff53a697b3580896e57f345c 1.75kB / 1.75kB done
 #6 sha256:a33c10a97f11005523814c6eee013986119fe41f3122f444518117536675c8e1 5.66kB / 5.66kB done
-#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 0B / 29.84MB 0.1s
+#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 2.10MB / 29.84MB 0.1s
 #6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0B / 1.29MB 0.1s
 #6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 0B / 12.12MB 0.1s
-#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 4.19MB / 12.12MB 0.2s
-#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 4.19MB / 29.84MB 0.3s
+#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.2s
 #6 sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 1.29MB / 1.29MB 0.2s done
-#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.3s
-#6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 249B / 249B 0.3s
-#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 28.31MB / 29.84MB 0.5s
+#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 5.24MB / 12.12MB 0.2s
+#6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.4s
+#6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 0B / 249B 0.4s
+#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.4s done
 #6 sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 12.12MB / 12.12MB 0.4s done
-#6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 249B / 249B 0.3s done
-#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.6s
-#6 sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 29.84MB / 29.84MB 0.7s done
-#6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034
-#6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 4.3s done
+#6 sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 249B / 249B 0.5s done
+#6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 0.1s
+#6 extracting sha256:f2be67225471500c788ce88c597eb5ea8336e912ad1ca4815650e0281afe2034 0.6s done
 #6 extracting sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c
-#6 extracting sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0.5s done
+#6 extracting sha256:be6443c06d3c9914acdca3ffb368adad23d4f282b55e71e730878ad3e3c3f75c 0.1s done
 #6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7
-#6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 2.6s done
+#6 extracting sha256:b524bb3aba7394d85233f3a0a742b8f1b56179e8f61492f73d42a1ff118623b7 0.4s done
 #6 extracting sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645
 #6 extracting sha256:5c397e4307db7bd392eff1d36de88b04da2a137a4b906b7e0e4657bada560645 done
-#6 DONE 13.0s
+#6 DONE 8.3s
 
 #7 [2/6] WORKDIR /app
 #7 DONE 0.0s
 
 #8 [3/6] COPY requirements.txt .
-#8 DONE 0.1s
+#8 DONE 0.0s
 
 #9 [4/6] RUN pip install --no-cache-dir -r requirements.txt
-#9 8.237 Collecting Flask<4.0,>=3.0 (from -r requirements.txt (line 1))
-#9 8.352   Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
-#9 8.403 Collecting blinker>=1.9.0 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
-#9 8.426   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
-#9 8.493 Collecting click>=8.1.3 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
-#9 8.518   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
-#9 8.567 Collecting itsdangerous>=2.2.0 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
-#9 8.590   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
-#9 8.651 Collecting jinja2>=3.1.2 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
-#9 8.673   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
-#9 8.913 Collecting markupsafe>=2.1.1 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
-#9 8.937   Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
-#9 9.021 Collecting werkzeug>=3.1.0 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
-#9 9.043   Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
-#9 9.098 Downloading flask-3.1.3-py3-none-any.whl (103 kB)
-#9 9.137 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
-#9 9.161 Downloading click-8.5.0-py3-none-any.whl (125 kB)
-#9 9.183 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
-#9 9.205 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
-#9 9.226 Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
-#9 9.247 Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
-#9 9.339 Installing collected packages: markupsafe, itsdangerous, click, blinker, werkzeug, jinja2, Flask
-#9 12.63 Successfully installed Flask-3.1.3 blinker-1.9.0 click-8.5.0 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.4 werkzeug-3.1.9
-#9 12.63 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
-#9 12.98 
-#9 12.98 [notice] A new release of pip is available: 25.0.1 -> 26.2.2
-#9 12.98 [notice] To update, run: pip install --upgrade pip
-#9 DONE 13.5s
+#9 1.141 Collecting Flask<4.0,>=3.0 (from -r requirements.txt (line 1))
+#9 1.206   Downloading flask-3.1.3-py3-none-any.whl.metadata (3.2 kB)
+#9 1.226 Collecting blinker>=1.9.0 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
+#9 1.239   Downloading blinker-1.9.0-py3-none-any.whl.metadata (1.6 kB)
+#9 1.265 Collecting click>=8.1.3 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
+#9 1.277   Downloading click-8.5.0-py3-none-any.whl.metadata (2.6 kB)
+#9 1.296 Collecting itsdangerous>=2.2.0 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
+#9 1.309   Downloading itsdangerous-2.2.0-py3-none-any.whl.metadata (1.9 kB)
+#9 1.331 Collecting jinja2>=3.1.2 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
+#9 1.344   Downloading jinja2-3.1.6-py3-none-any.whl.metadata (2.9 kB)
+#9 1.405 Collecting markupsafe>=2.1.1 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
+#9 1.418   Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl.metadata (2.7 kB)
+#9 1.443 Collecting werkzeug>=3.1.0 (from Flask<4.0,>=3.0->-r requirements.txt (line 1))
+#9 1.456   Downloading werkzeug-3.1.9-py3-none-any.whl.metadata (4.1 kB)
+#9 1.474 Downloading flask-3.1.3-py3-none-any.whl (103 kB)
+#9 1.503 Downloading blinker-1.9.0-py3-none-any.whl (8.5 kB)
+#9 1.516 Downloading click-8.5.0-py3-none-any.whl (125 kB)
+#9 1.533 Downloading itsdangerous-2.2.0-py3-none-any.whl (16 kB)
+#9 1.546 Downloading jinja2-3.1.6-py3-none-any.whl (134 kB)
+#9 1.561 Downloading markupsafe-3.0.4-cp312-cp312-manylinux2014_x86_64.manylinux_2_17_x86_64.manylinux_2_28_x86_64.whl (22 kB)
+#9 1.574 Downloading werkzeug-3.1.9-py3-none-any.whl (228 kB)
+#9 1.588 Installing collected packages: markupsafe, itsdangerous, click, blinker, werkzeug, jinja2, Flask
+#9 1.856 Successfully installed Flask-3.1.3 blinker-1.9.0 click-8.5.0 itsdangerous-2.2.0 jinja2-3.1.6 markupsafe-3.0.4 werkzeug-3.1.9
+#9 1.856 WARNING: Running pip as the 'root' user can result in broken permissions and conflicting behaviour with the system package manager, possibly rendering your system unusable. It is recommended to use a virtual environment instead: https://pip.pypa.io/warnings/venv. Use the --root-user-action option if you know what you are doing and want to suppress this warning.
+#9 1.952 
+#9 1.952 [notice] A new release of pip is available: 25.0.1 -> 26.2.2
+#9 1.952 [notice] To update, run: pip install --upgrade pip
+#9 DONE 2.1s
 
 #10 [5/6] COPY app.py .
-#10 DONE 0.5s
+#10 DONE 0.0s
 
 #11 [6/6] COPY templates/ templates/
-#11 DONE 0.4s
+#11 DONE 0.0s
 
 #12 exporting to image
 #12 exporting layers
-#12 exporting layers 4.4s done
-#12 writing image sha256:a4fe9d685014984592e7ded8923328565cd6aee2a953de9b4c68329722caf607 done
-#12 naming to docker.io/library/event-registration:1.0 0.0s done
-#12 DONE 4.5s
+#12 exporting layers 0.3s done
+#12 writing image sha256:b0382df3e15e9b33cf50052a28b540f1596e9de9bba3151e876819fd47a1cb58 done
+#12 naming to docker.io/library/event-registration:1.0 done
+#12 DONE 0.3s
 
 $ docker images event-registration
-REPOSITORY           TAG       IMAGE ID       CREATED         SIZE
-event-registration   1.0       a4fe9d685014   5 seconds ago   132MB
+REPOSITORY           TAG       IMAGE ID       CREATED        SIZE
+event-registration   1.0       b0382df3e15e   1 second ago   132MB
 
 $ docker run -d --name event-app -p 5000:5000 event-registration:1.0
-c0262f4abea9ec96a3843a85da5e9e5d73ecf70b693ff66543944610f989d7d4
+eebe18f063b81b9e5498f49443f03ec8a640d6d3e554cb88ed20d6d6e5df404b
 
 $ docker ps --filter name=event-app
 CONTAINER ID   IMAGE                    COMMAND           CREATED         STATUS         PORTS                                         NAMES
-c0262f4abea9   event-registration:1.0   "python app.py"   4 seconds ago   Up 3 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   event-app
+eebe18f063b8   event-registration:1.0   "python app.py"   2 seconds ago   Up 2 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   event-app
 
 $ curl http://localhost:5000/register
 HTTP 200
@@ -170,10 +165,10 @@ $ docker logs event-app
  * Running on http://127.0.0.1:5000
  * Running on http://172.17.0.2:5000
 [33mPress CTRL+C to quit[0m
-172.17.0.1 - - [22/Oct/2026 08:10:38] "GET /health HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:38] "GET /register HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:38] "POST /register HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:38] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
-172.17.0.1 - - [22/Oct/2026 08:10:38] "GET /health HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:45] "GET /register HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:46] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+172.17.0.1 - - [22/Oct/2026 09:18:42] "GET /health HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:18:42] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:18:42] "POST /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:18:42] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
+172.17.0.1 - - [22/Oct/2026 09:18:42] "GET /health HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:18:53] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:18:53] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -

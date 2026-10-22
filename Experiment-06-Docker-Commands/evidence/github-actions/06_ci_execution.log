@@ -1,6 +1,6 @@
 ### Experiment 6 - Docker commands (pull from Docker Hub, push to GitHub Container Registry)
-### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:39:12 IST
+### Executed by GitHub Actions run #4: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39754373195
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 14:48:24 IST
 
 $ echo $GITHUB_TOKEN | docker login ghcr.io -u <github-user> --password-stdin
 
@@ -23,55 +23,55 @@ e125989d16f0: Pulling fs layer
 81b64ae234ef: Pulling fs layer
 bb658a254196: Pulling fs layer
 5b8cb54cfa40: Pulling fs layer
+885725a63a7c: Waiting
 e125989d16f0: Waiting
 81b64ae234ef: Waiting
 bb658a254196: Waiting
 5b8cb54cfa40: Waiting
-885725a63a7c: Waiting
 f19a2d3b6951: Verifying Checksum
 f19a2d3b6951: Download complete
-7b229517ed22: Verifying Checksum
-7b229517ed22: Download complete
 9f0afb44f10e: Verifying Checksum
 9f0afb44f10e: Download complete
+7b229517ed22: Verifying Checksum
+7b229517ed22: Download complete
 885725a63a7c: Verifying Checksum
 885725a63a7c: Download complete
-7b229517ed22: Pull complete
 e125989d16f0: Verifying Checksum
 e125989d16f0: Download complete
 81b64ae234ef: Verifying Checksum
 81b64ae234ef: Download complete
 bb658a254196: Verifying Checksum
 bb658a254196: Download complete
+7b229517ed22: Pull complete
+5b8cb54cfa40: Verifying Checksum
+5b8cb54cfa40: Download complete
 9f0afb44f10e: Pull complete
 f19a2d3b6951: Pull complete
 885725a63a7c: Pull complete
 e125989d16f0: Pull complete
 81b64ae234ef: Pull complete
 bb658a254196: Pull complete
-5b8cb54cfa40: Verifying Checksum
-5b8cb54cfa40: Download complete
 5b8cb54cfa40: Pull complete
 Digest: sha256:c59d1f8b1e0e42da75be973424cd72e23f7f8adfb54e982f4d1cd0216a5a5576
 Status: Downloaded newer image for nginx:stable-alpine
 docker.io/library/nginx:stable-alpine
 
 $ docker images
-REPOSITORY                                   TAG             IMAGE ID       CREATED       SIZE
-nginx                                        stable-alpine   88f52f3d58a5   9 hours ago   62.3MB
-ghcr.io/github/gh-aw-firewall/agent          latest          91d6360941a3   9 days ago    547MB
-ghcr.io/dependabot/dependabot-updater-core   latest          759e96ae5997   9 days ago    835MB
-ghcr.io/github/gh-aw-firewall/api-proxy      latest          986b9bc056a9   10 days ago   207MB
-ghcr.io/github/github-mcp-server             latest          9875fef5aa1f   13 days ago   50.1MB
-ghcr.io/github/gh-aw-mcpg                    latest          808996e3d477   2 weeks ago   181MB
-ghcr.io/github/gh-aw-firewall/squid          latest          dc17fe424471   2 weeks ago   57.1MB
+REPOSITORY                                   TAG             IMAGE ID       CREATED        SIZE
+nginx                                        stable-alpine   88f52f3d58a5   10 hours ago   62.3MB
+ghcr.io/github/gh-aw-firewall/agent          latest          49663c2c4af3   3 days ago     812MB
+ghcr.io/github/gh-aw-mcpg                    latest          b33d4932fd93   5 days ago     183MB
+ghcr.io/github/gh-aw-firewall/api-proxy      latest          375ede42c656   5 days ago     225MB
+ghcr.io/dependabot/dependabot-updater-core   latest          759e96ae5997   9 days ago     835MB
+ghcr.io/github/github-mcp-server             latest          9875fef5aa1f   13 days ago    50.1MB
+ghcr.io/github/gh-aw-firewall/squid          latest          dc17fe424471   2 weeks ago    57.1MB
 
 $ docker run -d --name demo-web -p 8081:80 nginx:stable-alpine
-cf33c379a9b4fc4ef06184cc3b993a35a9d307e6ae3eb0a14fa272b7567f7f81
+b30ba2f629bbd600f321638d5bb8d48000a7b07892b207d8072219187c9ec0dc
 
 $ docker ps
 CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS         PORTS                                     NAMES
-cf33c379a9b4   nginx:stable-alpine   "/docker-entrypoint.…"   4 seconds ago   Up 3 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
+b30ba2f629bb   nginx:stable-alpine   "/docker-entrypoint.…"   4 seconds ago   Up 3 seconds   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
 
 $ docker logs demo-web
 /docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration
@@ -83,22 +83,22 @@ $ docker logs demo-web
 /docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh
 /docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh
 /docker-entrypoint.sh: Configuration complete; ready for start up
-2026/10/22 08:09:15 [notice] 1#1: using the "epoll" event method
-2026/10/22 08:09:15 [notice] 1#1: nginx/1.30.6
-2026/10/22 08:09:15 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
-2026/10/22 08:09:15 [notice] 1#1: OS: Linux 6.17.0-1022-azure
-2026/10/22 08:09:15 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 65536:65536
-2026/10/22 08:09:15 [notice] 1#1: start worker processes
-2026/10/22 08:09:15 [notice] 1#1: start worker process 30
-2026/10/22 08:09:15 [notice] 1#1: start worker process 31
-2026/10/22 08:09:15 [notice] 1#1: start worker process 32
-2026/10/22 08:09:15 [notice] 1#1: start worker process 33
+2026/10/22 09:18:27 [notice] 1#1: using the "epoll" event method
+2026/10/22 09:18:27 [notice] 1#1: nginx/1.30.6
+2026/10/22 09:18:27 [notice] 1#1: built by gcc 15.2.0 (Alpine 15.2.0) 
+2026/10/22 09:18:27 [notice] 1#1: OS: Linux 7.0.0-1017-azure
+2026/10/22 09:18:27 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 65536:65536
+2026/10/22 09:18:27 [notice] 1#1: start worker processes
+2026/10/22 09:18:27 [notice] 1#1: start worker process 30
+2026/10/22 09:18:27 [notice] 1#1: start worker process 31
+2026/10/22 09:18:27 [notice] 1#1: start worker process 32
+2026/10/22 09:18:27 [notice] 1#1: start worker process 33
 
 $ docker exec demo-web cat /etc/hostname
-cf33c379a9b4
+b30ba2f629bb
 
 $ docker inspect --format Name={{.Name}} Image={{.Config.Image}} Status={{.State.Status}} Started={{.State.StartedAt}} demo-web
-Name=/demo-web Image=nginx:stable-alpine Status=running Started=2026-10-22T08:09:14.620034881Z
+Name=/demo-web Image=nginx:stable-alpine Status=running Started=2026-10-22T09:18:26.620095017Z
 
 $ curl -s -o /dev/null -w HTTP %{http_code} from http://localhost:8081\n http://localhost:8081/
 HTTP 200 from http://localhost:8081
@@ -108,14 +108,14 @@ demo-web
 
 $ docker ps -a --filter name=demo-web
 CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS                              PORTS     NAMES
-cf33c379a9b4   nginx:stable-alpine   "/docker-entrypoint.…"   4 seconds ago   Exited (0) Less than a second ago             demo-web
+b30ba2f629bb   nginx:stable-alpine   "/docker-entrypoint.…"   4 seconds ago   Exited (0) Less than a second ago             demo-web
 
 $ docker start demo-web
 demo-web
 
 $ docker ps --filter name=demo-web
 CONTAINER ID   IMAGE                 COMMAND                  CREATED         STATUS                  PORTS                                     NAMES
-cf33c379a9b4   nginx:stable-alpine   "/docker-entrypoint.…"   4 seconds ago   Up Less than a second   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
+b30ba2f629bb   nginx:stable-alpine   "/docker-entrypoint.…"   4 seconds ago   Up Less than a second   0.0.0.0:8081->80/tcp, [::]:8081->80/tcp   demo-web
 
 $ docker stop demo-web
 demo-web
@@ -126,8 +126,8 @@ demo-web
 $ docker tag nginx:stable-alpine smec-demo:copy
 
 $ docker images smec-demo
-REPOSITORY   TAG       IMAGE ID       CREATED       SIZE
-smec-demo    copy      88f52f3d58a5   9 hours ago   62.3MB
+REPOSITORY   TAG       IMAGE ID       CREATED        SIZE
+smec-demo    copy      88f52f3d58a5   10 hours ago   62.3MB
 
 $ docker rmi smec-demo:copy
 Untagged: smec-demo:copy
@@ -150,11 +150,11 @@ a8a09d37d441: Preparing
 a8a09d37d441: Waiting
 5b91dba2fc11: Waiting
 75c137aedfb2: Waiting
-d87f6628aa86: Layer already exists
-2ba21653acee: Layer already exists
-8ff2a17964b4: Layer already exists
 313dac429378: Layer already exists
 3212502c73d1: Layer already exists
+2ba21653acee: Layer already exists
+d87f6628aa86: Layer already exists
+8ff2a17964b4: Layer already exists
 a8a09d37d441: Layer already exists
 5b91dba2fc11: Layer already exists
 75c137aedfb2: Layer already exists
@@ -165,7 +165,6 @@ $ docker pull hello-world
 Using default tag: latest
 latest: Pulling from library/hello-world
 4f55086f7dd0: Pulling fs layer
-4f55086f7dd0: Verifying Checksum
 4f55086f7dd0: Download complete
 4f55086f7dd0: Pull complete
 Digest: sha256:11a3eb1597e864c51b3f56733cb2e8a90bf0c284bfc05f9444d81c558bc848aa
@@ -198,13 +197,13 @@ For more examples and ideas, visit:
 
 $ docker images
 REPOSITORY                                   TAG             IMAGE ID       CREATED        SIZE
-nginx                                        stable-alpine   88f52f3d58a5   9 hours ago    62.3MB
-ghcr.io/kammatimanojsai-cmd/smec-demo        1.0             88f52f3d58a5   9 hours ago    62.3MB
-ghcr.io/github/gh-aw-firewall/agent          latest          91d6360941a3   9 days ago     547MB
+nginx                                        stable-alpine   88f52f3d58a5   10 hours ago   62.3MB
+ghcr.io/kammatimanojsai-cmd/smec-demo        1.0             88f52f3d58a5   10 hours ago   62.3MB
+ghcr.io/github/gh-aw-firewall/agent          latest          49663c2c4af3   3 days ago     812MB
+ghcr.io/github/gh-aw-mcpg                    latest          b33d4932fd93   5 days ago     183MB
+ghcr.io/github/gh-aw-firewall/api-proxy      latest          375ede42c656   5 days ago     225MB
 ghcr.io/dependabot/dependabot-updater-core   latest          759e96ae5997   9 days ago     835MB
-ghcr.io/github/gh-aw-firewall/api-proxy      latest          986b9bc056a9   10 days ago    207MB
 ghcr.io/github/github-mcp-server             latest          9875fef5aa1f   13 days ago    50.1MB
-ghcr.io/github/gh-aw-mcpg                    latest          808996e3d477   2 weeks ago    181MB
 ghcr.io/github/gh-aw-firewall/squid          latest          dc17fe424471   2 weeks ago    57.1MB
 hello-world                                  latest          e2ac70e7319a   7 months ago   10.1kB
 VERIFIED: image pushed to ghcr.io/kammatimanojsai-cmd/smec-demo:1.0

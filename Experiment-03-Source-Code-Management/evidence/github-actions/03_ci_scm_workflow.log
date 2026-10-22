@@ -1,6 +1,6 @@
 ### Experiment 3 - SCM workflow on the Experiment 1 code
-### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:39:12 IST
+### Executed by GitHub Actions run #4: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39754373195
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 14:48:23 IST
 # Central repository (local bare repo): central.git
 
 ########## Developer A: import the Experiment 1 project ##########
@@ -21,16 +21,16 @@ A  templates/success.html
 A  test_app.py
 
 $ git commit -m Import Flask event registration app (Experiment 1)
-[main (root-commit) a3a7cf5] Import Flask event registration app (Experiment 1)
+[main (root-commit) 6f8b91f] Import Flask event registration app (Experiment 1)
  8 files changed, 178 insertions(+)
- create mode 100755 .dockerignore
+ create mode 100644 .dockerignore
  create mode 100644 .gitignore
- create mode 100755 Dockerfile
- create mode 100755 app.py
- create mode 100755 requirements.txt
- create mode 100755 templates/register.html
- create mode 100755 templates/success.html
- create mode 100755 test_app.py
+ create mode 100644 Dockerfile
+ create mode 100644 app.py
+ create mode 100644 requirements.txt
+ create mode 100644 templates/register.html
+ create mode 100644 templates/success.html
+ create mode 100644 test_app.py
 
 $ git remote add origin <workspace>/central.git
 
@@ -56,7 +56,7 @@ Switched to a new branch 'feature/add-workshop-event'
 
 $ git diff
 diff --git a/app.py b/app.py
-index e67b0cb..434b9d2 100755
+index e67b0cb..434b9d2 100644
 --- a/app.py
 +++ b/app.py
 @@ -4,7 +4,7 @@ from flask import Flask, render_template, request, redirect, url_for
@@ -70,7 +70,7 @@ index e67b0cb..434b9d2 100755
  registrations = []                                # in-memory store (lab demo)
 
 $ git commit -am Add Kubernetes Workshop to the event list
-[feature/add-workshop-event 241dda5] Add Kubernetes Workshop to the event list
+[feature/add-workshop-event ee37380] Add Kubernetes Workshop to the event list
  1 file changed, 1 insertion(+), 1 deletion(-)
 
 $ git push -u origin feature/add-workshop-event
@@ -97,7 +97,7 @@ $ git branch -r
   origin/main
 
 $ git log --oneline main..origin/feature/add-workshop-event
-241dda5 Add Kubernetes Workshop to the event list
+ee37380 Add Kubernetes Workshop to the event list
 
 $ git merge --no-ff origin/feature/add-workshop-event -m Merge feature/add-workshop-event
 Merge made by the 'ort' strategy.
@@ -106,27 +106,29 @@ Merge made by the 'ort' strategy.
 
 $ git push origin main
 To <workspace>/central.git
-   a3a7cf5..d2028e7  main -> main
+   6f8b91f..7bdb36c  main -> main
 
 $ git push origin --delete feature/add-workshop-event
 To <workspace>/central.git
  - [deleted]         feature/add-workshop-event
 
 $ git log --oneline --graph --decorate -6
-*   d2028e7 (HEAD -> main, origin/main, origin/HEAD) Merge feature/add-workshop-event
+*   7bdb36c (HEAD -> main, origin/main, origin/HEAD) Merge feature/add-workshop-event
 |\  
-| * 241dda5 Add Kubernetes Workshop to the event list
+| * ee37380 Add Kubernetes Workshop to the event list
 |/  
-* a3a7cf5 (tag: v1.0) Import Flask event registration app (Experiment 1)
+* 6f8b91f (tag: v1.0) Import Flask event registration app (Experiment 1)
 
 $ git ls-remote --heads --tags origin
-d2028e71458a2c910b5dc047ba2b8a8bb1e00d48	refs/heads/main
-1d0b0e2220666f90bca52044c9c101a16bd09adb	refs/tags/v1.0
-a3a7cf5d5d623038bbf72f161df7a6a973b81383	refs/tags/v1.0^{}
+7bdb36c70fbc6cd7dcabbd86b7992cae2790e380	refs/heads/main
+3eec1a612960a3b00fb3bda2998a724e38332fc5	refs/tags/v1.0
+6f8b91ff2e7b84d09102caf96a56264e7d8ddf3b	refs/tags/v1.0^{}
 
 ### The same code on GitHub: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/tree/main/Experiment-01-Flask-Registration
 
 $ git log --oneline -5 -- Experiment-01-Flask-Registration
+3221ed6 Add laptop execution evidence (RUN-ALL 2026-10-22 14:32)
+5db280c SMEC DevOps Lab CS505PC - all 12 experiments (code, docs, evidence)
+6ba1707 CI evidence from run #3
 1d12763 CI evidence from run #2
 604c0a4 CI evidence from run #1
-32d31e3 SMEC DevOps Lab CS505PC - all 12 experiments with code, docs and evidence

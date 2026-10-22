@@ -1,19 +1,19 @@
 ### Experiment 12 - Selenium tests against the containerised Flask app
-### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:40:00 IST
+### Executed by GitHub Actions run #4: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39754373195
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 14:49:06 IST
 
 $ docker build -q -t event-registration:1.0 /home/runner/work/SMEC-DEVOPS-LAB-CS505PC/SMEC-DEVOPS-LAB-CS505PC/Experiment-01-Flask-Registration
-sha256:7e63d40f8ff5dad5ece8a9f4379a778b5dc03915c09801694df640eb2302bf53
+sha256:6c44fc494540d04173de79daf227c32258e5501585c6a2393b6419c66721a508
 
 $ docker run -d --name event-app -p 5000:5000 event-registration:1.0
-a45395eb15a7ccb8f8fe4c58a8a30db3da4eadd5fb380ca75e934811a9bdf4a4
+6f263897cb68b13c03378ae704c084acaabd9bb89b6c13aab45932683296c2e1
 
 $ docker ps --filter name=event-app
 CONTAINER ID   IMAGE                    COMMAND           CREATED         STATUS         PORTS                                         NAMES
-a45395eb15a7   event-registration:1.0   "python app.py"   2 seconds ago   Up 2 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   event-app
+6f263897cb68   event-registration:1.0   "python app.py"   2 seconds ago   Up 2 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   event-app
 
 $ ./mvnw -B -q compile exec:java
-Oct 22, 2026 1:40:11 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Oct 22, 2026 2:49:18 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 155, returning the closest version; found: 152; Please update to a Selenium version that supports CDP version 155
 Application under test: http://localhost:5000
 [PASS] TC1 Registration page loads                      title=Event Registration
@@ -28,11 +28,11 @@ Tests run: 7, Passed: 7, Failed: 0
 BUILD SUCCESS - all Selenium tests passed
 
 $ docker logs event-app   # requests made by Selenium
-172.17.0.1 - - [22/Oct/2026 08:10:08] "GET /health HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:11] "GET /register HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:11] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
-172.17.0.1 - - [22/Oct/2026 08:10:12] "POST /register HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:12] "GET /register HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:13] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
-172.17.0.1 - - [22/Oct/2026 08:10:13] "GET /register HTTP/1.1" 200 -
-172.17.0.1 - - [22/Oct/2026 08:10:13] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
+172.17.0.1 - - [22/Oct/2026 09:19:15] "GET /health HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:19:18] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:19:18] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+172.17.0.1 - - [22/Oct/2026 09:19:19] "POST /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:19:19] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:19:19] "[31m[1mPOST /register HTTP/1.1[0m" 400 -
+172.17.0.1 - - [22/Oct/2026 09:19:20] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 09:19:20] "[31m[1mPOST /register HTTP/1.1[0m" 400 -

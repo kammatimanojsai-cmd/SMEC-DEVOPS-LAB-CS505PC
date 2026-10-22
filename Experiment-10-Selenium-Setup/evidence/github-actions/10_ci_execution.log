@@ -1,6 +1,6 @@
 ### Experiment 10 - Selenium WebDriver setup (Java + Chrome, headless)
-### Executed by GitHub Actions run #3: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39745612921
-### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:39:20 IST
+### Executed by GitHub Actions run #4: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39754373195
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 14:48:25 IST
 
 $ java -version
 openjdk version "21.0.12.1" 2026-08-18 LTS
@@ -8,10 +8,10 @@ OpenJDK Runtime Environment Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS)
 OpenJDK 64-Bit Server VM Temurin-21.0.12.1+1 (build 21.0.12.1+1-LTS, mixed mode, sharing)
 
 $ google-chrome --version
-Google Chrome 155.0.8059.84 
+Google Chrome 155.0.8059.39 
 
 $ ./mvnw -B -q compile exec:java
-Oct 22, 2026 1:39:40 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
+Oct 22, 2026 2:48:46 PM org.openqa.selenium.devtools.CdpVersionFinder findNearestMatch
 WARNING: Unable to find an exact match for CDP version 155, returning the closest version; found: 152; Please update to a Selenium version that supports CDP version 155
 Chrome launched successfully using Selenium WebDriver
 Opened URL   : https://www.selenium.dev/
