@@ -8,7 +8,7 @@
       powershell -ExecutionPolicy Bypass -File .\RUN-ALL.ps1 -Only 1,7,12
 
   What it does
-    1. Checks Git, Python, JDK 17+, Docker Desktop, Chrome, GitHub CLI, kubectl, minikube.
+    1. Checks Git, Python, JDK 17+, Docker Desktop, Chrome, GitHub CLI, kubectl, kind.
        Missing tools are installed with winget.
     2. Pushes this folder to your GitHub account (repo SMEC-DEVOPS-LAB-CS505PC).
     3. Runs every experiment and writes logs and screenshots into each experiment's evidence folder.
@@ -173,10 +173,7 @@ if (-not $chrome) { Winget-Install "Google.Chrome" "Google Chrome" }
 
 if (-not (Has gh))       { Winget-Install "GitHub.cli" "GitHub CLI" }
 if (-not (Has kubectl))  { Winget-Install "Kubernetes.kubectl" "kubectl" }
-if (-not (Has minikube)) { Winget-Install "Kubernetes.minikube" "minikube" }
-if (-not (Has minikube) -and (Test-Path "$env:ProgramFiles\Kubernetes\Minikube\minikube.exe")) {
-    $env:Path = "$env:ProgramFiles\Kubernetes\Minikube;$env:Path"
-}
+if (-not (Has kind))     { Winget-Install "Kubernetes.kind" "kind (Kubernetes in Docker)" }
 
 # Docker Desktop
 $DockerOK = $false
@@ -199,7 +196,7 @@ if (-not (Has docker)) {
     $DockerOK = ($LASTEXITCODE -eq 0)
 }
 
-foreach ($c in "git --version", "java -version", "gh --version", "docker version --format {{.Server.Version}}", "kubectl version --client", "minikube version") {
+foreach ($c in "git --version", "java -version", "gh --version", "docker version --format {{.Server.Version}}", "kubectl version --client", "kind version") {
     Exec $c $preLog | Out-Null
 }
 if ($Py) { Exec "$Py --version" $preLog | Out-Null }
@@ -268,6 +265,7 @@ if (-not $SkipGitHub) {
             git push -u origin main
         }
     } else {
+        git pull --rebase -q origin main
         git push -u origin main
     }
     $RepoUrl = (git remote get-url origin 2>$null)
@@ -280,7 +278,7 @@ if (-not $SkipGitHub) {
             $t = Get-Content $_.FullName -Raw
             if ($t -match '<your-username>') { [IO.File]::WriteAllText($_.FullName, ($t -replace '<your-username>', $owner)) }
         }
-        git add -A; git commit -q -m "Fill in GitHub links" 2>$null; git push -q 2>$null
+        git add -A; git commit -q -m "Fill in GitHub links" 2>$null; git pull --rebase -q origin main; git push -q 2>$null
         Set-Result "GitHub" "PASS - $RepoUrl"
     } else { Set-Result "GitHub" "FAIL - repository not created/pushed" }
 }
@@ -293,7 +291,7 @@ if (Want 1) {
     Push-Location $d
     $ok = $true
     if ($Py) {
-        Exec "$Py -m pip install -q -r requirements.txt pytest" $log | Out-Null
+        Exec "$Py -m pip install -q --retries 5 --timeout 60 -r requirements.txt pytest" $log | Out-Null
         if ((Exec "$Py -m pytest -v test_app.py" $log) -ne 0) { $ok = $false }
     }
     if ($DockerOK) {
@@ -504,8 +502,8 @@ if (Want 6) {
         }
         $rc = Run-Child (Join-Path $Root "Experiment-06-Docker-Commands\docker-commands.ps1")
         Remove-Item Env:DOCKERHUB_USER -ErrorAction SilentlyContinue
-        $l6 = Get-Content (Join-Path $Root "Experiment-06-Docker-Commands\evidence\06_execution_laptop.log") -Raw -ErrorAction SilentlyContinue
-        $pulled = $l6 -match "Status: (Downloaded newer image|Image is up to date)"
+        cmd /c "docker image inspect nginx:stable-alpine >nul 2>&1"
+        $pulled = ($LASTEXITCODE -eq 0)
         Set-Result "Exp 06" ($(if ($pulled -and $DockerHubUser) { "PASS (incl. pull and push)" } elseif ($pulled) { "PASS (pull OK, push skipped - no Docker Hub user)" } else { "CHECK - see evidence\06_execution_laptop.log" }))
     } else { Set-Result "Exp 06" "BLOCKED - Docker not running" }
 }
@@ -532,22 +530,20 @@ if (Want 7) {
 
 # ================================================================ Experiments 8 and 9
 if (Want 8) {
-    Section "Experiment 8 - Docker + Kubernetes (minikube)"
-    if ($DockerOK -and (Has minikube) -and (Has kubectl)) {
+    Section "Experiment 8 - Docker + Kubernetes (kind cluster)"
+    if ($DockerOK -and (Has kind) -and (Has kubectl)) {
         Run-Child (Join-Path $Root "Experiment-08-Docker-Kubernetes\run-k8s.ps1") | Out-Null
-        $ready = cmd /c "kubectl get deployment event-registration -o jsonpath={.status.readyReplicas} 2>&1"
-        Set-Result "Exp 08" ($(if ("$ready" -match '^\d+$' -and [int]"$ready" -ge 2) { "PASS - $ready ready replicas" } else { "CHECK - see evidence\08_k8s_execution.log" }))
-    } else { Set-Result "Exp 08" "BLOCKED - needs Docker running + minikube + kubectl" }
+        $ready = cmd /c "kubectl --context kind-lab get deployment event-registration -o jsonpath={.status.readyReplicas} 2>nul"
+        Set-Result "Exp 08" ($(if ("$ready" -match '^\d+$' -and [int]"$ready" -ge 2) { "PASS - $ready ready replicas" } else { "CHECK - see evidence\08_laptop_k8s_execution.log" }))
+    } else { Set-Result "Exp 08" "BLOCKED - needs Docker running + kind + kubectl" }
 }
 if (Want 9) {
     Section "Experiment 9 - Kubernetes automation (3 replicas)"
-    if ($DockerOK -and (Has minikube) -and (Has kubectl)) {
-        cmd /c "minikube status >nul 2>&1"
-        if ($LASTEXITCODE -ne 0) { minikube start --driver=docker }
+    if ($DockerOK -and (Has kind) -and (Has kubectl)) {
         Run-Child (Join-Path $Root "Experiment-09-Kubernetes-Automation\run-k8s.ps1") | Out-Null
-        $ready = cmd /c "kubectl get deployment hello-app -o jsonpath={.status.readyReplicas} 2>&1"
-        Set-Result "Exp 09" ($(if ("$ready" -eq "3") { "PASS - 3/3 replicas ready" } else { "CHECK - ready replicas: $ready (see evidence\09_k8s_execution.log)" }))
-    } else { Set-Result "Exp 09" "BLOCKED - needs Docker running + minikube + kubectl" }
+        $ready = cmd /c "kubectl --context kind-lab get deployment hello-app -o jsonpath={.status.readyReplicas} 2>nul"
+        Set-Result "Exp 09" ($(if ("$ready" -eq "3") { "PASS - 3/3 replicas ready" } else { "CHECK - see evidence\09_laptop_k8s_execution.log" }))
+    } else { Set-Result "Exp 09" "BLOCKED - needs Docker running + kind + kubectl" }
 }
 
 # ================================================================ Experiments 10-12 (Selenium, visible Chrome)
@@ -601,6 +597,7 @@ foreach ($k in $Results.Keys) {
 if ($RepoUrl) {
     git add -A
     git commit -q -m "Add laptop execution evidence (RUN-ALL $(Get-Date -Format 'yyyy-MM-dd HH:mm'))" 2>$null
+    git pull --rebase -q origin main
     git push -q
     Write-Host "`nEvidence pushed to $RepoUrl" -ForegroundColor Green
 }

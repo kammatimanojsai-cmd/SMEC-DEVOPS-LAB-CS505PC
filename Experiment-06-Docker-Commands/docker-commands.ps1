@@ -7,7 +7,7 @@ New-Item -ItemType Directory -Force (Join-Path $here "evidence") | Out-Null
 $log = Join-Path $here "evidence\06_execution_laptop.log"
 Start-Transcript -Path $log -Force | Out-Null
 $image = "nginx:stable-alpine"   # maintained official image (the manual's older examples may use outdated tags)
-function Run($cmd) { Write-Host "`nPS> $cmd" -ForegroundColor Cyan; Invoke-Expression $cmd }
+function Run($cmd) { Write-Host "`nPS> $cmd" -ForegroundColor Cyan; Invoke-Expression "$cmd 2>&1" | ForEach-Object { Write-Host "$_" } }
 
 Run "docker --version"
 Run "docker pull $image"

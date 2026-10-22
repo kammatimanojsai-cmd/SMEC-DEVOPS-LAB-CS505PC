@@ -7,6 +7,6 @@ wait_http http://localhost:5000/health 30
 run docker ps --filter name=event-app
 cd "$ROOT/Experiment-12-Container-Selenium-Tests"
 export HEADLESS=true SCREENSHOT_DIR="$OUT" APP_URL=http://localhost:5000
-run ./mvnw -B -q compile exec:java
+chmod +x mvnw; run ./mvnw -B -q compile exec:java
 echo; echo '$ docker logs event-app   # requests made by Selenium'
 docker logs event-app 2>&1 | grep -E "GET|POST"

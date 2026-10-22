@@ -5,7 +5,7 @@ source "$(dirname "$0")/common.sh"
 init_log Experiment-05-Jenkins-CICD 05_ci_jenkins_pipeline.log "Experiment 5 - Continuous integration and delivery with Jenkins"
 PW=$(cat /tmp/jenkins_pw); J=http://localhost:8080; JOB=SMEC-Exp5-CICD
 cd "$ROOT/Experiment-05-Jenkins-CICD"
-run ./mvnw -B -q clean package
+chmod +x mvnw; run ./mvnw -B -q clean package
 run java -jar target/jenkins-cicd-demo.jar
 cd "$ROOT"
 

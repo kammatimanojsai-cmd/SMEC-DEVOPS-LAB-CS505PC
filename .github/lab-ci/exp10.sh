@@ -5,4 +5,4 @@ cd "$ROOT/Experiment-10-Selenium-Setup"
 run java -version
 run google-chrome --version
 export HEADLESS=true SCREENSHOT_DIR="$OUT"
-run ./mvnw -B -q compile exec:java
+chmod +x mvnw; run ./mvnw -B -q compile exec:java
