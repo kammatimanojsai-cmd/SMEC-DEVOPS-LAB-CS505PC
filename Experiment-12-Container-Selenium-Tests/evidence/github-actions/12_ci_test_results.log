@@ -1,0 +1,16 @@
+### Experiment 12 - Selenium tests against the containerised Flask app
+### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:26:33 IST
+
+$ docker build -q -t event-registration:1.0 /home/runner/work/SMEC-DEVOPS-LAB-CS505PC/SMEC-DEVOPS-LAB-CS505PC/Experiment-01-Flask-Registration
+sha256:75f9ba086585ccc41bbaa7c23587c49724c5a3d81ec63a5a93cbaae9af23f174
+
+$ docker run -d --name event-app -p 5000:5000 event-registration:1.0
+6ce66def6368eb3749db9d694555722c40cd8f1649345f2c1713a8d47fad4364
+
+$ docker ps --filter name=event-app
+CONTAINER ID   IMAGE                    COMMAND           CREATED         STATUS         PORTS                                         NAMES
+6ce66def6368   event-registration:1.0   "python app.py"   2 seconds ago   Up 2 seconds   0.0.0.0:5000->5000/tcp, [::]:5000->5000/tcp   event-app
+
+$ bash mvnw -B -q compile exec:java
+mvnw: line 114: mvnw/.mvn/wrapper/maven-wrapper.properties: Not a directory

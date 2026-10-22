@@ -1,0 +1,110 @@
+### Experiment 2 - Git commands (local bare repo as remote; the real GitHub pull request is in evidence/02_github_pull_request.log)
+### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:26:48 IST
+# Using local bare repo as remote: remote-repo.git
+
+$ git --version
+git version 2.55.0
+
+$ git init -b main
+Initialized empty Git repository in <workspace>/git-lab-demo/.git/
+
+$ git config user.name SMEC Student
+
+$ git config user.email student@example.com
+
+$ git status
+On branch main
+
+No commits yet
+
+Untracked files:
+  (use "git add <file>..." to include in what will be committed)
+	README.md
+
+nothing added to commit but untracked files present (use "git add" to track)
+
+$ git add README.md
+
+$ git status --short
+A  README.md
+
+$ git commit -m Initial commit: add README
+[main (root-commit) 8bd0be8] Initial commit: add README
+ 1 file changed, 1 insertion(+)
+ create mode 100644 README.md
+
+$ git add greet.py
+
+$ git commit -m Add greet function
+[main 641961c] Add greet function
+ 1 file changed, 2 insertions(+)
+ create mode 100644 greet.py
+
+$ git log --oneline
+641961c Add greet function
+8bd0be8 Initial commit: add README
+
+$ git branch feature-login
+
+$ git branch
+  feature-login
+* main
+
+$ git switch feature-login
+Switched to branch 'feature-login'
+
+$ git add login.py
+
+$ git commit -m Add login feature
+[feature-login 441ba27] Add login feature
+ 1 file changed, 2 insertions(+)
+ create mode 100644 login.py
+
+$ git checkout main
+Switched to branch 'main'
+
+$ git merge --no-ff feature-login -m Merge branch 'feature-login'
+Merge made by the 'ort' strategy.
+ login.py | 2 ++
+ 1 file changed, 2 insertions(+)
+ create mode 100644 login.py
+
+$ git log --oneline --graph --all
+*   b287a80 Merge branch 'feature-login'
+|\  
+| * 441ba27 Add login feature
+|/  
+* 641961c Add greet function
+* 8bd0be8 Initial commit: add README
+
+$ git remote add origin <workspace>/remote-repo.git
+
+$ git remote -v
+origin	<workspace>/remote-repo.git (fetch)
+origin	<workspace>/remote-repo.git (push)
+
+$ git push -u origin main
+To <workspace>/remote-repo.git
+ * [new branch]      main -> main
+branch 'main' set up to track 'origin/main'.
+
+$ git push origin feature-login
+To <workspace>/remote-repo.git
+ * [new branch]      feature-login -> feature-login
+
+$ git clone <workspace>/remote-repo.git cloned-copy
+Cloning into 'cloned-copy'...
+done.
+
+$ git -C cloned-copy log --oneline -3
+b287a80 Merge branch 'feature-login'
+641961c Add greet function
+441ba27 Add login feature
+
+$ ls cloned-copy
+README.md
+greet.py
+login.py
+
+$ git branch -d feature-login

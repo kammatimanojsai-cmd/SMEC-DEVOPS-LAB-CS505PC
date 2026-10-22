@@ -1,0 +1,6 @@
+### Experiment 5 - Continuous integration and delivery with Jenkins
+### Executed by GitHub Actions run #1: https://github.com/kammatimanojsai-cmd/SMEC-DEVOPS-LAB-CS505PC/actions/runs/39744053854
+### Runner: Ubuntu 24.04.5 LTS | Date/time: 2026-10-22 13:27:05 IST
+
+$ bash mvnw -B -q clean package
+mvnw: line 114: mvnw/.mvn/wrapper/maven-wrapper.properties: Not a directory
