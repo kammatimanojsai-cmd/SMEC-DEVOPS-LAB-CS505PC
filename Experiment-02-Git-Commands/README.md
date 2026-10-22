@@ -91,3 +91,5 @@ Run `./git-commands-demo.sh` in Git Bash and walk through the output, then show 
 
 ## Pull Request Demonstration (done)
 This section was added on branch `exp2-pull-request-demo` and merged into `main` through a GitHub pull request.
+
+_Pull request demo performed on 22 Oct 2026 14:21 IST._
