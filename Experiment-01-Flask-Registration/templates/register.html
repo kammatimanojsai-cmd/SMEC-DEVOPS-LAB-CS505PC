@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Event Registration</title>
+  <style>
+    body { font-family: Arial, sans-serif; background:#f2f5fa; }
+    .card { width:420px; margin:40px auto; background:#fff; padding:24px 28px; border-radius:8px; box-shadow:0 2px 8px rgba(0,0,0,.12); }
+    h2 { margin-top:0; color:#1d3c78; }
+    label { display:block; margin-top:12px; font-weight:bold; }
+    input, select { width:100%; padding:8px; margin-top:4px; box-sizing:border-box; }
+    .error { color:#c0392b; font-size:13px; }
+    button { margin-top:18px; width:100%; padding:10px; background:#1d3c78; color:#fff; border:0; border-radius:4px; font-size:15px; cursor:pointer; }
+  </style>
+</head>
+<body>
+  <div class="card">
+    <h2>Event Registration Form</h2>
+    <form id="registrationForm" method="POST" action="/register" novalidate>
+      <label for="name">Full Name</label>
+      <input type="text" id="name" name="name" value="{{ form.get('name','') }}">
+      {% if errors.name %}<div class="error" id="error-name">{{ errors.name }}</div>{% endif %}
+
+      <label for="email">Email</label>
+      <input type="email" id="email" name="email" value="{{ form.get('email','') }}">
+      {% if errors.email %}<div class="error" id="error-email">{{ errors.email }}</div>{% endif %}
+
+      <label for="phone">Mobile Number</label>
+      <input type="text" id="phone" name="phone" value="{{ form.get('phone','') }}">
+      {% if errors.phone %}<div class="error" id="error-phone">{{ errors.phone }}</div>{% endif %}
+
+      <label for="event">Event</label>
+      <select id="event" name="event">
+        <option value="">-- Select an event --</option>
+        {% for e in events %}
+        <option value="{{ e }}" {% if form.get('event') == e %}selected{% endif %}>{{ e }}</option>
+        {% endfor %}
+      </select>
+      {% if errors.event %}<div class="error" id="error-event">{{ errors.event }}</div>{% endif %}
+
+      <button type="submit" id="submitBtn">Register</button>
+    </form>
+  </div>
+</body>
+</html>

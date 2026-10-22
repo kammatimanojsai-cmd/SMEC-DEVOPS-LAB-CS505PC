@@ -1,0 +1,33 @@
+### Pre-check log (Docker only, no Kubernetes) - 2026-10-22 10:47:08 IST
+### Verifies that hello-app:1.0 stays running and answers HTTP when HELLO_HTTP_PORT is set, as deployment.yaml does.
+
+$ docker run -d --name hello-http -e HELLO_HTTP_PORT=8080 -p 8090:8080 hello-app:1.0
+abb8bd038791e8ab5dabbdae78ace6b584bbefa3c2744669a01c70f534f05ffd
+
+$ docker ps --filter name=hello-http
+CONTAINER ID   IMAGE           COMMAND             CREATED         STATUS         PORTS                    NAMES
+abb8bd038791   hello-app:1.0   "python hello.py"   3 seconds ago   Up 2 seconds   0.0.0.0:8090->8080/tcp   hello-http
+
+$ curl -s http://localhost:8090/
+Hello, World! Served by pod/container: abb8bd038791
+
+$ curl -s http://localhost:8090/
+Hello, World! Served by pod/container: abb8bd038791
+
+$ curl -s http://localhost:8090/
+Hello, World! Served by pod/container: abb8bd038791
+
+$ docker logs hello-http
+Hello, World!
+Hello from a Docker container - SMEC DevOps Lab (CS505PC)
+Python version : 3.13.16
+Container host : abb8bd038791
+Started at     : 2026-10-22 05:17:09
+HTTP mode enabled - listening on port 8080
+172.17.0.1 - - [22/Oct/2026 05:17:11] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:17:11] "GET / HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:17:11] "GET / HTTP/1.1" 200 -
+
+$ yaml check deployment.yaml: apiVersion=apps/v1 kind=Deployment name=hello-app replicas=3
+
+$ yaml check service.yaml: apiVersion=v1 kind=Service name=hello-app-svc 

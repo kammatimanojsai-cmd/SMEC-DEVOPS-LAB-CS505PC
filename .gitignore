@@ -1,0 +1,28 @@
+# Build output
+target/
+*.class
+__pycache__/
+*.pyc
+.pytest_cache/
+.venv/
+venv/
+
+# Generated demo workspaces (Exp 2, 3) and Exp 5 deploy folder
+git-demo-workspace/
+scm-workspace/
+deploy/
+
+# IDE
+.idea/
+.vscode/
+*.iml
+.classpath
+.project
+.settings/
+
+# Secrets - never commit
+.env
+*.pem
+*.key
+*token*
+secrets/

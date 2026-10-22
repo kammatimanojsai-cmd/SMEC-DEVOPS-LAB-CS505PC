@@ -1,0 +1,13 @@
+# Experiment 9 - Service load-balancing across the 3 hello-app pods
+apiVersion: v1
+kind: Service
+metadata:
+  name: hello-app-svc
+spec:
+  type: NodePort
+  selector:
+    app: hello-app
+  ports:
+    - port: 80
+      targetPort: 8080
+      nodePort: 30080

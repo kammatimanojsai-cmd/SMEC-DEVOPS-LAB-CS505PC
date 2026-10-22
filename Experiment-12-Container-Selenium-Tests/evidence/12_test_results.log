@@ -1,0 +1,35 @@
+### Execution log - 2026-10-22 10:41:55 IST
+### Java 21, Selenium 4.48.0, Chromium 141 headless + ChromeDriver 141; app = Experiment 1 Docker container.
+
+$ docker rm -f event-app && docker run -d --name event-app -p 5000:5000 event-registration:1.0
+6018640d90e39ac84b27a47c15e79f7d7b2b01d633e6542cc16eae93fad281f0
+
+$ docker ps --filter name=event-app
+CONTAINER ID   IMAGE                    COMMAND           CREATED         STATUS         PORTS                    NAMES
+6018640d90e3   event-registration:1.0   "python app.py"   3 seconds ago   Up 3 seconds   0.0.0.0:5000->5000/tcp   event-app
+
+$ javac --release 17 -cp selenium-java.jar -d target/classes src/main/java/in/smec/devops/RegistrationAppTest.java
+Compilation successful
+
+$ java -cp target/classes:selenium-java.jar in.smec.devops.RegistrationAppTest
+Application under test: http://localhost:5000
+[PASS] TC1 Registration page loads                      title=Event Registration
+[PASS] TC2 Form heading is displayed                    h2=Event Registration Form
+[PASS] TC3 All form fields are present                  name, email, phone, event
+[PASS] TC4 Valid submission shows success               message=Registration Successful!
+[PASS] TC5 Success page shows submitted data            name=Ravi Kumar, event=DevOps Workshop
+[PASS] TC6 Invalid email shows validation error         error=Enter a valid email address.
+[PASS] TC7 Empty form shows 4 validation errors         errors shown=4
+
+Tests run: 7, Passed: 7, Failed: 0
+BUILD SUCCESS - all Selenium tests passed
+Exit code: 0
+
+$ docker logs event-app   # requests made by Selenium
+172.17.0.1 - - [22/Oct/2026 05:12:00] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:12:00] "GET /favicon.ico HTTP/1.1" 404 -
+172.17.0.1 - - [22/Oct/2026 05:12:01] "POST /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:12:01] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:12:02] "POST /register HTTP/1.1" 400 -
+172.17.0.1 - - [22/Oct/2026 05:12:02] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:12:02] "POST /register HTTP/1.1" 400 -

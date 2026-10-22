@@ -1,0 +1,76 @@
+### Execution log - 2026-10-22 10:38:57 IST
+### Docker Hub is blocked from this execution machine: docker pull is shown failing honestly,
+### and the run/stop/start/rm demo uses the locally built event-registration:1.0 image (Experiment 1).
+### On your laptop run it unchanged (.\docker-commands.ps1 or ./docker-commands.sh) to use nginx:stable-alpine.
+
+$ docker --version
+Docker version 29.9.1, build dfc520d
+
+$ docker pull nginx:stable-alpine
+Error response from daemon: failed to resolve reference "docker.io/library/nginx:stable-alpine": failed to do request: Head "https://registry-1.docker.io/v2/library/nginx/manifests/stable-alpine": dial tcp: lookup registry-1.docker.io on 8.8.8.8:53: no such host
+
+$ docker images
+IMAGE                    ID             DISK USAGE   CONTENT SIZE   EXTRA
+event-registration:1.0   44ed9d0b1ed2        141MB         34.2MB   U    
+hello-app:1.0            6b97d8842268        141MB         34.2MB   U    
+smec/python-base:local   02a262b5fd33        141MB         34.2MB        
+
+$ docker run -d --name demo-web -p 8081:5000 event-registration:1.0
+9d92a55e3b5719dcd2955fd8a01af278c351c9b00db494dc7849128e481790c6
+
+$ docker ps
+CONTAINER ID   IMAGE                    COMMAND           CREATED              STATUS              PORTS                    NAMES
+9d92a55e3b57   event-registration:1.0   "python app.py"   4 seconds ago        Up 3 seconds        0.0.0.0:8081->5000/tcp   demo-web
+49b11bea16ac   event-registration:1.0   "python app.py"   About a minute ago   Up About a minute   0.0.0.0:5000->5000/tcp   event-app
+
+$ docker logs demo-web
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.3:5000
+Press CTRL+C to quit
+
+$ docker exec demo-web cat /etc/hostname
+9d92a55e3b57
+
+$ docker inspect --format Name={{.Name}} Image={{.Config.Image}} Status={{.State.Status}} Started={{.State.StartedAt}} demo-web
+Name=/demo-web Image=event-registration:1.0 Status=running Started=2026-10-22T05:08:57.96009864Z
+
+$ curl -s -o /dev/null -w HTTP %{http_code} from http://localhost:8081\n http://localhost:8081/
+HTTP 302 from http://localhost:8081
+
+$ docker stop demo-web
+demo-web
+
+$ docker ps -a --filter name=demo-web
+CONTAINER ID   IMAGE                    COMMAND           CREATED          STATUS                                PORTS     NAMES
+9d92a55e3b57   event-registration:1.0   "python app.py"   14 seconds ago   Exited (137) Less than a second ago             demo-web
+
+$ docker start demo-web
+demo-web
+
+$ docker ps --filter name=demo-web
+CONTAINER ID   IMAGE                    COMMAND           CREATED          STATUS                  PORTS                    NAMES
+9d92a55e3b57   event-registration:1.0   "python app.py"   14 seconds ago   Up Less than a second   0.0.0.0:8081->5000/tcp   demo-web
+
+$ docker stop demo-web
+demo-web
+
+$ docker rm demo-web
+demo-web
+
+$ docker tag event-registration:1.0 smec-demo:copy
+
+$ docker images smec-demo
+IMAGE            ID             DISK USAGE   CONTENT SIZE   EXTRA
+smec-demo:copy   44ed9d0b1ed2        141MB         34.2MB   U    
+
+$ docker rmi smec-demo:copy
+Untagged: smec-demo:copy
+
+$ docker ps -a --filter name=demo-web
+CONTAINER ID   IMAGE     COMMAND   CREATED   STATUS    PORTS     NAMES
+
+# docker push skipped: set DOCKERHUB_USER after 'docker login' to demonstrate push

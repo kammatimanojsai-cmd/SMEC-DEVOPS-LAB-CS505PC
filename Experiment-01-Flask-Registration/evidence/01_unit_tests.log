@@ -1,0 +1,14 @@
+============================= test session starts ==============================
+platform linux -- Python 3.13.16, pytest-9.1.1, pluggy-1.7.0 -- /usr/bin/python3
+cachedir: .pytest_cache
+rootdir: /home/claude/SMEC-DEVOPS-LAB-CS505PC/Experiment-01-Flask-Registration
+plugins: platformdirs-4.12.3, anyio-4.15.1
+collecting ... collected 5 items
+
+test_app.py::test_register_page_loads PASSED                             [ 20%]
+test_app.py::test_valid_registration PASSED                              [ 40%]
+test_app.py::test_invalid_email_rejected PASSED                          [ 60%]
+test_app.py::test_invalid_phone_rejected PASSED                          [ 80%]
+test_app.py::test_missing_event_rejected PASSED                          [100%]
+
+============================== 5 passed in 0.11s ===============================

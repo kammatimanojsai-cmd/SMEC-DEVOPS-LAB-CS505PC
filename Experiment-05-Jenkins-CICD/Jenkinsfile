@@ -1,0 +1,77 @@
+// Experiment 5 - Declarative CI/CD pipeline (works on Windows and Linux Jenkins agents)
+// Job setup: Pipeline -> "Pipeline script from SCM" -> Git -> your repo URL,
+//            Branch: */main, Script Path: Experiment-05-Jenkins-CICD/Jenkinsfile
+
+// Runs Maven through the Maven Wrapper (mvnw), so the Jenkins agent does not need Maven installed.
+def mvn(String args) {
+    if (isUnix()) { sh "chmod +x mvnw && ./mvnw ${args}" } else { bat "mvnw.cmd ${args}" }
+}
+
+pipeline {
+    agent any
+
+    // Jenkins on localhost cannot receive GitHub webhooks, so poll GitHub every 2 minutes.
+    // A new commit pushed to GitHub therefore starts a new build automatically.
+    triggers {
+        pollSCM('H/2 * * * *')
+    }
+
+    options {
+        timestamps()
+        buildDiscarder(logRotator(numToKeepStr: '10'))
+    }
+
+    environment {
+        APP_DIR = 'Experiment-05-Jenkins-CICD'
+    }
+
+    stages {
+        stage('Checkout') {
+            steps {
+                checkout scm
+                echo "Building commit ${env.GIT_COMMIT} on branch ${env.GIT_BRANCH}"
+            }
+        }
+        stage('Compile') {
+            steps {
+                dir(env.APP_DIR) { mvn '-B clean compile' }
+            }
+        }
+        stage('Test') {
+            steps {
+                dir(env.APP_DIR) { mvn '-B test' }
+            }
+            post {
+                always {
+                    junit "${env.APP_DIR}/target/surefire-reports/*.xml"
+                }
+            }
+        }
+        stage('Package') {
+            steps {
+                dir(env.APP_DIR) { mvn '-B -DskipTests package' }
+                archiveArtifacts artifacts: "${env.APP_DIR}/target/jenkins-cicd-demo.jar", fingerprint: true
+            }
+        }
+        stage('Deploy') {
+            steps {
+                script {
+                    // "Deployment" for the lab: copy the JAR to a deploy folder and run it
+                    if (isUnix()) {
+                        sh 'mkdir -p deploy && cp Experiment-05-Jenkins-CICD/target/jenkins-cicd-demo.jar deploy/'
+                        sh 'java -jar deploy/jenkins-cicd-demo.jar'
+                    } else {
+                        bat 'if not exist deploy mkdir deploy'
+                        bat 'copy /Y Experiment-05-Jenkins-CICD\\target\\jenkins-cicd-demo.jar deploy\\'
+                        bat 'java -jar deploy\\jenkins-cicd-demo.jar'
+                    }
+                }
+            }
+        }
+    }
+
+    post {
+        success { echo 'Pipeline completed successfully: compiled, tested, packaged and deployed.' }
+        failure { echo 'Pipeline failed - check the stage logs above.' }
+    }
+}

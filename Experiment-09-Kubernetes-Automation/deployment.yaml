@@ -1,0 +1,41 @@
+# Experiment 9 - Automating Experiment 7 (hello-app image) with Kubernetes: 3 replicas
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hello-app
+  labels:
+    app: hello-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: hello-app
+  template:
+    metadata:
+      labels:
+        app: hello-app
+    spec:
+      containers:
+        - name: hello-app
+          image: hello-app:1.0
+          imagePullPolicy: Never
+          env:
+            # hello.py prints "Hello, World!" and then keeps serving it over HTTP,
+            # so the pod stays Running instead of exiting (CrashLoopBackOff).
+            - name: HELLO_HTTP_PORT
+              value: "8080"
+          ports:
+            - containerPort: 8080
+          readinessProbe:
+            httpGet:
+              path: /
+              port: 8080
+            initialDelaySeconds: 2
+            periodSeconds: 5
+          resources:
+            requests:
+              cpu: 25m
+              memory: 32Mi
+            limits:
+              cpu: 100m
+              memory: 64Mi

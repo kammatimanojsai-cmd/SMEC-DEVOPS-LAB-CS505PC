@@ -1,0 +1,69 @@
+### Execution log - 2026-10-22 10:37:37 IST
+### NOTE: Docker Hub was unreachable from the execution machine, so BASE_IMAGE was set to a locally built Python base image (smec/python-base:local). On your laptop omit --build-arg to use python:3.12-slim.
+
+$ docker build --build-arg BASE_IMAGE=smec/python-base:local -t event-registration:1.0 .
+#1 [internal] load build definition from Dockerfile
+#2 [internal] load metadata for docker.io/smec/python-base:local
+#3 [internal] load .dockerignore
+#4 [internal] load build context
+#5 [1/6] FROM docker.io/smec/python-base:local@sha256:02a262b5fd33a6925a036b4ea6994944787121cb4ff9a87577746d284645aaa4
+#6 [2/6] WORKDIR /app
+#7 [3/6] COPY requirements.txt .
+#8 [4/6] RUN pip install --no-cache-dir -r requirements.txt
+#8 0.534 Requirement already satisfied: Flask<4.0,>=3.0 in /usr/local/lib/python3.13/dist-packages (from -r requirements.txt (line 1)) (3.1.3)
+#8 0.547 Requirement already satisfied: blinker>=1.9.0 in /usr/local/lib/python3.13/dist-packages (from Flask<4.0,>=3.0->-r requirements.txt (line 1)) (1.9.0)
+#8 0.548 Requirement already satisfied: click>=8.1.3 in /usr/local/lib/python3.13/dist-packages (from Flask<4.0,>=3.0->-r requirements.txt (line 1)) (8.5.0)
+#8 0.549 Requirement already satisfied: itsdangerous>=2.2.0 in /usr/local/lib/python3.13/dist-packages (from Flask<4.0,>=3.0->-r requirements.txt (line 1)) (2.2.0)
+#8 0.549 Requirement already satisfied: jinja2>=3.1.2 in /usr/local/lib/python3.13/dist-packages (from Flask<4.0,>=3.0->-r requirements.txt (line 1)) (3.1.6)
+#8 0.550 Requirement already satisfied: markupsafe>=2.1.1 in /usr/local/lib/python3.13/dist-packages (from Flask<4.0,>=3.0->-r requirements.txt (line 1)) (3.0.3)
+#8 0.551 Requirement already satisfied: werkzeug>=3.1.0 in /usr/local/lib/python3.13/dist-packages (from Flask<4.0,>=3.0->-r requirements.txt (line 1)) (3.1.9)
+#9 [5/6] COPY app.py .
+#10 [6/6] COPY templates/ templates/
+#11 naming to docker.io/library/event-registration:1.0 done
+
+$ docker images event-registration
+IMAGE                    ID             DISK USAGE   CONTENT SIZE   EXTRA
+event-registration:1.0   44ed9d0b1ed2        141MB         34.2MB        
+
+$ docker run -d --name event-app -p 5000:5000 event-registration:1.0
+49b11bea16ac5ee4a2f0fb00d59b084adca329bd91a4a117a50a4ad23becbfab
+
+$ docker ps --filter name=event-app
+CONTAINER ID   IMAGE                    COMMAND           CREATED         STATUS         PORTS                    NAMES
+49b11bea16ac   event-registration:1.0   "python app.py"   3 seconds ago   Up 3 seconds   0.0.0.0:5000->5000/tcp   event-app
+
+$ curl -s -o /dev/null -w "HTTP %{http_code}" http://localhost:5000/register
+HTTP 200
+
+$ curl -s http://localhost:5000/register | grep -E "<title>|<h2>"
+  <title>Event Registration</title>
+    <h2>Event Registration Form</h2>
+
+$ curl -s -X POST --data-urlencode "name=Ravi Kumar" -d email=ravi@example.com -d phone=9876543210 --data-urlencode "event=DevOps Workshop" http://localhost:5000/register
+<h2 id="successMessage">Registration Successful!</h2>
+<p>Thank you, <strong id="regName">Ravi Kumar</strong>.</p>
+<p>You are registered for <strong id="regEvent">DevOps Workshop</strong>.</p>
+
+$ curl -s -X POST -d "name=Ra&email=bad&phone=123&event=" http://localhost:5000/register   # invalid input
+HTTP 400
+<div class="error" id="error-name">Name must contain at least 3 characters.</div>
+<div class="error" id="error-email">Enter a valid email address.</div>
+<div class="error" id="error-phone">Enter a valid 10-digit mobile number.</div>
+<div class="error" id="error-event">Please select an event.</div>
+
+$ curl -s http://localhost:5000/health
+{"registrations":1,"status":"UP"}
+
+$ docker logs event-app
+ * Serving Flask app 'app'
+ * Debug mode: off
+WARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.
+ * Running on all addresses (0.0.0.0)
+ * Running on http://127.0.0.1:5000
+ * Running on http://172.17.0.2:5000
+Press CTRL+C to quit
+172.17.0.1 - - [22/Oct/2026 05:07:42] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:07:42] "GET /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:07:42] "POST /register HTTP/1.1" 200 -
+172.17.0.1 - - [22/Oct/2026 05:07:42] "POST /register HTTP/1.1" 400 -
+172.17.0.1 - - [22/Oct/2026 05:07:42] "GET /health HTTP/1.1" 200 -

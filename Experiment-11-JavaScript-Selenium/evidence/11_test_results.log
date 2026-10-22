@@ -1,0 +1,17 @@
+### Execution log - 2026-10-22 10:41:25 IST
+### Java 21, Selenium 4.48.0, Chromium 141 headless + ChromeDriver 141 (cloud Linux workspace).
+
+$ javac --release 17 -cp selenium-java.jar -d target/classes src/main/java/in/smec/devops/CounterAppTest.java
+Compilation successful
+
+$ java -cp target/classes:selenium-java.jar in.smec.devops.CounterAppTest
+Opened: file://<project>/app/index.html
+[PASS] Page title is 'Increment Counter App'         expected=Increment Counter App actual=Increment Counter App
+[PASS] Initial counter value is 0                    expected=0 actual=0
+[PASS] Counter is 1 after one click                  expected=1 actual=1
+[PASS] Counter is 3 after three clicks               expected=3 actual=3
+[PASS] Counter resets to 0                           expected=0 actual=0
+
+Tests run: 5, Passed: 5, Failed: 0
+BUILD SUCCESS - all Selenium tests passed
+Exit code: 0

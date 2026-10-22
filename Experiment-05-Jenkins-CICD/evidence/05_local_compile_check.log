@@ -1,0 +1,19 @@
+### Partial verification log - 2026-10-22 10:42:47 IST
+### Maven Central and Jenkins downloads are blocked on this cloud machine, so 'mvn test' and the real Jenkins
+### build could NOT run here. This log only proves the application source compiles, packages and runs.
+### The Jenkins build evidence must be captured on your laptop (see README.md).
+
+$ javac --release 17 -d target/classes src/main/java/in/smec/devops/*.java
+App.class
+Calculator.class
+
+$ jar --create --file target/jenkins-cicd-demo.jar --main-class in.smec.devops.App -C target/classes .
+2064 bytes  jenkins-cicd-demo.jar
+
+$ java -jar target/jenkins-cicd-demo.jar
+Jenkins CI/CD Demo application v1.0
+10 + 5 = 15
+10 - 5 = 5
+10 * 5 = 50
+10 / 5 = 2.0
+Deployment successful

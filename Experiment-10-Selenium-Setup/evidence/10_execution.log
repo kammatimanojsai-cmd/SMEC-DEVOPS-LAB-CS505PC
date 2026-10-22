@@ -1,0 +1,20 @@
+### Execution log - 2026-10-22 10:41:00 IST
+### Executed with Java 21, Selenium 4.48.0, Chromium 141 (headless) + ChromeDriver 141.
+### Public internet is blocked for the browser on this machine, so the program opened the locally running
+### Experiment 1 page. On your laptop 'mvn -q compile exec:java' opens https://www.selenium.dev/.
+
+$ java -version
+openjdk version "21.0.12.1" 2026-08-18
+OpenJDK Runtime Environment (build 21.0.12.1+1-1-24.04.4-Ubuntu)
+OpenJDK 64-Bit Server VM (build 21.0.12.1+1-1-24.04.4-Ubuntu, mixed mode, sharing)
+
+$ javac --release 17 -cp selenium-java.jar -d target/classes src/main/java/in/smec/devops/SeleniumSetup.java
+Compilation successful: SeleniumSetup.class created
+
+$ java -cp target/classes:selenium-java.jar in.smec.devops.SeleniumSetup http://localhost:5000/register
+Chrome launched successfully using Selenium WebDriver
+Opened URL   : http://localhost:5000/register
+Page title   : Event Registration
+RESULT: PASS - page opened and title read successfully
+Browser closed
+Exit code: 0
